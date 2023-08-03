@@ -1,6 +1,10 @@
 module.exports = {
-  content: ["./src/**/*.{html,js}"],
-  purge: [ './src/**/*.html', './src/**/*.vue', './src/**/*.jsx', ],
+  content: [
+    "./src/**/*.{html,js}",
+    './src/**/*.html',
+    './src/**/*.vue',
+    './src/**/*.jsx',
+  ],
   theme: {
     screens: {
       sm: '480px',

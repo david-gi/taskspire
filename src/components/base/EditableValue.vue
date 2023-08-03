@@ -26,12 +26,25 @@ function extend() {
 
 <template>
   <label class="font-bold">{{ label }} </label>
-  <div @dblclick="toggle(true)" @click="toggle(true)" @focusout="toggle(false)" @keydown="extend">
-    <div v-if="!activated" class="cursor-text transition ease-in rounded hover:bg-gray hover:bg-opacity-50 hover:shadow-inner">
-      <span class="float-right font-thin opacity-60 pr-2 text-sm align-super">edit</span>
+  <div
+    @dblclick="toggle(true)"
+    @click="toggle(true)"
+    @focusout="toggle(false)"
+    @keydown="extend"
+  >
+    <div
+      v-if="!activated"
+      class="cursor-text transition ease-in rounded hover:bg-purple/25"
+    >
+      <span class="float-right font-thin opacity-60 pr-2 text-sm align-super">[edit]</span>
       <slot name="display"></slot>
     </div>
-    <div :id="'editSlot' + label"><slot v-if="activated"  name="edit"></slot></div> 
+    <div :id="'editSlot' + label">
+      <slot
+        v-if="activated"
+        name="edit"
+      ></slot>
+    </div>
   </div>
 </template>
 
