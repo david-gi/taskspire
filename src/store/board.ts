@@ -1,48 +1,30 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-//import { api } from '../http/axios-base'
 import { Board, Item } from '../models/board'
-
-const wrapAttempt = (func: () => void) => {
-  try {
-    func()
-    return true
-  } catch (e) {
-    console.error(e)
-    return false
-  }
-}
+import H from './helpers'
 
 export const useBoardStore = defineStore('board', () => {
-  const currentBoardId = ref<string>('tavle-board')
-  const currentBoard = ref<Board>({
-    id: currentBoardId.value ?? '',
-    stages: [
-      { name: 'To-Do', items: [] },
-      { name: 'In-Progress', items: [] },
-      { name: 'Done', items: [] },
-    ]
-  })
+  const currentBoard = ref<Board>(new Board())
   const selectedStageIndex = ref<number>(-1)
   const selectedItemIndex = ref<number>(-1)
   const selectedItem = ref<Item | null>(null)
   const draggedItemId = ref<string>('')
   const ready = ref<boolean>(false)
 
-  function fetch() {
-    if (currentBoardId.value === undefined) return
+  function fetch(id: string = currentBoard.value.id) {
+    if (id === undefined) return
     ready.value = false
-    return wrapAttempt(() => {
-      const stored = localStorage.getItem(currentBoardId.value ?? '')
+    return H.wrapAttempt(() => {
+      const stored = localStorage.getItem(id)
       if (stored != null) currentBoard.value = <Board>JSON.parse(stored)
       ready.value = true
     })
   }
 
   function save() {
-    if (currentBoardId.value === undefined) return
-    return wrapAttempt(() => {
-      localStorage.setItem(currentBoardId.value ?? '', JSON.stringify(currentBoard.value))
+    if (currentBoard.value.id === undefined) return
+    return H.wrapAttempt(() => {
+      localStorage.setItem(currentBoard.value.id ?? '', JSON.stringify(currentBoard.value))
     })
   }
 
@@ -65,35 +47,8 @@ export const useBoardStore = defineStore('board', () => {
     })
   }
 
-  //#region Alternate API actions
-
-  // async function fetchWithApi() {
-  //   // If using an api backend:
-  //   ready.value = false
-  //   return await api
-  //     .get('/board')
-  //     .then((res) => {
-  //       currentBoard.value = <Board>res.data.results
-  //       ready.value = true
-  //     })
-  //     .catch((e) => console.error(e))
-  // }
-
-  // async function saveWithApi() {
-  //   // If using an api backend:
-  //   ready.value = false
-  //   return await api
-  //     .post('/board/update', currentBoard.value)
-  //     .then(() => {
-  //       ready.value = true
-  //     })
-  //     .catch((e) => console.error(e))
-  // }
-
-  //#endregion
 
   return {
-    currentBoardId,
     currentBoard,
     selectedStageIndex,
     selectedItemIndex,
