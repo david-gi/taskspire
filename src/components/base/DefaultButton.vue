@@ -1,46 +1,50 @@
 <script setup lang='ts'>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
-const props = defineProps<{ text: string, theme: string, active: boolean | undefined }>()
+const props = defineProps<{ text: string, theme: string, active: boolean }>()
+const debounced = ref<boolean>(false)
+const isActive = computed(() => props.active && !debounced.value)
 
-const isActive = ref(props.active)
 const colorClass = ref<string>('')
 switch (props.theme) {
   case 'good':
-    colorClass.value = 'bg-green'
+    colorClass.value = 'bg-green/75 saturate-150'
     break
   case 'neutral':
-    colorClass.value = 'bg-purple saturate-150'
+    colorClass.value = 'bg-purple'
     break
   case 'mean':
-    colorClass.value = 'bg-yellow text-pink'
+    colorClass.value = 'bg-yellow text-pink ring-2 ring-pink saturate-200'
     break
   case 'evil':
-    colorClass.value = 'bg-pink'
+    colorClass.value = 'bg-pink brightness-90 saturate-200'
     break
   default:
-    colorClass.value = 'bg-gray-light'
+    colorClass.value = 'bg-gray-light/25'
     break
 }
 
 function debounce() {
-  if (isActive.value) {
-    isActive.value = false
+  if (debounced.value) {
+    debounced.value = false
     setTimeout(() => {
-      isActive.value = true
-    }, 1000)
+      debounced.value = true
+    }, 1500)
   }
 }
 </script>
 
 <template>
   <button
-    class="p-2 font-bold rounded-sm hover:shadow-none active:brightness-75"
-    :class="[colorClass, { 'bg-gray': !isActive, 'hover:brightness-125 shadow-xl': isActive}]"
+    class="p-2 font-bold rounded-sm hover:shadow-none active:brightness-75 drop-shadow"
+    :class="[colorClass, {
+      'bg-gray': !isActive,
+      'hover:brightness-125 hover:saturation-200 shadow-lg': isActive
+    }]"
     :disabled="!isActive"
     @click="debounce"
   >
-    {{text}}
+    {{ text }}
   </button>
 </template>
 

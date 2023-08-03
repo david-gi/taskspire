@@ -1,28 +1,35 @@
 <script setup lang='ts'>
+import { inject, Ref } from 'vue'
 import { Item } from '../models/board'
 
-var props = defineProps<{ value: Item }>()
+const draggedItemId = inject<Ref<string>>('draggedItemId')
+const props = defineProps<{ value: Item }>()
 
-function handleDragStart(e: DragEvent) {
-  e.dataTransfer?.setData('draggedItemId', props.value.id)
+function handleDragStart() {
+  if (draggedItemId) draggedItemId.value = props.value.id
 }
-
 
 </script>
 
 <template>
   <div
-    class="rounded m-2 truncate backdrop-contrast-125 hover:brightness-125 ring-1 ring-gray-light" 
-    :style="{ 'background-color': ('rgb(var(--color-' + props.value.color + '))') }"
+    class="bg-purple rounded m-2 border-x-4 truncate hover:brightness-105 ring-1 ring-purple"
+    :style="{
+      'border-color': ('rgb(var(--color-' + props.value.color + '))'),
+    }"
     draggable="true"
     @dragstart="handleDragStart"
+    @touchstart.passive="handleDragStart"
   >
-    <div class="p-2 cursor-pointer" >
+    <div
+      class="p-2 cursor-pointer"
+      :title="value.name"
+    >
       <h1 class="font-bold text-ellipsis overflow-hidden">
-        {{value.name}}
+        {{ value.name }}
       </h1>
       <p class="text-ellipsis overflow-hidden">
-        {{value.desc}}
+        {{ value.desc }}
       </p>
     </div>
   </div>

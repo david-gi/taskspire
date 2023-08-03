@@ -1,4 +1,4 @@
-import { api } from '../../src/http/axios-base'
+//import { api } from '../../src/http/axios-base'
 test('API not in use', async () => { expect(1).toBe(1) })
 
 // test('updateBoard', async () => {
