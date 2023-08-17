@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { useMainStore } from 'src/store/main'
-import { onMounted, toRefs, ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import TheHeader from './TheHeader.vue'
 import MobileWarning from './base/MobileWarning.vue'
 import DefaultButton from './base/DefaultButton.vue'
 import { alert } from 'src/composables/alert'
+import SavedContainer from './SavedContainer.vue'
 
 const mainStore = useMainStore()
-const { boards } = toRefs(mainStore)
 onMounted(() => mainStore.fetchBoards())
 useMainStore().saveBoardIds()
 
@@ -28,13 +28,10 @@ function submitGoal() {
   <div
     style=""
     class="flex flex-col w-full h-screen subpixel-antialiased
-              overflow-y-scroll text-center no-scrollbar"
+          overflow-y-scroll text-center no-scrollbar"
   >
     <mobile-warning />
-    <the-header
-      class="scroll-my-10 bg-purple/40"
-      :big="true"
-    />
+    <the-header :big="true" />
     <div
       id="the-tagline"
       class="w-100 scroll-my-4 mt-2 pt-6 md:pt-20
@@ -42,7 +39,7 @@ function submitGoal() {
     >
       <div
         style=""
-        class="text-yellow text-xl font-semibold -skew-x-6 -skew-y-3 -mt-2 pb-2"
+        class="text-yellow text-xl font-semibold -skew-x-6 -skew-y-3 -mt-2 pb-2 drop-shadow"
       >
         Goals are good for motivation...
       </div>
@@ -66,54 +63,34 @@ function submitGoal() {
       class="text-yellow brightness-200 contrast-125 text-2xl -ml-8 pt-6 pb-0 md:pb-6"
     >
       <pre class="font-sans text-center">
-          Simple goal management powered by
+          Simple goal management utilizing
           Kanban boards and the Porodomo technique.
           Supercharged by advanced AI.
         </pre>
     </h2>
 
-    <div class="snap-start snap-always pb-6">
+    <div class="snap-start snap-always pb-6 drop-shadow">
       <textarea
         id="text-input"
         v-model="goalInput"
         placeholder="Describe a Goal..."
         class="w-11/12 h-48 md:w-8/12
-          text-center caret-gray-light/50 
+          text-center caret-gray-light/50
           ring-green ring-4 outline-none rounded resize-y
           text-green bg-gray/50 p-4 text-4xl no-scrollbar scroll-my-4
-          placeholder-green/75 placeholder:font-boldactive:placeholder-gray-light
-          focus:placeholder-gray-light/50"
+          placeholder-green/75 placeholder:font-bold
+          focus:placeholder-gray-light/50 focus:contrast-125 hover:contrast-125"
       ></textarea>
       <default-button
         text="Generate an Action Plan ➜"
         theme="x"
         :active="true"
-        class="w-11/12 md:w-8/12 ring-4 ring-green bg-green text-gray-dark text-4xl mt-2"
+        class="w-11/12 md:w-8/12 ring-4 ring-green bg-green text-gray-dark text-4xl mt-2 focus:contrast-200"
         @click="submitGoal()"
       />
     </div>
 
-    <div
-      v-if="boards"
-      class="mt-6 py-6"
-    >
-      <div class="text-4xl font-bold text-gray-dark bg-blue py-4">
-        Saved Goals
-      </div>
-      <div class="flex flex-row flex-wrap justify-center">
-        <div
-          v-for="board in boards"
-          :key="board.id"
-          class="w-1/3 h-48 m-4 p-4 text-center text-2xl text-gray-dark
-            bg-gray/50 rounded ring-4 ring-green hover:italic"
-          @click="mainStore.setBoard(board.id)"
-        >
-          {{ board.name }}
-        </div>
-      </div>
-    </div>
-
-    <br>
+    <saved-container />
   </div>
 </template>
 

@@ -7,6 +7,7 @@ import { Item } from '../models/board'
 import TheHeader from './TheHeader.vue'
 import StageContainer from './StageContainer.vue'
 import ItemForm from './ItemForm.vue'
+import ProgressBar from './base/ProgressBar.vue'
 
 const boardStore = useBoardStore()
 const { currentBoard, selectedItem, selectedItemIndex, selectedStageIndex, draggedItemId } = storeToRefs(boardStore)
@@ -65,7 +66,7 @@ function deleteSelectedItem() {
 </script>
 
 <template>
-  <div class="flex h-screen flex-row gap-6 p-6 pt-12 subpixel-antialiased overflow-visible">
+  <div class="flex h-screen flex-row gap-6 pt-4 subpixel-antialiased overflow-visible">
     <the-header :big="false" />
     <stage-container
       v-for="(stage, i) in  currentBoard?.stages "
@@ -91,4 +92,8 @@ function deleteSelectedItem() {
       @closed="clearItemSelection"
     />
   </div>
+  <progress-bar
+    :value="currentBoard?.calculateProgress() ?? 1"
+    :big="false"
+  />
 </template>
