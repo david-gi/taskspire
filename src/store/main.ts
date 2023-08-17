@@ -32,6 +32,7 @@ export const useMainStore = defineStore('main', () => {
     return H.wrapAttempt(() => {
       const boardIds = boards.value.map((b) => b.id)
       boardIds.push('taskspire-dfc65736-8b69-4304-822e-75d66649e9ee')
+      boardIds.push('taskspire-22aa8b53-904b-4f51-871f-426fee7060d9')
       localStorage.setItem(idsKey, JSON.stringify(boardIds))
     })
   }

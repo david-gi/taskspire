@@ -5,6 +5,7 @@ import { Item } from '../models/board'
 import ColorSelector from './base/ColorSelector.vue'
 import EditableValue from './base/EditableValue.vue'
 import DefaultButton from './base/DefaultButton.vue'
+import DeleteButton from './base/DeleteButton.vue'
 
 const props = defineProps<{ modelValue: Item, index: number, first: boolean, last: boolean }>()
 const { modelValue } = toRefs(props)
@@ -17,20 +18,11 @@ defineEmits<{
   delete: []
 }>()
 
-const deleteActivated = ref<boolean>()
 const descHeight = ref<string>()
 watch(modelValue, () => updateDate())
 
 function updateDate() {
   modelValue.value.updated = new Date().getTime()
-}
-
-function startDelete() {
-  setTimeout(() => {
-    deleteActivated.value = true
-    setTimeout(() => deleteActivated.value = false, 3000)
-  },
-    600)
 }
 
 function setDescHeight() {
@@ -44,7 +36,7 @@ function setDescHeight() {
   <div
     v-if="props.modelValue"
     class="bg-gray-dark h-1/2 fixed bottom-0 pb-6 left-0 right-0
-     border-x-4 ring-2 ring-gray-dark rounded shadow-xl"
+     border-x-4 ring-2 ring-gray-dark rounded shadow"
     :style="{
       'border-color': ('rgb(var(--color-' + modelValue.color + '))'),
     }"
@@ -128,25 +120,11 @@ function setDescHeight() {
       </div>
 
       <div>
-        <div class="float-left">
+        <div>
           <color-selector v-model="modelValue.color" />
-        </div>
-        <div class="float-right">
-          <default-button
-            text="Delete"
-            theme="evil"
-            class="w-16 bg-opacity-60"
-            :class="{ 'hidden': deleteActivated }"
-            :active="true"
-            @click="startDelete"
-          />
-          <default-button
-            text="Delete?"
-            theme="mean"
-            class="w-16 animate-pulse"
-            :class="{ 'hidden': !deleteActivated }"
-            :active="true"
-            @click="$emit('delete')"
+          <delete-button
+            class="float-right inline"
+            @delete="$emit('delete')"
           />
         </div>
       </div>

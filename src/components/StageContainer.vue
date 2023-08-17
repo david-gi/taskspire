@@ -31,11 +31,11 @@ function handleDrop(e: Event, itemIndex: number) {
       :id="'Stage-' + props.index"
       class="bg-purple brightness-90 shadow-md text-center sticky top-0 py-3 mb-4 -mx-4 z-20 leading-3"
     >
-      <strong class="text-green brightness-110 uppercase">
+      <span class="text-green font-extrabold brightness-110 uppercase select-none">
         {{ props.value.name }}
-      </strong>
+      </span>
     </h2>
-    <div class="grid grid-flow-row gap-1 auto-rows-max">
+    <div class="grid grid-flow-row gap-1 auto-rows-max touch-pan-y">
       <item-container
         v-for="item, i in value.items"
         :key="'item-' + item.id"

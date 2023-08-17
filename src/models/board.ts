@@ -1,10 +1,14 @@
 export class Board {
     id: string
     name: string
+    goal: string
+    cycles: number
     stages: Stage[]
     constructor() {
         this.id = 'taskspire-' + crypto.randomUUID()
         this.name = ''
+        this.goal = ''
+        this.cycles = 0
         this.stages = [
             { name: 'To-Do', items: [] },
             { name: 'In-Progress', items: [] },

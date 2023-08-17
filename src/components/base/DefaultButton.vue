@@ -14,7 +14,7 @@ switch (props.theme) {
     colorClass.value = 'bg-purple'
     break
   case 'mean':
-    colorClass.value = 'bg-yellow text-pink ring-2 ring-pink saturate-200'
+    colorClass.value = 'bg-yellow text-pink ring-pink saturate-200'
     break
   case 'evil':
     colorClass.value = 'bg-pink brightness-90 saturate-200'
@@ -41,7 +41,7 @@ function debounce() {
 
 <template>
   <button
-    class="p-2 font-bold rounded-sm active:brightness-75 shadow-gray-dark"
+    class="p-2 font-bold rounded-sm active:brightness-75 shadow-gray-dark select-none"
     :class="[colorClass, {
       'bg-gray shadow-none': !isActive,
       'contrast-75 opacity-75': debounced,
