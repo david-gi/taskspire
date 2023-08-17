@@ -3,33 +3,20 @@
 
 @layer base {
   :root {
-    --color-purple: 107 55 181;
+    --color-purple: 107 34 181;
     
-    --color-blue: 124 132 250;
-    --color-pink: 237 123 165;
-    --color-orange: 255 222 133;
-    --color-green: 186 242 126;
+    --color-blue: 0 148 198;
+    --color-pink: 219 43 57;
+    --color-orange: 243 167 18;
+    --color-green: 122 199 79;
 
-    --color-yellow: 249 248 113;
+    --color-yellow: 240 247 87;
     --color-gray: 48 48 48;
     --color-gray-dark: 33 38 46;
     --color-gray-light: 115 121 131;
     --color-white: 255 255 255;
   }
 }
-/* @layer base {
-  :root {
-    --color-blue: 26 79 160;
-    --color-purple: 88 28 135;
-    --color-pink: 171 48 70;
-    --color-orange: 209 115 65;
-    --color-green: 28 135 88;
-    --color-yellow: 249 248 113;
-    --color-gray: 48 48 48;
-    --color-gray-dark: 40 40 40;
-    --color-gray-light: 56 56 56;
-  }
-} */
 
 html {
     color-scheme: dark;
@@ -37,6 +24,7 @@ html {
 
 body {
     background-color: rgb(var(--color-gray-dark));
+    min-width: 320px;
 }
 
 .no-scrollbar::-webkit-scrollbar {
