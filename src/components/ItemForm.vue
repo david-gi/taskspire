@@ -43,7 +43,7 @@ function setDescHeight() {
 <template>
   <div
     v-if="props.modelValue"
-    class="bg-gray-dark h-1/2 fixed bottom-0 left-0 right-0
+    class="bg-gray-dark h-1/2 fixed bottom-0 pb-6 left-0 right-0
      border-x-4 ring-2 ring-gray-dark rounded shadow-xl"
     :style="{
       'border-color': ('rgb(var(--color-' + modelValue.color + '))'),
