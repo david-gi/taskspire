@@ -4,7 +4,7 @@ import { nextTick, ref } from 'vue'
 const props = defineProps<{ label: string }>()
 
 const activated = ref<boolean>(false)
-const timer = ref<number>()
+const timer = ref<NodeJS.Timeout>()
 
 
 function toggle(val: boolean | null = null) {
@@ -36,7 +36,7 @@ function extend() {
       v-if="!activated"
       class="cursor-text transition ease-in rounded hover:bg-purple/25"
     >
-      <span class="float-right font-thin opacity-60 pr-2 text-sm align-super">[edit]</span>
+      <span class="float-right font-thin opacity-60 pl-2 pr-1 text-sm align-super">[edit]</span>
       <slot name="display"></slot>
     </div>
     <div :id="'editSlot' + label">

@@ -24,11 +24,16 @@ switch (props.theme) {
     break
 }
 
+function minimizeToSymbol(text: string) {
+  const replaced = text.replace(/[a-zA-Z]/g, '')
+  return replaced.length > 0 ? replaced : text
+}
+
 function debounce() {
-  if (debounced.value) {
-    debounced.value = false
+  if (!debounced.value) {
+    debounced.value = true
     setTimeout(() => {
-      debounced.value = true
+      debounced.value = false
     }, 1500)
   }
 }
@@ -36,15 +41,30 @@ function debounce() {
 
 <template>
   <button
-    class="p-2 font-bold rounded-sm hover:shadow-none active:brightness-75 drop-shadow"
+    class="p-2 font-bold rounded-sm active:brightness-75 shadow-gray-dark"
     :class="[colorClass, {
-      'bg-gray': !isActive,
-      'hover:brightness-125 hover:saturation-200 shadow-lg': isActive
+      'bg-gray shadow-none': !isActive,
+      'contrast-75 opacity-75': debounced,
+      'shadow-xl active:shadow-inner active:contrast-75 hover:brightness-125 hover:saturation-200': isActive
     }]"
     :disabled="!isActive"
     @click="debounce"
   >
-    {{ text }}
+    <span class="hidden sm:inline">
+      {{ text }}
+    </span>
+    <span class="sm:hidden">
+      {{ minimizeToSymbol(text) }}
+    </span>
+    <div
+      class="float-right pr-6 pt-2 scale-75"
+      :class="[{ 'block': debounced, 'hidden': !debounced }]"
+    >
+      <div class="animate-spin opacity-90 absolute">
+        ❍
+      </div>
+    </div>
+
   </button>
 </template>
 
