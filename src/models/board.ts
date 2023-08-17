@@ -1,8 +1,10 @@
 export class Board {
     id: string
+    name: string
     stages: Stage[]
-    constructor(firstItems: Item[] = []) {
+    constructor(name: string, firstItems: Item[] = []) {
         this.id = 'taskspire-' + crypto.randomUUID()
+        this.name = name
         this.stages = [
             { name: 'To-Do', items: firstItems },
             { name: 'In-Progress', items: [] },

@@ -13,7 +13,8 @@ function handleDragStart() {
 
 <template>
   <div
-    class="bg-purple rounded m-2 border-x-4 truncate hover:brightness-105 ring-1 ring-purple"
+    class="bg-purple rounded m-2 border-x-4 hover:brightness-105 ring-1 ring-purple
+      snap-always snap-start scroll-my-4 truncate"
     :style="{
       'border-color': ('rgb(var(--color-' + props.value.color + '))'),
     }"
@@ -28,7 +29,7 @@ function handleDragStart() {
       <h1 class="font-bold text-ellipsis overflow-hidden">
         {{ value.name }}
       </h1>
-      <p class="text-ellipsis overflow-hidden">
+      <p class="whitespace-pre-line line-clamp-2">
         {{ value.desc }}
       </p>
     </div>

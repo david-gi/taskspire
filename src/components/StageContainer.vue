@@ -3,7 +3,7 @@ import { inject, Ref } from 'vue'
 import { Stage } from 'src/models/board'
 
 import ItemContainer from './ItemContainer.vue'
-import AdditionPlaceholder from './base/AdditionPlaceholder.vue'
+import AddButton from './base/AddButton.vue'
 
 const draggedItemId = inject<Ref<string>>('draggedItemId')
 const props = defineProps<{ value: Stage, index: number }>()
@@ -22,8 +22,8 @@ function handleDrop(e: Event, itemIndex: number) {
 
 <template>
   <div
-    class="bg-purple/75 grow min-w-min max-w-xs overflow-y-scroll snap-y scroll-mb-6
-          no-scrollbar p-4 pt-0 rounded shadow-lg"
+    class="bg-purple/75 w-1/3 min-w-min max-w-xs p-4 pt-0 rounded shadow-lg
+          overflow-y-scroll snap-y snap-mandatory scroll-py-10 no-scrollbar"
     @dragover.prevent
     @dragenter.prevent
   >
@@ -43,7 +43,7 @@ function handleDrop(e: Event, itemIndex: number) {
         @click="$emit('open-item', item.id)"
         @drop="(e: DragEvent) => handleDrop(e, i)"
       />
-      <addition-placeholder @click="$emit('add-item')" />
+      <add-button @click="$emit('add-item')" />
     </div>
   </div>
 </template>
