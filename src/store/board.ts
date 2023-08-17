@@ -4,27 +4,24 @@ import { Board, Item } from '../models/board'
 import H from './helpers'
 
 export const useBoardStore = defineStore('board', () => {
-  const currentBoard = ref<Board>(new Board())
+  const currentBoard = ref<Board>()
   const selectedStageIndex = ref<number>(-1)
   const selectedItemIndex = ref<number>(-1)
   const selectedItem = ref<Item | null>(null)
   const draggedItemId = ref<string>('')
-  const ready = ref<boolean>(false)
 
-  function fetch(id: string = currentBoard.value.id) {
+  function fetch(id: string = currentBoard.value?.id ?? '') {
     if (id === undefined) return
-    ready.value = false
     return H.wrapAttempt(() => {
       const stored = localStorage.getItem(id)
       if (stored != null) currentBoard.value = <Board>JSON.parse(stored)
-      ready.value = true
     })
   }
 
   function save() {
-    if (currentBoard.value.id === undefined) return
+    if (!currentBoard.value) return
     return H.wrapAttempt(() => {
-      localStorage.setItem(currentBoard.value.id ?? '', JSON.stringify(currentBoard.value))
+      localStorage.setItem(currentBoard.value?.id ?? '', JSON.stringify(currentBoard.value))
     })
   }
 
@@ -36,7 +33,7 @@ export const useBoardStore = defineStore('board', () => {
       return
     }
 
-    currentBoard.value.stages.forEach((stage, stageIndex) => {
+    currentBoard.value?.stages.forEach((stage, stageIndex) => {
       stage.items.forEach((item, itemIndex) => {
         if (item.id === id) {
           selectedStageIndex.value = stageIndex
@@ -54,7 +51,6 @@ export const useBoardStore = defineStore('board', () => {
     selectedItemIndex,
     selectedItem,
     draggedItemId,
-    ready,
 
     fetch,
     save,

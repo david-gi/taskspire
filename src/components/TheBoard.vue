@@ -1,20 +1,21 @@
 <script setup lang="ts">
-import { onBeforeMount, computed, provide, watch } from 'vue'
+import { computed, provide } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useBoardStore } from '../store/board'
 import { Item } from '../models/board'
 
+import TheHeader from './TheHeader.vue'
 import StageContainer from './StageContainer.vue'
-import ItemBox from './ItemBox.vue'
+import ItemForm from './ItemForm.vue'
 
 const boardStore = useBoardStore()
-const { currentBoard, ready, selectedItem, selectedItemIndex, selectedStageIndex, draggedItemId } = storeToRefs(boardStore)
+const { currentBoard, selectedItem, selectedItemIndex, selectedStageIndex, draggedItemId } = storeToRefs(boardStore)
 provide('draggedItemId', draggedItemId)
 
 boardStore.$subscribe(boardStore.save)
 
 const firstStage = computed(() => selectedStageIndex.value == 0)
-const lastStage = computed(() => selectedStageIndex.value == currentBoard.value.stages.length - 1)
+const lastStage = computed(() => selectedStageIndex.value == (currentBoard.value?.stages.length ?? 1) - 1)
 
 //#region Item Actions
 
@@ -25,7 +26,7 @@ function addNewItem(stageIndex: number): void {
   setTimeout(() => {
     boardStore.$patch((state) => {
       const newItem = new Item()
-      state.currentBoard.stages[stageIndex].items.push(newItem)
+      state.currentBoard?.stages[stageIndex].items.push(newItem)
       boardStore.setSelectedItem(newItem.id)
     })
   }, 1)
@@ -36,16 +37,14 @@ function moveItem(toStageIndex: number, toItemIndex: number | null, itemId: stri
   boardStore.$patch((state) => {
     if (state.selectedItem) {
       if (toItemIndex == null) {
-        state.currentBoard
-          .stages[toStageIndex]
+        state.currentBoard?.stages[toStageIndex]
           .items.push(state.selectedItem)
         deleteSelectedItem()
         boardStore.setSelectedItem(itemId)
       } else {
         const movedItem = state.selectedItem
         deleteSelectedItem()
-        state.currentBoard
-          .stages[toStageIndex]
+        state.currentBoard?.stages[toStageIndex]
           .items.splice(toItemIndex, 0, movedItem)
         boardStore.setSelectedItem(itemId)
       }
@@ -56,8 +55,7 @@ function moveItem(toStageIndex: number, toItemIndex: number | null, itemId: stri
 
 function deleteSelectedItem() {
   boardStore.$patch((state) => {
-    state.currentBoard
-      .stages[state.selectedStageIndex]
+    state.currentBoard?.stages[state.selectedStageIndex]
       .items.splice(state.selectedItemIndex, 1)
   })
   clearItemSelection()
@@ -67,15 +65,10 @@ function deleteSelectedItem() {
 </script>
 
 <template>
-  <h1 class="absolute text-xl text-green font-bold pl-7 mt-2 subpixel-antialiased">
-    <span class="text-2xl">Taskspire:</span> Reaching Goals with the Power of AI
-  </h1>
-  <div
-    v-if="ready"
-    class="flex h-screen flex-row gap-6 p-6 pt-12 subpixel-antialiased overflow-visible"
-  >
+  <div class="flex h-screen flex-row gap-6 p-6 pt-12 subpixel-antialiased overflow-visible">
+    <the-header :big="false" />
     <stage-container
-      v-for="(stage, i) in  currentBoard.stages "
+      v-for="(stage, i) in  currentBoard?.stages "
       :key="'stage-' + i"
       :value="stage"
       :index="i"
@@ -85,7 +78,7 @@ function deleteSelectedItem() {
       @move-item="moveItem"
     />
 
-    <item-box
+    <item-form
       v-if="selectedItem"
       v-model="selectedItem"
       :index="selectedItemIndex"
