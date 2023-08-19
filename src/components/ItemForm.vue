@@ -5,12 +5,13 @@ import { Item } from '../models/board'
 import ColorSelector from './base/ColorSelector.vue'
 import EditableValue from './base/EditableValue.vue'
 import DefaultButton from './base/DefaultButton.vue'
-import DeleteButton from './base/DeleteButton.vue'
+import SafetyButton from './base/SafetyButton.vue'
+import PomodoroTracker from './base/PomodoroTracker.vue'
 
 const props = defineProps<{ modelValue: Item, index: number, first: boolean, last: boolean }>()
 const { modelValue } = toRefs(props)
 defineEmits<{
-  'update:modelValue': [item: Item],
+  'update:modelValue': [val: Item],
   reorder: [newIndex: number],
   regress: [],
   progress: [],
@@ -19,7 +20,6 @@ defineEmits<{
 }>()
 
 const descHeight = ref<string>()
-watch(modelValue, () => updateDate())
 
 function updateDate() {
   modelValue.value.updated = new Date().getTime()
@@ -29,6 +29,10 @@ function setDescHeight() {
   const height = document.getElementById('descDisplay')?.clientHeight ?? 0
   descHeight.value = (height + 10) + 'px'
 }
+
+watch(() => props.modelValue, () => {
+  updateDate()
+}, { deep: true })
 
 </script>
 
@@ -64,22 +68,28 @@ function setDescHeight() {
         @click="$emit('reorder', index + 1)"
       />
       <default-button
+        text="Progress⇾"
+        theme="good"
+        class="w-fit mx-auto px-2"
+        :active="!last"
+        @click="$emit('progress')"
+      />
+      <default-button
         text="✖"
         theme="x"
         class="w-auto px-6 py-1 ml-2 text-2xl float-right"
         :active="true"
         @click="$emit('closed')"
       />
-      <default-button
-        text="Progress⇾"
-        theme="good"
-        class="w-fit mx-auto px-2 float-right"
-        :active="!last"
-        @click="$emit('progress')"
-      />
     </div>
 
     <div class="flex flex-col gap-4 h-full bottom-0 left-0 right-0 px-6 pb-12 overflow-y-auto">
+
+      <pomodoro-tracker
+        :item="modelValue"
+        class="float-left"
+      />
+
       <div>
         <editable-value :label="'Name'">
           <template #display>
@@ -120,11 +130,14 @@ function setDescHeight() {
       </div>
 
       <div>
-        <div>
-          <color-selector v-model="modelValue.color" />
-          <delete-button
+        <div class="text-center">
+          <safety-button
             class="float-right inline"
             @delete="$emit('delete')"
+          />
+          <color-selector
+            v-model="modelValue.color"
+            class="float-left"
           />
         </div>
       </div>

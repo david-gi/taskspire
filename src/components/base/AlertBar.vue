@@ -10,11 +10,11 @@ const props = defineProps({
     required: true,
   }
 })
+const { modelValue, level } = toRefs(props)
 const emits = defineEmits<{ 'update:modelValue': [value: string] }>()
 
 const timer = ref<NodeJS.Timeout>()
 const shown = ref(false)
-const { modelValue, level } = toRefs(props)
 const levelDetails = [
   {
     key: 'info',

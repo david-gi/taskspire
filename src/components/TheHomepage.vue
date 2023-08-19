@@ -63,7 +63,7 @@ function submitGoal() {
     >
       <pre class="font-sans text-center">
           Simple goal management utilizing
-          Kanban boards and the Porodomo technique.
+          Kanban and the Porodomo technique.
           Supercharged by advanced AI.
         </pre>
     </h2>
