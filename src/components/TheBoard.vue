@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, provide } from 'vue'
+import { computed, provide, watch } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useBoardStore } from '../store/board'
 import { Item } from '../models/board'
@@ -7,13 +7,21 @@ import { Item } from '../models/board'
 import TheHeader from './TheHeader.vue'
 import StageContainer from './StageContainer.vue'
 import ItemForm from './ItemForm.vue'
+import PomodoroBadge from './base/PomodoroBadge.vue'
 import ProgressBar from './base/ProgressBar.vue'
+import { alert } from 'src/composables/alert'
 
 const boardStore = useBoardStore()
 const { currentBoard, selectedItem, selectedItemIndex, selectedStageIndex, draggedItemId } = storeToRefs(boardStore)
+
 provide('draggedItemId', draggedItemId)
 
 boardStore.$subscribe(boardStore.save)
+watch(currentBoard, () => {
+  if (currentBoard.value?.calculateProgress() == 100) {
+    alert('Goal completed!', 'success')
+  }
+})
 
 const firstStage = computed(() => selectedStageIndex.value == 0)
 const lastStage = computed(() => selectedStageIndex.value == (currentBoard.value?.stages.length ?? 1) - 1)
@@ -66,8 +74,9 @@ function deleteSelectedItem() {
 </script>
 
 <template>
-  <div class="flex h-screen flex-row gap-6 pt-4 subpixel-antialiased overflow-visible">
+  <div class="flex h-screen flex-row gap-1 sm:gap-2 md:gap-6 lg:gap-9 pt-4 subpixel-antialiased overflow-visible">
     <the-header :big="false" />
+    <pomodoro-badge />
     <stage-container
       v-for="(stage, i) in  currentBoard?.stages "
       :key="'stage-' + i"

@@ -20,7 +20,7 @@ watch(() => props.value, () => { })
     :class="[{ 'h-5 rounded-b -mx-4 ': big, 'h-3 opacity-75': !big }]"
   >
     <div
-      class="bg-green"
+      class="bg-green/50"
       :class="[{ 'h-5': big, 'h-3': !big }]"
       :style="{ 'width': (value + '%') }"
     >

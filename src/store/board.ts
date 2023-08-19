@@ -7,7 +7,7 @@ export const useBoardStore = defineStore('board', () => {
   const currentBoard = ref<Board>()
   const selectedStageIndex = ref<number>(-1)
   const selectedItemIndex = ref<number>(-1)
-  const selectedItem = ref<Item | null>(null)
+  const selectedItem = ref<Item>()
   const draggedItemId = ref<string>('')
 
   function save() {
@@ -21,7 +21,7 @@ export const useBoardStore = defineStore('board', () => {
     if (id === undefined) {
       selectedStageIndex.value = -1
       selectedItemIndex.value = -1
-      selectedItem.value = null
+      selectedItem.value = undefined
       return
     }
 
