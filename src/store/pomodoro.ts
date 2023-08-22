@@ -13,13 +13,13 @@ export const usePomodoroStore = defineStore('pomodoro', () => {
 
   function refreshPomodoroTime() {
     if (pomodoroStart.value === undefined) return 0
-    pomodoroTime.value = 1 - Math.floor((new Date().getTime() - pomodoroStart.value) / 1000 / 60)
+    pomodoroTime.value = 25 - Math.floor((new Date().getTime() - pomodoroStart.value) / 1000 / 60)
   }
 
   function initPomodoro(): boolean {
     if (pomodoroStart.value) return false
     pomodoroStart.value = new Date().getTime()
-    pomodoroTime.value = 20
+    pomodoroTime.value = 25
     return true
   }
 
@@ -42,7 +42,7 @@ export const usePomodoroStore = defineStore('pomodoro', () => {
           item.cycles = (item.cycles ?? 0) + 1
           cancelPomodoro()
         }
-      }, 5000)
+      }, 1000)
       return true
     }
     return false

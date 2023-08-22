@@ -10,7 +10,7 @@ const timer = ref<NodeJS.Timeout>()
 const index = ref<number>(0)
 const limit = ref<number>(0)
 const len = ref<number>(0)
-const cutoff = 20
+const cutoff = 24
 
 const marquee = computed(() => {
   if (len.value <= cutoff) return itemName.value

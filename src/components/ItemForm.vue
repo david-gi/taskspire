@@ -1,6 +1,6 @@
 <script setup lang='ts'>
 import { ref, toRefs, watch } from 'vue'
-import { Item } from '../models/board'
+import { Board, Item } from '../models/board'
 
 import ColorSelector from './base/ColorSelector.vue'
 import EditableValue from './base/EditableValue.vue'

@@ -1,6 +1,6 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import api from '../http/axios-base'
+import api from '../http/api'
 import H from './helpers'
 import { Board } from '../models/board'
 import { useBoardStore } from './board'
@@ -46,15 +46,13 @@ export const useMainStore = defineStore('main', () => {
   }
 
   async function createNewBoard(goal: string) {
-    return await api.ai
-      .post('/make', goal)
-      .then((res) => {
-        const newBoard = Object.assign(new Board(), JSON.parse(res.data))
-        boards.value.push(newBoard)
-        boardStore.currentBoard = newBoard
-        saveBoardIds()
-      })
-      .catch((e) => console.error(e))
+    return H.wrapAttempt(async () => {
+      const res = await api.generate(goal)
+      const newBoard = Object.assign(new Board(), JSON.parse(res.data))
+      boards.value.push(newBoard)
+      boardStore.currentBoard = newBoard
+      saveBoardIds()
+    })
   }
 
   async function setBoard(id?: string) {
