@@ -1,8 +1,9 @@
 {
-  "name": "tavle-vue3-electron-app",
-  "version": "2.0.0",
-  "license": "MIT",
+  "name": "taskspire",
+  "version": "1.0.0",
+  "license": "ISC",
   "main": "main.js",
+  "author": "David Giagnocavo",
   "scripts": {
     "start": "vite",
     "build": "vite build --config vite.config.ts",
