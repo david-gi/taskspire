@@ -1,17 +1,23 @@
 <script setup lang='ts'>
-import { useMainStore } from '../../store/main'
-import { toRefs } from 'vue'
+import { watch, toRefs, onMounted } from 'vue'
+import { useHomeStore } from '../../store/home'
+import { useBoardStore } from '../../store/board'
 import DefaultButton from '../base/DefaultButton.vue'
 import SafetyButton from '../base/SafetyButton.vue'
 import ProgressBar from '../base/ProgressBar.vue'
 
-const mainStore = useMainStore()
-const { boards } = toRefs(mainStore)
+const homeStore = useHomeStore()
+const { boards } = toRefs(homeStore)
+const boardStore = useBoardStore()
+const { currentBoard } = toRefs(boardStore)
+
+onMounted(() => homeStore.fetchBoards())
+watch(currentBoard, () => homeStore.fetchBoards())
 </script>
 
 <template>
   <div
-    v-if="boards"
+    v-if="boards && boards.length > 0"
     class="mt-6 py-6"
   >
     <div class="text-4xl font-bold text-gray-dark bg-blue py-4 shadow-xl">
@@ -30,16 +36,16 @@ const { boards } = toRefs(mainStore)
           theme="x"
           class="absolute top-0 left-0 px-4 saturate-50 brightness-75"
           :active="true"
-          @click="mainStore.setBoard(board.id)"
+          @click="homeStore.setBoard(board.id)"
         />
         <safety-button
           class="absolute top-0 right-0 saturate-50 brightness-75"
           text="Delete"
-          @fired="mainStore.deleteBoard(board.id)"
+          @fired="homeStore.deleteBoard(board.id)"
         />
         <div
           class="line-clamp-1 text-xl text-orange mt-6 mb-2 cursor-pointer select-none hover:saturate-200"
-          @click="mainStore.setBoard(board.id)"
+          @click="homeStore.setBoard(board.id)"
         >
           {{ board.name }}
         </div>
