@@ -2,17 +2,17 @@
 import { ref } from 'vue'
 import DefaultButton from './DefaultButton.vue'
 
-defineProps({ text: { type: String, default: 'Delete' } })
+defineProps({ text: { type: String, required: true } })
 defineEmits<{
-  delete: []
+  fired: []
 }>()
 
-const deleteActivated = ref<boolean>()
+const toggled = ref(false)
 
-function startDelete() {
+function toggle() {
   setTimeout(() => {
-    deleteActivated.value = true
-    setTimeout(() => deleteActivated.value = false, 3000)
+    toggled.value = true
+    setTimeout(() => toggled.value = false, 3000)
   },
     900)
 }
@@ -23,18 +23,19 @@ function startDelete() {
     <default-button
       :text="text"
       theme="evil"
-      class="w-16 ring-pink bg-opacity-60 transition duration-300 ease-in-out transform disabled:-translate-x-16"
-      :class="{ 'hidden': deleteActivated }"
+      class="w-16 ring-pink bg-opacity-60 transition duration-300 ease-in-out transform
+            disabled:saturate-75 disabled:-translate-x-16"
+      :class="{ 'hidden': toggled }"
       :active="true"
-      @click="startDelete"
+      @click="toggle"
     />
     <default-button
       :text="text"
       theme="mean"
       class="w-16 animate-pulse -translate-x-16"
-      :class="{ 'hidden': !deleteActivated }"
+      :class="{ 'hidden': !toggled }"
       :active="true"
-      @click="$emit('delete')"
+      @click="$emit('fired')"
     />
   </div>
 </template>

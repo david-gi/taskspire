@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { toRefs, ref, computed, watch, onMounted } from 'vue'
 import { usePomodoroStore } from '../../store/pomodoro'
-import SafetyButton from './SafetyButton.vue'
+import SafetyButton from '../base/SafetyButton.vue'
 
 const pomodoroStore = usePomodoroStore()
 const { pomodoroStart, pomodoroTime, itemName } = toRefs(pomodoroStore)
@@ -61,7 +61,7 @@ watch(() => pomodoroStart.value, () => {
       <safety-button
         text="✖"
         class="float-right text-bold bg-pink"
-        @delete="resetPomodoro"
+        @fired="resetPomodoro"
       />
     </div>
   </div>

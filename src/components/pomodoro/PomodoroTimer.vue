@@ -2,8 +2,8 @@
 import { toRefs, computed } from 'vue'
 import { Item } from '../../models/classes'
 import { usePomodoroStore } from '../../store/pomodoro'
-import { msg } from 'src/composables/msg'
-import DefaultButton from './DefaultButton.vue'
+import { msg } from '../../composables/msg'
+import DefaultButton from '../base/DefaultButton.vue'
 
 const props = defineProps({
   item: { type: Item, required: true }

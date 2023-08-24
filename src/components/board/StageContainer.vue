@@ -1,9 +1,9 @@
 <script setup lang='ts'>
 import { inject, Ref } from 'vue'
-import { Stage } from 'src/models/classes'
+import { Stage } from '../../models/classes'
 
 import ItemContainer from './ItemContainer.vue'
-import AddButton from './base/AddButton.vue'
+import AddButton from '../base/AddButton.vue'
 
 const draggedItemId = inject<Ref<string>>('draggedItemId')
 const props = defineProps<{ value: Stage, index: number }>()
