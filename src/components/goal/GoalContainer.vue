@@ -1,9 +1,9 @@
 <script setup lang='ts'>
-import { useMainStore } from 'src/store/main'
+import { useMainStore } from '../../store/main'
 import { toRefs } from 'vue'
-import DefaultButton from './base/DefaultButton.vue'
-import SafetyButton from './base/SafetyButton.vue'
-import ProgressBar from './base/ProgressBar.vue'
+import DefaultButton from '../base/DefaultButton.vue'
+import SafetyButton from '../base/SafetyButton.vue'
+import ProgressBar from '../base/ProgressBar.vue'
 
 const mainStore = useMainStore()
 const { boards } = toRefs(mainStore)
@@ -34,7 +34,8 @@ const { boards } = toRefs(mainStore)
         />
         <safety-button
           class="absolute top-0 right-0 saturate-50 brightness-75"
-          @delete="mainStore.deleteBoard(board.id)"
+          text="Delete"
+          @fired="mainStore.deleteBoard(board.id)"
         />
         <div
           class="line-clamp-1 text-xl text-orange mt-6 mb-2 cursor-pointer select-none hover:saturate-200"

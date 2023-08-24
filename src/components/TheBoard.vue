@@ -5,11 +5,11 @@ import { useBoardStore } from '../store/board'
 import { Item } from '../models/classes'
 
 import TheHeader from './TheHeader.vue'
-import StageContainer from './StageContainer.vue'
-import ItemForm from './ItemForm.vue'
-import PomodoroBadge from './base/PomodoroBadge.vue'
+import StageContainer from './board/StageContainer.vue'
+import ItemForm from './board/ItemForm.vue'
+import PomodoroBadge from './pomodoro/PomodoroBadge.vue'
 import ProgressBar from './base/ProgressBar.vue'
-import { msg } from 'src/composables/msg'
+import { msg } from '../composables/msg'
 
 const boardStore = useBoardStore()
 const { currentBoard, selectedItem, selectedItemIndex, selectedStageIndex, draggedItemId } = storeToRefs(boardStore)

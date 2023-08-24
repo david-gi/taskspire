@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useMainStore } from 'src/store/main'
-import { useBoardStore } from 'src/store/board'
+import { useMainStore } from '../store/main'
+import { useBoardStore } from '../store/board'
 import DefaultButton from './base/DefaultButton.vue'
 
 defineProps<{ big: boolean }>()
