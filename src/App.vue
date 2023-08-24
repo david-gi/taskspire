@@ -3,18 +3,18 @@ import 'src/assets/styles/app.css'
 import { computed, } from 'vue'
 import TheHomepage from './components/TheHomepage.vue'
 import TheBoard from 'src/components/TheBoard.vue'
-import AlertBar from 'src/components/base/AlertBar.vue'
+import MsgBar from 'src/components/base/MsgBar.vue'
 import { useBoardStore } from './store/board'
-import { alert } from 'src/composables/alert'
+import { msg } from 'src/composables/msg'
 
 const boardStore = useBoardStore()
 const onStartPage = computed(() => boardStore.currentBoard === undefined)
-const { value, level } = alert('', '')
+const { value, level } = msg('', '')
 
 </script>
 
 <template>
-  <alert-bar
+  <msg-bar
     v-model="value"
     :level="level"
   />

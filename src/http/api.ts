@@ -16,11 +16,11 @@ const withRetry = async (res: () => Promise<AxiosResponse>, attempt: number = 1)
   return response
 }
 
-const generate = async (goal: string) => {
-  return withRetry(() => server.post('/generate', { goal }))
+const buildPlan = async (goal: string) => {
+  return withRetry(() => server.post('/build-plan', { goal }))
 }
 
 export default {
   server,
-  generate
+  buildPlan
 }

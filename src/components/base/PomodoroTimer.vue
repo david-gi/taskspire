@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { toRefs, computed } from 'vue'
-import { Item } from '../../models/board'
+import { Item } from '../../models/classes'
 import { usePomodoroStore } from '../../store/pomodoro'
-import { alert } from 'src/composables/alert'
+import { msg } from 'src/composables/msg'
 import DefaultButton from './DefaultButton.vue'
 
 const props = defineProps({
@@ -16,9 +16,9 @@ const btnText = computed(() => '⌚ Start a Pomodoro')
 
 function startPomodoro() {
   if (pomodoroStore.createPomodoro(item.value.id)) {
-    alert('Pomodoro started!', 'success')
+    msg('Pomodoro started!', 'success')
   } else {
-    alert('Pomodoro already started!', 'error')
+    msg('Pomodoro already started!', 'error')
   }
 }
 </script>

@@ -1,26 +1,29 @@
 <script setup lang="ts">
 import { useMainStore } from 'src/store/main'
-import { onMounted, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import TheHeader from './TheHeader.vue'
 import MobileWarning from './base/MobileWarning.vue'
 import DefaultButton from './base/DefaultButton.vue'
-import { alert } from 'src/composables/alert'
+import { msg } from 'src/composables/msg'
 import SavedContainer from './SavedContainer.vue'
 
 const mainStore = useMainStore()
 onMounted(() => mainStore.fetchBoards())
 
 const goalInput = ref('')
+const goalLength = { min: 30, max: 300 }
+
+const goalValid = computed(() => (goalInput.value.length >= goalLength.min && goalInput.value.length <= goalLength.max))
 
 function submitGoal() {
-  if (goalInput.value.length > 60) {
+  if (goalInput.value.length < goalLength.min) msg('Please go in to more detail.', 'warning')
+  else if (goalInput.value.length > goalLength.max) msg('Please shorten your goal description.', 'warning')
+  else {
     mainStore.createNewBoard(goalInput.value)
     goalInput.value = ''
-  } else {
-    alert('Please go in to more detail.', 'warning')
   }
-
 }
+
 </script>
 
 <template>
@@ -69,8 +72,12 @@ function submitGoal() {
     </h2>
 
     <div class="pb-6 drop-shadow">
-      <span class="text-orange fixed w-10/12 md:w-8/12 text-right pr-1">{{ goalInput.length
-      }}/300</span>
+      <span
+        class="text-green fixed w-10/12 md:w-8/12 text-right pr-1"
+        :class="[{ 'text-orange': !goalValid }]"
+      >
+        {{ goalInput.length }}/{{ goalLength.max }}
+      </span>
       <textarea
         id="text-input"
         v-model="goalInput"
@@ -88,6 +95,7 @@ function submitGoal() {
         theme="x"
         :active="true"
         class="w-10/12 md:w-8/12 ring-4 ring-green bg-green text-gray-dark text-4xl mt-2 focus:contrast-200"
+        :class="[{ 'brightness-90': !goalValid }]"
         @click="submitGoal()"
       />
     </div>
