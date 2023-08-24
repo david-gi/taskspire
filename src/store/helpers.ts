@@ -9,5 +9,5 @@ const wrapAttempt = (func: () => void) => {
 }
 
 export default {
-  wrapAttempt
+  wrapAttempt,
 }

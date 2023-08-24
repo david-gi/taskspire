@@ -11,6 +11,7 @@ function goToHome() {
   boardStore.setSelectedItem()
   mainStore.setBoard()
 }
+
 </script>
 
 <template>

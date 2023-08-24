@@ -1,6 +1,6 @@
 <script setup lang='ts'>
 import { inject, Ref } from 'vue'
-import { Stage } from 'src/models/board'
+import { Stage } from 'src/models/classes'
 
 import ItemContainer from './ItemContainer.vue'
 import AddButton from './base/AddButton.vue'

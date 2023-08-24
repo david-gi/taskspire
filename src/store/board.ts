@@ -1,6 +1,6 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import { Board, Item } from '../models/board'
+import { Board, Item } from '../models/classes'
 import H from './helpers'
 
 export const useBoardStore = defineStore('board', () => {

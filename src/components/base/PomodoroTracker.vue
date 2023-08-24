@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, toRefs } from 'vue'
-import { Item } from '../../models/board'
+import { Item } from '../../models/classes'
 import { usePomodoroStore } from '../../store/pomodoro'
 import PomodoroTimer from './PomodoroTimer.vue'
 
