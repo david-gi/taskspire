@@ -22,8 +22,8 @@ function handleDrop(e: Event, itemIndex: number) {
 
 <template>
   <div
-    class="bg-purple/75 w-1/3 min-w-min max-w-xs mt-6 p-4 pt-0 rounded shadow-lg
-          overflow-y-scroll snap-y snap-mandatory scroll-py-10 no-scrollbar"
+    class="bg-purple/75 w-1/3 min-w-min max-w-md mt-6 p-4 pt-0 rounded shadow-lg
+          overflow-y-scroll snap-y snap-mandatory scroll-py-10 no-scrollbar tracking-tight"
     @dragover.prevent
     @dragenter.prevent
   >
@@ -44,9 +44,15 @@ function handleDrop(e: Event, itemIndex: number) {
         @drop="(e: DragEvent) => handleDrop(e, i)"
       />
       <add-button
+        v-if="index == 0"
         @click="$emit('add-item')"
         @drop="(e: DragEvent) => handleDrop(e, 0)"
       />
+      <div
+        v-else
+        class="w-full h-36"
+        @drop="(e: DragEvent) => handleDrop(e, 0)"
+      ></div>
     </div>
   </div>
 </template>

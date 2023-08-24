@@ -7,7 +7,7 @@ import { Plan } from '../models/interfaces'
 import { planToBoard } from '../models/converters'
 import { useBoardStore } from './board'
 
-export const useMainStore = defineStore('main', () => {
+export const useHomeStore = defineStore('home', () => {
   const boardStore = useBoardStore()
   const idsKey = 'taskspire-board-ids'
   const boards = ref<Board[]>([])
@@ -22,8 +22,7 @@ export const useMainStore = defineStore('main', () => {
       boardIds.forEach((id) => {
         const storedBoard = localStorage.getItem(id)
         if (storedBoard != null) {
-
-          const board = Object.assign(new Board(), JSON.parse(storedBoard))
+          const board: Board = Object.assign(new Board(), JSON.parse(storedBoard))
           boards.value.push(board)
         }
       })
@@ -33,8 +32,6 @@ export const useMainStore = defineStore('main', () => {
   function saveBoardIds() {
     return H.wrapAttempt(() => {
       const boardIds = boards.value.map((b) => b.id)
-      boardIds.push('taskspire-dfc65736-8b69-4304-822e-75d66649e9ee')
-      boardIds.push('taskspire-22aa8b53-904b-4f51-871f-426fee7060d9')
       localStorage.setItem(idsKey, JSON.stringify(boardIds))
     })
   }
@@ -50,10 +47,12 @@ export const useMainStore = defineStore('main', () => {
   async function createNewBoard(goal: string) {
     return H.wrapAttempt(async () => {
       const res = await api.buildPlan(goal)
-      const plan: Plan = JSON.parse(res.data)
+      const plan: Plan = res.data
       const board = planToBoard(plan)
+      board.goal = goal
       boards.value.push(board)
       boardStore.currentBoard = board
+      boardStore.save()
       saveBoardIds()
     })
   }

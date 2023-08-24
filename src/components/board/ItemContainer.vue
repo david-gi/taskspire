@@ -14,7 +14,7 @@ function handleDragStart() {
 <template>
   <div
     class="bg-purple rounded m-2 border-x-4 hover:brightness-105 ring-1 ring-purple
-      snap-always snap-start scroll-my-4 truncate touch-manipulation active:opacity-25"
+      snap-always snap-start scroll-my-4 touch-manipulation active:opacity-25"
     :style="{
       'border-color': ('rgb(var(--color-' + props.value.color + '))'),
     }"
@@ -23,15 +23,10 @@ function handleDragStart() {
     @touchstart.passive="handleDragStart"
   >
     <div
-      class="p-2 cursor-pointer"
+      class="p-2 cursor-pointer line-clamp-3 h-16 font-bold text-ellipsis"
       :title="value.name"
     >
-      <h1 class="font-bold text-ellipsis overflow-hidden">
-        {{ value.name }}
-      </h1>
-      <p class="whitespace-pre-line line-clamp-2">
-        {{ value.desc }}
-      </p>
+      {{ value.name }}
     </div>
   </div>
 </template>

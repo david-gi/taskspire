@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import { useMainStore } from '../store/main'
+import { useHomeStore } from '../store/home'
 import { useBoardStore } from '../store/board'
 import DefaultButton from './base/DefaultButton.vue'
 
 defineProps<{ big: boolean }>()
-const mainStore = useMainStore()
+const homeStore = useHomeStore()
 const boardStore = useBoardStore()
 
 function goToHome() {
   boardStore.setSelectedItem()
-  mainStore.setBoard()
+  homeStore.setBoard()
 }
 
 </script>

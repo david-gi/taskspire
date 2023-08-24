@@ -47,7 +47,7 @@ function moveItem(toStageIndex: number, toItemIndex: number | null, itemId: stri
     if (state.selectedItem) {
       if (toItemIndex == null) {
         state.currentBoard?.stages[toStageIndex]
-          .items.push(state.selectedItem)
+          .items.concat(state.selectedItem)
         deleteSelectedItem()
         boardStore.setSelectedItem(itemId)
       } else {

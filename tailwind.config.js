@@ -24,7 +24,7 @@ module.exports = {
       'gray-light': 'rgb(var(--color-gray-light) / <alpha-value>)',
     },
     fontFamily: {
-      sans: ['Barlow Condensed', 'sans-serif'],
+      'sans': ['Nunito', 'serif', 'sans-serif'],
     },
     extend: {
       spacing: {
