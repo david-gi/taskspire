@@ -26,7 +26,7 @@ function goToHome() {
       Taskspire
     </span>
     <br />
-    <span class="text-2xl font-semibold whitespace-nowrap opacity-90">
+    <span class="sm:text-2xl text-lg font-semibold whitespace-nowrap opacity-90">
       Reach Goals! One task at a time...
     </span>
   </h1>
@@ -47,12 +47,12 @@ function goToHome() {
   </h1>
   <div
     v-if="!big"
-    class="absolute top-0 w-full"
+    class="absolute top-0 right-0"
   >
     <default-button
       text="⟰"
       theme="x"
-      class="scale-75 float-right w-auto h-min block px-4 mr-4"
+      class="w-auto h-min block px-6 pt-2 text-xl"
       :active="true"
       @click="goToHome()"
     />

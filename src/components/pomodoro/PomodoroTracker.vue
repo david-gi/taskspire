@@ -2,7 +2,7 @@
 import { computed, toRefs } from 'vue'
 import { Item } from '../../models/classes'
 import { usePomodoroStore } from '../../store/pomodoro'
-import PomodoroTimer from './PomodoroTimer.vue'
+import PomodoroButton from './PomodoroButton.vue'
 
 const props = defineProps({
   item: { type: Item, required: true }
@@ -34,7 +34,7 @@ const estimated = computed(() => {
     <div class="select-none">
       <span class="text-pink saturate-50 contrast-125 text-4xl">{{ completed }}</span>
       <span class="text-gray-light/50 text-4xl">{{ estimated }}</span>
-      <pomodoro-timer
+      <pomodoro-button
         v-if="!pomodoroStart"
         :item="item"
         class="float-right"

@@ -22,7 +22,7 @@ function startInterval() {
   limit.value = len.value - cutoff
   timer.value = setInterval(() => {
     index.value++
-    if (index.value > limit.value + 1) index.value = -20
+    if (index.value > limit.value + 15) index.value = -20
   }, 200)
 }
 
