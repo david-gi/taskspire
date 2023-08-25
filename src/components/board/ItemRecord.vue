@@ -22,7 +22,7 @@ function handleDragStart() {
     @touchstart.passive="handleDragStart"
   >
     <div
-      class="sm:text-base text-sm cursor-pointer line-clamp-4 font-bold overflow-clip"
+      class="sm:text-base text-sm cursor-pointer line-clamp-4 font-bold overflow-clip hyphens-auto"
       :title="value.name"
     >
       {{ value.name }}

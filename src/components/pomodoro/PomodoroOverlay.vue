@@ -10,7 +10,7 @@ const timer = ref<NodeJS.Timeout>()
 const index = ref<number>(0)
 const limit = ref<number>(0)
 const len = ref<number>(0)
-const cutoff = 24
+const cutoff = 28
 
 const marquee = computed(() => {
   if (len.value <= cutoff) return itemName.value
@@ -22,7 +22,7 @@ function startInterval() {
   limit.value = len.value - cutoff
   timer.value = setInterval(() => {
     index.value++
-    if (index.value > limit.value + 15) index.value = -20
+    if (index.value > limit.value + 15) index.value = -3
   }, 200)
 }
 
@@ -46,7 +46,7 @@ watch(() => pomodoroStart.value, () => {
 <template>
   <div
     v-show="pomodoroStart"
-    class="w-64 absolute top-0 right-0 z-50 overflow-clip
+    class="w-72 sm:w-96 absolute top-0 right-0 z-50 overflow-clip
           bg-gray-dark border-4 border-pink saturate-50 contrast-125
           rounded-bl-lg shadow-xl shadow-gray-dark"
   >
