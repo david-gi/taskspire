@@ -1,7 +1,7 @@
 import { Board, Item } from '../models/classes'
-import { Plan } from '../models/interfaces'
+import { IPlan } from '../models/interfaces'
 
-export const planToBoard = (plan: Plan) => {
+export const planToBoard = (plan: IPlan) => {
   const items: Item[] = plan.tasks.map(t => {
     const item = new Item(t.name, t.desc)
     item.estimated = t.estimated

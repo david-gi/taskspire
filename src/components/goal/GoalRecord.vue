@@ -3,9 +3,10 @@ import { useHomeStore } from '../../store/home'
 import DefaultButton from '../base/DefaultButton.vue'
 import SafetyButton from '../base/SafetyButton.vue'
 import ProgressBar from '../base/ProgressBar.vue'
-import { Board } from 'src/models/classes'
+import { Board } from '../../models/classes'
+import { IBoard } from '../../models/interfaces'
 
-defineProps<{ board: Board }>()
+defineProps<{ board: IBoard }>()
 
 const homeStore = useHomeStore()
 </script>
@@ -40,7 +41,7 @@ const homeStore = useHomeStore()
     </div>
     <ProgressBar
       class="-ml-9"
-      :value="board.calculateProgress()"
+      :value="(board as Board).calculateProgress()"
     />
   </div>
 </template>

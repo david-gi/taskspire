@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 import api from '../http/api'
 import H from './helpers'
 import { Board } from '../models/classes'
-import { Plan } from '../models/interfaces'
+import { IPlan } from '../models/interfaces'
 import { planToBoard } from '../models/converters'
 import { useBoardStore } from './board'
 
@@ -47,8 +47,8 @@ export const useHomeStore = defineStore('home', () => {
   async function createNewBoard(goal: string) {
     return H.wrapAttempt(async () => {
       const res = await api.buildPlan(goal)
-      const plan: Plan = res.data
-      const board = planToBoard(plan)
+      const plan: IPlan = res.data
+      const board: Board = planToBoard(plan)
       board.goal = goal
       boards.value.push(board)
       boardStore.currentBoard = board

@@ -1,6 +1,6 @@
 <script setup lang='ts'>
 import { ref, toRefs, watch } from 'vue'
-import { Item } from '../../models/classes'
+import { IItem } from '../../models/interfaces'
 
 import ColorSelector from '../base/ColorSelector.vue'
 import EditableValue from '../base/EditableValue.vue'
@@ -8,10 +8,10 @@ import DefaultButton from '../base/DefaultButton.vue'
 import SafetyButton from '../base/SafetyButton.vue'
 import PomodoroTracker from '../pomodoro/PomodoroTracker.vue'
 
-const props = defineProps<{ modelValue: Item, index: number, first: boolean, last: boolean }>()
+const props = defineProps<{ modelValue: IItem, index: number, first: boolean, last: boolean }>()
 const { modelValue } = toRefs(props)
 defineEmits<{
-  'update:modelValue': [val: Item],
+  'update:modelValue': [val: IItem],
   reorder: [newIndex: number],
   regress: [],
   progress: [],

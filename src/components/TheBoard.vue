@@ -48,11 +48,11 @@ function moveItem(toStageIndex: number, toItemIndex: number | null, itemId: stri
       if (toItemIndex == null && state.currentBoard) {
         state.currentBoard.stages[toStageIndex]
           .items = state.currentBoard.stages[toStageIndex]
-            .items.concat(state.selectedItem)
+            .items.concat(state.selectedItem as Item)
         deleteSelectedItem()
         boardStore.setSelectedItem(itemId)
       } else {
-        const movedItem = state.selectedItem
+        const movedItem = state.selectedItem as Item
         deleteSelectedItem()
         state.currentBoard?.stages[toStageIndex]
           .items.splice(toItemIndex ?? 0, 0, movedItem)
