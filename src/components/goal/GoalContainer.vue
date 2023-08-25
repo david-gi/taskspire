@@ -19,7 +19,7 @@ watch(currentBoard, () => homeStore.fetchBoards())
     class="mt-6 py-6"
   >
     <div class="sm:text-2xl text-lg font-bold text-gray-dark bg-orange/90 contrast-125 py-4 shadow-xl">
-      Saved Action Plans
+      Your Action Plans
     </div>
 
     <div class="flex flex-row flex-wrap gap-6 justify-center pt-6">

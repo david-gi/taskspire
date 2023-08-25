@@ -87,6 +87,7 @@ watch(() => props.modelValue, () => {
 
       <pomodoro-tracker
         :item="modelValue"
+        :buttonless="last"
         class="float-left"
       />
 

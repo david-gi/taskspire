@@ -5,7 +5,8 @@ import { usePomodoroStore } from '../../store/pomodoro'
 import PomodoroButton from './PomodoroButton.vue'
 
 const props = defineProps({
-  item: { type: Item, required: true }
+  item: { type: Item, required: true },
+  buttonless: { type: Boolean, default: false }
 })
 
 const pomodoroStore = usePomodoroStore()
@@ -35,7 +36,7 @@ const estimated = computed(() => {
       <span class="text-pink saturate-50 contrast-125 text-4xl">{{ completed }}</span>
       <span class="text-gray-light/50 text-4xl">{{ estimated }}</span>
       <pomodoro-button
-        v-if="!pomodoroStart"
+        v-if="!pomodoroStart && !buttonless"
         :item="item"
         class="float-right"
       />
