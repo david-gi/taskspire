@@ -33,10 +33,10 @@ function submitGoal() {
       v-model="goalInput"
       placeholder="Describe a Goal..."
       maxlength="300"
-      class="w-10/12 h-48 md:w-8/12
-        text-center caret-gray-light/50
+      class="w-10/12 h-48 md:w-8/12 text-green
+        text-center caret-gray-light/50 sm:text-2xl text-lg 
         ring-green ring-4 outline-none rounded resize-y
-        text-green bg-gray/50 p-4 text-4xl no-scrollbar scroll-my-4
+        bg-gray/50 p-4 no-scrollbar scroll-my-4
         placeholder-green/75 placeholder:font-bold
         focus:placeholder-gray-light/50 focus:contrast-125"
     ></textarea>
@@ -44,7 +44,7 @@ function submitGoal() {
       text="Generate an Action Plan ➜"
       theme="x"
       :active="true"
-      class="w-10/12 md:w-8/12 ring-4 ring-green bg-green text-gray-dark text-4xl mt-2 focus:contrast-200"
+      class="w-10/12 md:w-8/12 ring-4 ring-green bg-green text-gray-dark md:text-4xl text-2xl mt-2 focus:contrast-200"
       :class="[{ 'brightness-90': !goalValid }]"
       @click="submitGoal"
     />

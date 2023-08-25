@@ -143,7 +143,7 @@ watch(() => props.modelValue, () => {
         </div>
       </div>
 
-      <div class="break-normal -mx-6 mb-2 pl-6 opacity-40 text-sm">
+      <div class="break-normal -mx-6 mb-4 pl-6 opacity-40 text-sm">
         <strong>Created:</strong>
         <span class="pl-2">{{ new Date(modelValue.created) }}</span>
         <br>

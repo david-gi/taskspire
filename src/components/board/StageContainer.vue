@@ -2,7 +2,7 @@
 import { inject, Ref } from 'vue'
 import { Stage } from '../../models/classes'
 
-import ItemContainer from './ItemContainer.vue'
+import ItemRecord from './ItemRecord.vue'
 import AddButton from '../base/AddButton.vue'
 
 const draggedItemId = inject<Ref<string>>('draggedItemId')
@@ -36,7 +36,7 @@ function handleDrop(e: Event, itemIndex: number) {
       </span>
     </h2>
     <div class="grid grid-flow-row gap-1 auto-rows-max touch-pan-y">
-      <item-container
+      <item-record
         v-for="item, i in value.items"
         :key="'item-' + item.id"
         :value="item"
@@ -47,6 +47,7 @@ function handleDrop(e: Event, itemIndex: number) {
         v-if="index == 0"
         @click="$emit('add-item')"
         @drop="(e: DragEvent) => handleDrop(e, 0)"
+        class="mb-6"
       />
       <div
         v-else

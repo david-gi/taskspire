@@ -5,7 +5,7 @@ import { useBoardStore } from './board'
 
 export const usePomodoroStore = defineStore('pomodoro', () => {
   const pomodoroStart = ref<number>()
-  const pomodoroTime = ref<number>()
+  const pomodoroTime = ref<number>(25)
   const itemName = ref<string>()
   const timer = ref<NodeJS.Timeout>()
 
@@ -38,7 +38,7 @@ export const usePomodoroStore = defineStore('pomodoro', () => {
 
       timer.value = setInterval(() => {
         refreshPomodoroTime()
-        if (pomodoroTime.value == 0) {
+        if (pomodoroTime.value <= 0) {
           item.cycles = (item.cycles ?? 0) + 1
           cancelPomodoro()
         }

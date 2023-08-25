@@ -5,10 +5,10 @@ const props = defineProps({
     type: Number,
     required: true,
   },
-  big: {
-    type: Boolean,
-    default: true,
-  },
+  text: {
+    type: String,
+    default: '',
+  }
 })
 
 watch(() => props.value, () => { })
@@ -16,21 +16,19 @@ watch(() => props.value, () => { })
 
 <template>
   <div
-    class="w-full absolute bottom-0 bg-green/25"
-    :class="[{ 'h-5 rounded-b -mx-4 ': big, 'h-3 opacity-75': !big }]"
+    class="w-full h-6 absolute bottom-0 bg-green/25 text-center"
+    :class="[{ 'rounded-b': !text, 'opacity-75': text }]"
   >
     <div
-      class="bg-green/50"
-      :class="[{ 'h-5': big, 'h-3': !big }]"
+      class="bg-green/50 h-6"
       :style="{ 'width': (value + '%') }"
     >
     </div>
-    <span
-      v-if="big"
-      class="text-sm absolute -mt-5 font-bold drop-shadow select-none"
-    >
-      {{ value + '%' }}
-    </span>
+    <div class="text-center w-full">
+      <span class="-mt-5 sm:px-12 px-2 line-clamp-1 overflow-elipsis text-sm font-bold drop-shadow select-none">
+        {{ text ? text : (value + '%') }}
+      </span>
+    </div>
   </div>
 </template>
 

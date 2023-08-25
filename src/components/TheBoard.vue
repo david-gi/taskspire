@@ -102,7 +102,8 @@ function deleteSelectedItem() {
     />
   </div>
   <progress-bar
-    :value="currentBoard?.calculateProgress() ?? 1"
-    :big="false"
+    :value="currentBoard?.calculateProgress() ?? 0"
+    :text="currentBoard?.name"
+    class="ml-0"
   />
 </template>

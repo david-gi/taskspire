@@ -31,7 +31,7 @@ switch (props.theme) {
 }
 
 function minimizeToSymbol(text: string) {
-  const replaced = text.replace(/[a-zA-Z]/g, '')
+  const replaced = text.replace(/[a-zA-Z\s]/g, '')
   return replaced.length > 0 ? replaced : text
 }
 
