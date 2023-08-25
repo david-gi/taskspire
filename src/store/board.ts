@@ -26,7 +26,7 @@ export const useBoardStore = defineStore('board', () => {
     }
 
     currentBoard.value?.stages.forEach((stage, stageIndex) => {
-      stage.items.forEach((item, itemIndex) => {
+      stage.items.forEach((item: Item, itemIndex: number) => {
         if (item.id === id) {
           selectedStageIndex.value = stageIndex
           selectedItemIndex.value = itemIndex
