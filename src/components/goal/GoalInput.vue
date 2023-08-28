@@ -1,21 +1,22 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { useHomeStore } from 'src/store/home'
+import { useMessageStore } from '../../store/message'
 import DefaultButton from '../base/DefaultButton.vue'
-import { msg } from '../../composables/msg'
+
 
 const goalInput = ref('')
 const goalLength = { min: 30, max: 300 }
 const goalValid = computed(() => (goalInput.value.length >= goalLength.min && goalInput.value.length <= goalLength.max))
 
 const homeStore = useHomeStore()
+const messageStore = useMessageStore()
 
 function submitGoal() {
-  if (goalInput.value.length < goalLength.min) msg('Please go in to more detail.', 'warning')
-  else if (goalInput.value.length > goalLength.max) msg('Please shorten your goal description.', 'warning')
+  if (goalInput.value.length < goalLength.min) messageStore.show('Please go in to more detail.', 'warning')
+  else if (goalInput.value.length > goalLength.max) messageStore.show('Please shorten your goal description.', 'warning')
   else {
     homeStore.createNewBoard(goalInput.value)
-    goalInput.value = ''
   }
 }
 </script>
