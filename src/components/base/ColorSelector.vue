@@ -49,11 +49,12 @@ function select(color: string) {
       }"
       @click="toggle"
     >
-      Highlight
+      {{ $t('input.labelHighlight') }}
 
       <div
         v-if="activated"
-        class="absolute float-left ml-16 -mt-8 h-fit w-max rounded ring-2 ring-gray-dark bg-gray-dark opacity-90 z-50"
+        class="absolute float-left -mt-8 h-fit w-max rounded ring-2 ring-gray-dark bg-gray-dark/50 opacity-90 z-50"
+        style="margin-left: 5.2rem;"
       >
         <div
           v-for="color in colors"

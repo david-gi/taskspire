@@ -4,13 +4,13 @@ export class Board {
     goal: string
     stages: Stage[]
     constructor() {
-        this.id = 'taskspire-' + crypto.randomUUID()
+        this.id = crypto.randomUUID()
         this.name = ''
         this.goal = ''
         this.stages = [
-            { name: 'To-Do', items: [] },
-            { name: 'In-Progress', items: [] },
-            { name: 'Done', items: [] },
+            { name: '', items: [] },
+            { name: '', items: [] },
+            { name: '', items: [] },
         ]
     }
 
@@ -41,7 +41,7 @@ export class Item {
     estimated: number
     updated: number
     created: number
-    constructor(name: string = 'New', desc: string = '...') {
+    constructor(name: string = '+', desc: string = '...') {
         this.id = crypto.randomUUID()
         this.name = name
         this.desc = desc

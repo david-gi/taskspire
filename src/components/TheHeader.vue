@@ -23,11 +23,11 @@ function goToHome() {
       id="header-name"
       class="text-green text-4xl font-black"
     >
-      Taskspire
+      {{ $t('website.name') }}
     </span>
     <br />
     <span class="sm:text-2xl text-lg font-semibold whitespace-nowrap opacity-90">
-      Reach Goals! One task at a time...
+      {{ $t('website.slogan') }}
     </span>
   </h1>
   <h1
@@ -39,10 +39,10 @@ function goToHome() {
     header-name"
       class="text-lg md:text-2xl font-bold"
     >
-      Taskspire:
+      {{ $t('website.name') }}
     </span>
     <span class="text-md md:text-xl font-semibold opacity-90">
-      Reach Goals! One task at a time...
+      {{ $t('website.slogan') }}
     </span>
   </h1>
   <div
