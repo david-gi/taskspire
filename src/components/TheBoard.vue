@@ -78,9 +78,14 @@ function deleteSelectedItem() {
 </script>
 
 <template>
-  <div class="flex h-screen flex-row gap-1 sm:gap-2 md:gap-6 lg:gap-9 pt-4 subpixel-antialiased overflow-visible">
-    <the-header :big="false" />
-    <pomodoro-overlay />
+  <the-header :big="false" />
+  <pomodoro-overlay />
+  <div
+    id="stages-container"
+    class="flex w-screen h-screen flex-row gap-1 sm:gap-2 md:gap-6 lg:gap-9
+          pt-4 px-0 sm:px-2 md:px-6 lg:px-9 
+          subpixel-antialiased overflow-visible"
+  >
     <stage-container
       v-for="(stage, i) in  currentBoard?.stages "
       :key="'stage-' + i"

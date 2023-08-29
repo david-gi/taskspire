@@ -29,9 +29,9 @@ function handleDrop(e: Event, itemIndex: number) {
   >
     <h2
       :id="'Stage-' + props.index"
-      class="bg-purple brightness-90 shadow-md text-center sticky top-0 py-3 mb-4 -mx-4 z-20 leading-3"
+      class="bg-purple brightness-90 shadow-md text-sm sm:text-base text-center sticky top-0 py-3 mb-4 -mx-4 z-20 leading-3"
     >
-      <span class="text-green font-extrabold brightness-110 uppercase select-none">
+      <span class="text-green font-extrabold brightness-110 uppercase whitespace-nowrap select-none">
         {{ props.value.name }}
       </span>
     </h2>
