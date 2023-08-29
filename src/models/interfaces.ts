@@ -22,7 +22,7 @@ export interface IItem {
   name: string
   desc: string
   color: string
-  cycles: number
+  completed: number
   estimated: number
   updated: number
   created: number

@@ -39,7 +39,7 @@ export const usePomodoroStore = defineStore('pomodoro', () => {
       timer.value = setInterval(() => {
         refreshPomodoroTime()
         if (pomodoroTime.value <= 0) {
-          item.cycles = (item.cycles ?? 0) + 1
+          item.completed = (item.completed ?? 0) + 1
           cancelPomodoro()
         }
       }, 1000)
