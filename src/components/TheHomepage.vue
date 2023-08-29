@@ -46,7 +46,7 @@ import GoalContainer from './goal/GoalContainer.vue'
       class="text-yellow brightness-200 contrast-125 sm:text-2xl text-md -ml-8 pt-6 pb-0 md:pb-6"
     >
       <pre class="font-sans text-center">
-            {{ $t('homepage.description') }}
+            {{ $t('website.description') }}
         </pre>
     </h2>
 
