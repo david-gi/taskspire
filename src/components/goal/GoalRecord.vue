@@ -19,7 +19,7 @@ const homeStore = useHomeStore()
            shadow-lg rounded ring-2 ring-gray-dark"
   >
     <default-button
-      text="Resume"
+      :text="$t('button.openGoal')"
       theme="x"
       class="absolute top-0 left-0 px-4"
       :active="true"
@@ -27,7 +27,7 @@ const homeStore = useHomeStore()
     />
     <safety-button
       class="absolute top-0 right-0 saturate-50 brightness-75"
-      text="Delete"
+      :text="$t('button.delete')"
       @fired="homeStore.deleteBoard(board.id)"
     />
     <div

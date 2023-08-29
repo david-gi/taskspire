@@ -6,14 +6,11 @@ import { Board } from '../models/classes'
 import { IPlan } from '../models/interfaces'
 import { planToBoard } from '../models/converters'
 import { useBoardStore } from './board'
-import { useMessageStore } from './message'
 
 export const useHomeStore = defineStore('home', () => {
   const boardStore = useBoardStore()
-  const messageStore = useMessageStore()
   const idsKey = 'taskspire-board-ids'
   const boards = ref<Board[]>([])
-
 
   function fetchBoards() {
     return H.wrapAttempt(() => {
@@ -46,21 +43,26 @@ export const useHomeStore = defineStore('home', () => {
     })
   }
 
-  async function createNewBoard(goal: string) {
+  async function createNewBoard(goal: string, stageNames: string[]) {
     try {
       const res = await api.buildPlan(goal)
       try {
         const plan: IPlan = res.data
         const board: Board = planToBoard(plan)
         board.goal = goal
+        stageNames.forEach((n, i) => board.stages[i].name = n)
+
         boards.value.push(board)
         boardStore.currentBoard = board
         boardStore.save()
         saveBoardIds()
-      } catch (e) { throw 'API error: No plan returned' }
+        return true
+      } catch (e) {
+        throw 'API error: No plan returned'
+      }
     } catch (e) {
       console.error(e)
-      messageStore.show('Error: Review your description or try again later.', 'error')
+      return false
     }
   }
 
