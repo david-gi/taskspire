@@ -15,7 +15,7 @@ import GoalContainer from './goal/GoalContainer.vue'
     <the-header :big="true" />
     <div
       id="the-tagline"
-      class="w-100 scroll-my-4 mt-2 pt-6 sm:pt-12 md:pt-20
+      class="w-100 scroll-my-4 pt-6 sm:pt-12 md:pt-20
             bg-gradient-to-b from-blue/30 to-gray-transparent to-80%"
     >
       <div class="sm:scale-100 scale-75">
