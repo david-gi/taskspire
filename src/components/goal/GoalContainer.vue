@@ -9,8 +9,8 @@ const { boards } = toRefs(homeStore)
 const boardStore = useBoardStore()
 const { currentBoard } = toRefs(boardStore)
 
-onMounted(() => homeStore.fetchBoards())
-watch(currentBoard, () => homeStore.fetchBoards())
+onMounted(() => homeStore.loadBoards())
+watch(currentBoard, () => homeStore.loadBoards())
 </script>
 
 <template>

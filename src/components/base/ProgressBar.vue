@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { watch } from 'vue'
-const props = defineProps({
+defineProps({
   value: {
     type: Number,
     required: true,
@@ -10,14 +9,12 @@ const props = defineProps({
     default: '',
   }
 })
-
-watch(() => props.value, () => { })
 </script>
 
 <template>
   <div
     class="w-full h-6 absolute bottom-0 bg-green/25 text-center"
-    :class="[{ 'rounded-b': !text, 'opacity-75': text }]"
+    :class="[{ 'rounded-b': !text }]"
   >
     <div
       class="bg-green/50 h-6"
