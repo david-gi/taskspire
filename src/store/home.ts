@@ -9,10 +9,12 @@ import { useBoardStore } from './board'
 
 export const useHomeStore = defineStore('home', () => {
   const boardStore = useBoardStore()
-  const idsKey = 'taskspire-board-ids'
+  const idsKey = 'kanbandoro-board-ids'
   const boards = ref<Board[]>([])
+  const cookiesStatusKey = 'kanbandoro-cookie-status'
+  const cookiesAccepted = ref<boolean>()
 
-  function fetchBoards() {
+  function loadBoards() {
     return H.wrapAttempt(() => {
       const storedIds = localStorage.getItem(idsKey)
       if (storedIds == null) return
@@ -72,13 +74,31 @@ export const useHomeStore = defineStore('home', () => {
     boardStore.currentBoard = board
   }
 
+  function loadCookieStatus() {
+    return H.wrapAttempt(() => {
+      const cStatus = localStorage.getItem(cookiesStatusKey)
+      console.log(cStatus)
+      if (cStatus) cookiesAccepted.value = (cStatus === 'true')
+    })
+  }
+
+  function saveCookieStatus(val: boolean) {
+    return H.wrapAttempt(() => {
+      cookiesAccepted.value = val
+      localStorage.setItem(cookiesStatusKey, cookiesAccepted.value ? 'true' : 'false')
+    })
+  }
+
   return {
     boards,
+    cookiesAccepted,
 
-    fetchBoards,
+    loadBoards,
     saveBoardIds,
     deleteBoard,
     createNewBoard,
-    setBoard
+    setBoard,
+    loadCookieStatus,
+    saveCookieStatus,
   }
 })

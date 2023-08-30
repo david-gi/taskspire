@@ -46,7 +46,7 @@ function deleteGoal() {
     <div class="text-orange/75 text-md mb-9 select-all">
       {{ board.goal }}
     </div>
-    <ProgressBar
+    <progress-bar
       class="-ml-9"
       :value="(board as Board).calculateProgress()"
     />

@@ -15,18 +15,20 @@ export class Board {
     }
 
     calculateProgress(): number {
+        const min = 1
         try {
             let totalPomodoros = 0
             let donePomodoros = 0
             this.stages.forEach((stage, i) => {
                 stage.items.forEach(item => {
-                    totalPomodoros += item.estimated
-                    if (i < 2) donePomodoros += item.completed
-                    else donePomodoros += item.estimated
+                    totalPomodoros += item.estimated ?? 0
+                    if (i < 2) donePomodoros += item.completed ?? 0
+                    else donePomodoros += item.estimated ?? 0
                 })
             })
-            return Math.floor((donePomodoros / totalPomodoros) * 100)
-        } catch { return 0 }
+            const sum = Math.floor((donePomodoros / totalPomodoros) * 99) + min
+            return sum < 1 ? min : sum
+        } catch { return min }
     }
 }
 
