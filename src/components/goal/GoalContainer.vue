@@ -16,9 +16,9 @@ watch(currentBoard, () => homeStore.loadBoards())
 <template>
   <div
     v-if="boards && boards.length > 0"
-    class="mt-6 py-6"
+    class="mt-6 pb-6 bg-gradient-to-b from-blue/30 to-gray-transparent to-80%"
   >
-    <div class="sm:text-2xl text-lg font-bold text-gray-dark bg-orange/90 contrast-125 py-4 shadow-xl">
+    <div class="sm:text-2xl text-lg font-bold py-6 shadow-xl">
       {{ $t('homepage.yourGoals') }}
     </div>
 
