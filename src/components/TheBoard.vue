@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { computed, provide, watch } from 'vue'
 import { storeToRefs } from 'pinia'
+import { useGtag, } from 'vue-gtag-next'
+import { useI18n } from 'vue-i18n'
 import { useBoardStore } from '../store/board'
 import { useMessageStore } from '../store/message'
 import { Item } from '../models/classes'
@@ -10,8 +12,8 @@ import StageContainer from './board/StageContainer.vue'
 import ItemForm from './board/ItemForm.vue'
 import PomodoroOverlay from './pomodoro/PomodoroOverlay.vue'
 import ProgressBar from './base/ProgressBar.vue'
-import { useI18n } from 'vue-i18n'
 
+const gtag = useGtag()
 const { t } = useI18n()
 const boardStore = useBoardStore()
 const { currentBoard, selectedItem, selectedItemIndex, selectedStageIndex, draggedItemId } = storeToRefs(boardStore)
@@ -23,6 +25,7 @@ boardStore.$subscribe(boardStore.save)
 watch(currentBoard, () => {
   if (currentBoard.value?.calculateProgress() == 100) {
     messageStore.show(t('message.goalCompleted'), 'success')
+    gtag.event('goal-completed')
   }
 })
 

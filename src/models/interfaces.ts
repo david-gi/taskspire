@@ -21,9 +21,16 @@ export interface IItem {
   id: string
   name: string
   desc: string
-  color: string
+  color: Colors
   completed: number
   estimated: number
   updated: number
   created: number
+}
+
+export enum Colors {
+  blue = 'blue',
+  green = 'green',
+  orange = 'orange',
+  pink = 'pink'
 }
