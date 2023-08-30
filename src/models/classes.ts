@@ -1,3 +1,5 @@
+import { Colors } from './interfaces'
+
 export class Board {
     id: string
     name: string
@@ -30,6 +32,25 @@ export class Board {
             return sum < 1 ? min : sum
         } catch { return min }
     }
+
+    setColors() {
+        let maxEstimated = 1
+        this.stages.forEach((stage) => {
+            maxEstimated = stage.items.reduce((b, a) => (b.estimated ?? 0) > (a.estimated ?? 0) ? b : a, new Item()).estimated ?? 0
+        })
+        const colors = Object.keys(Colors)
+        const len = colors.length
+        this.stages.forEach((stage) => {
+            stage.items.forEach(item => {
+                let index = Math.floor((item.estimated ?? 0) / maxEstimated * (len - 1))
+                if (index < 0) index = 0
+                if (index == Infinity) index = 1
+                if (index >= len) index = len - 1
+                console.log(index)
+                item.color = colors[index] as unknown as Colors
+            })
+        })
+    }
 }
 
 export class Stage {
@@ -45,7 +66,7 @@ export class Item {
     id: string
     name: string
     desc: string
-    color: string
+    color: Colors
     completed: number
     estimated: number
     updated: number
@@ -56,7 +77,7 @@ export class Item {
         this.desc = desc
         this.completed = 0
         this.estimated = 0
-        this.color = 'blue'
+        this.color = Colors.blue
         this.updated = new Date().getTime()
         this.created = new Date().getTime()
     }
