@@ -15,21 +15,24 @@ function goToHome() {
 </script>
 
 <template>
-  <h1
+  <div
     v-if="big"
-    class="bg-purple/40 brightness-125 text-center scale-110 py-3"
+    class="bg-purple/40 brightness-125 text-center scale-100 py-3"
   >
-    <span
-      id="header-name"
-      class="text-green text-4xl font-black"
-    >
-      {{ $t('website.name') }}
-    </span>
-    <br />
-    <span class="sm:text-2xl text-lg font-semibold whitespace-nowrap opacity-90">
-      {{ $t('website.slogan') }}
-    </span>
-  </h1>
+    <img
+      class="w-20 sm:w-28 mt-0 sm:-mt-14 block sm:inline-block mx-auto rounded-4xl opacity-75 drop-shadow-[-1px_6px_8px_#000]"
+      src="../assets/images/logo.png"
+    />
+    <div class="text-center sm:text-left ml-0 sm:ml-4 pt-0 sm:pt-4 inline-block">
+      <span class="text-green text-4xl font-black">
+        {{ $t('website.name') }}
+      </span>
+      <br />
+      <span class="sm:text-xl text-base font-semibold whitespace-nowrap opacity-90">
+        {{ $t('website.slogan') }}
+      </span>
+    </div>
+  </div>
   <h1
     v-else
     class="absolute w-screen text-green mt-2 line-clamp-1 px-0 sm:px-2 md:px-6 lg:px-9 "
