@@ -8,8 +8,8 @@ import GoalContainer from './goal/GoalContainer.vue'
 <template>
   <div
     style=""
-    class="flex flex-col w-full h-screen subpixel-antialiased selection:bg-purple/50
-          overflow-y-scroll text-center no-scrollbar select-none"
+    class="flex flex-col w-screen h-screen subpixel-antialiased selection:bg-purple/50
+          overflow-y-scroll overflow-x-hidden text-center select-none"
   >
     <mobile-warning />
     <the-header :big="true" />

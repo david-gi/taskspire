@@ -46,7 +46,6 @@ export class Board {
                 if (index < 0) index = 0
                 if (index == Infinity) index = 1
                 if (index >= len) index = len - 1
-                console.log(index)
                 item.color = colors[index] as unknown as Colors
             })
         })

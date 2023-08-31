@@ -3,19 +3,22 @@ import { defineStore } from 'pinia'
 import api from '../http/api'
 import H from './helpers'
 import { Board } from '../models/classes'
-import { IPlan } from '../models/interfaces'
+import { IBoard, IPlan } from '../models/interfaces'
 import { planToBoard } from '../models/converters'
 import { useBoardStore } from './board'
 
 export const useHomeStore = defineStore('home', () => {
+  const baseName = 'kanbandoro'
+  const idsKey = baseName + '-board-ids'
+  const goalIdKey = baseName + '-goal-'
+  const cookiesStatusKey = baseName + '-cookie-status'
   const boardStore = useBoardStore()
-  const idsKey = 'kanbandoro-board-ids'
+
   const boards = ref<Board[]>([])
-  const cookiesStatusKey = 'kanbandoro-cookie-status'
   const cookiesAccepted = ref<boolean>()
 
   function loadBoards() {
-    return H.wrapAttempt(() => {
+    H.wrapAttempt(() => {
       const storedIds = localStorage.getItem(idsKey)
       if (storedIds == null) return
       const boardIds = <string[]>JSON.parse(storedIds)
@@ -31,14 +34,21 @@ export const useHomeStore = defineStore('home', () => {
   }
 
   function saveBoardIds() {
-    return H.wrapAttempt(() => {
-      const boardIds = boards.value.map((b) => b.id)
-      localStorage.setItem(idsKey, JSON.stringify(boardIds))
-    })
+    const boardIds = boards.value.map((b) => b.id)
+    localStorage.setItem(idsKey, JSON.stringify(boardIds))
+  }
+
+  function saveBoards() {
+    if (boards.value) {
+      boards.value.forEach(board => {
+        boardStore.saveBoard(board)
+      })
+      saveBoardIds()
+    }
   }
 
   function deleteBoard(id: string) {
-    return H.wrapAttempt(() => {
+    H.wrapAttempt(() => {
       boards.value = boards.value.filter((b) => b.id !== id)
       localStorage.removeItem(id)
       saveBoardIds()
@@ -46,45 +56,66 @@ export const useHomeStore = defineStore('home', () => {
   }
 
   async function createNewBoard(goal: string, stageNames: string[]) {
-    try {
-      const res = await api.buildPlan(goal)
-      try {
-        const plan: IPlan = res.data
-        const board: Board = planToBoard(plan)
-        board.goal = goal
-        stageNames.forEach((n, i) => board.stages[i].name = n)
-        board.setColors()
+    const res = await api.buildPlan(goal)
 
-        boards.value.push(board)
-        boardStore.currentBoard = board
-        boardStore.save()
-        saveBoardIds()
-        return true
-      } catch (e) {
-        console.error(e)
-        throw 'API error: No plan returned'
-      }
-    } catch (e) {
-      console.error(e)
-      return false
-    }
+    const plan: IPlan = res.data
+    const board: Board = planToBoard(plan)
+    board.id = goalIdKey + board.id
+    board.goal = goal
+    stageNames.forEach((n, i) => board.stages[i].name = n)
+    board.setColors()
+
+    boards.value.push(board)
+    boardStore.currentBoard = board
+    boardStore.saveCurrent()
+    saveBoardIds()
   }
 
-  async function setBoard(id?: string) {
-    if (id === undefined) boardStore.currentBoard = undefined
-    const board = boards.value.find((b) => b.id === id)
-    boardStore.currentBoard = board
+  function setBoard(id?: string) {
+    H.wrapAttempt(() => {
+      if (id === undefined) boardStore.currentBoard = undefined
+      const board = boards.value.find((b) => b.id === id)
+      boardStore.currentBoard = board
+    })
+  }
+
+  async function restoreFromFile(file: File) {
+    H.wrapAttempt(async () => {
+      const text = await file.text()
+      const restoredBoards = <IBoard[]>JSON.parse(text)
+      const tempBoards = boards.value
+
+      try {
+        boards.value.forEach(board => deleteBoard(board.id))
+
+        boards.value = restoredBoards.map(board => Object.assign(new Board(), board))
+        saveBoards()
+      } catch (e) {
+        boards.value = tempBoards
+        saveBoards()
+        throw e
+      }
+    })
+  }
+
+  function getBackupLink(): string {
+    return H.wrapAttempt(() => {
+      if (boards.value.length == 0) return
+
+      const boardsString = JSON.stringify(boards.value as IBoard[])
+      return 'data:text/plain;charset=utf-8,' + encodeURIComponent(boardsString)
+    })
   }
 
   function loadCookieStatus() {
-    return H.wrapAttempt(() => {
+    H.wrapAttempt(() => {
       const cStatus = localStorage.getItem(cookiesStatusKey)
       if (cStatus) cookiesAccepted.value = (cStatus === 'true')
     })
   }
 
   function saveCookieStatus(val: boolean) {
-    return H.wrapAttempt(() => {
+    H.wrapAttempt(() => {
       cookiesAccepted.value = val
       localStorage.setItem(cookiesStatusKey, cookiesAccepted.value ? 'true' : 'false')
     })
@@ -99,6 +130,8 @@ export const useHomeStore = defineStore('home', () => {
     deleteBoard,
     createNewBoard,
     setBoard,
+    restoreFromFile,
+    getBackupLink,
     loadCookieStatus,
     saveCookieStatus,
   }

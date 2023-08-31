@@ -18,7 +18,6 @@ const withRetry = async (res: () => Promise<AxiosResponse>, attempt: number = 1)
 }
 
 const buildPlan = async (goal: string) => {
-  //return withRetry(() => server.post('/test', { goal }))
   return withRetry(() => server.post('/build-plan', { goal }))
 }
 
