@@ -43,7 +43,7 @@ watch(currentBoard, () => homeStore.loadBoards())
 <template>
   <div
     v-if="boards && boards.length > 0"
-    class="mt-6 pb-6 bg-gradient-to-b from-blue/30 to-gray-transparent to-80%"
+    class="pb-6 bg-gradient-to-b from-blue/30 to-gray-transparent to-80%"
   >
     <div class="py-6 shadow-xl">
       <span class="sm:text-2xl text-lg font-bold">
