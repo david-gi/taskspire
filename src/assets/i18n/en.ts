@@ -46,6 +46,7 @@ export default {
     'startPomodoro': 'Start a Pomodoro',
   },
   'message': {
+    'noLocalStorage': 'Local Storage Not Found: Please update your browser or try from another device.',
     'goalCompleted': 'Goal Completed!',
     'reachedMax': 'Reached action plan maximum!',
     'moreDetail': 'Please go in to more detail.',
