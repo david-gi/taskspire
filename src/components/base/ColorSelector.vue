@@ -53,7 +53,7 @@ function select(color: string) {
 
       <div
         v-if="activated"
-        class="absolute float-left -mt-8 h-fit w-max rounded ring-2 ring-gray-dark bg-gray-dark/50 opacity-90 z-50"
+        class="absolute float-left -mt-8 h-fit w-max rounded ring-2 ring-gray-dark bg-gray-dark/50 opacity-90 z-40"
         style="margin-left: 5.2rem;"
       >
         <div

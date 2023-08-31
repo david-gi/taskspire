@@ -1,10 +1,9 @@
-const wrapAttempt = (func: () => void) => {
+const wrapAttempt = (func: CallableFunction) => {
   try {
-    func()
-    return true
+    return func()
   } catch (e) {
     console.error(e)
-    return false
+    throw e
   }
 }
 

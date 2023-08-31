@@ -6,17 +6,17 @@ export const useMessageStore = defineStore('message', () => {
     {
       key: 'info',
       color: 'blue',
-      delay: 2000,
+      delay: 4000,
     },
     {
       key: 'success',
       color: 'green',
-      delay: 2000,
+      delay: 5000,
     },
     {
       key: 'warning',
       color: 'yellow',
-      delay: 3000,
+      delay: 5000,
     },
     {
       key: 'error',

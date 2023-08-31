@@ -46,7 +46,7 @@ watch(() => pomodoroStart.value, () => {
 <template>
   <div
     v-show="pomodoroStart"
-    class="w-72 sm:w-96 absolute top-0 right-0 z-50 overflow-clip
+    class="w-72 sm:w-96 absolute top-0 right-0 z-40 overflow-clip
           bg-gray-dark border-4 border-pink saturate-50 contrast-125
           rounded-bl-lg shadow-xl shadow-gray-dark"
   >

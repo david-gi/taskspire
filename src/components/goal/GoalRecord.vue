@@ -1,6 +1,8 @@
 <script setup lang='ts'>
+import { useI18n } from 'vue-i18n'
 import { useGtag, } from 'vue-gtag-next'
 import { useHomeStore } from '../../store/home'
+import { useMessageStore } from '../../store/message'
 import DefaultButton from '../base/DefaultButton.vue'
 import SafetyButton from '../base/SafetyButton.vue'
 import ProgressBar from '../base/ProgressBar.vue'
@@ -9,12 +11,19 @@ import { IBoard } from '../../models/interfaces'
 
 const props = defineProps<{ board: IBoard }>()
 
+const { t } = useI18n()
 const gtag = useGtag()
 const homeStore = useHomeStore()
+const messageStore = useMessageStore()
 
 function deleteGoal() {
-  homeStore.deleteBoard(props.board.id)
-  gtag.event('delete-goal')
+  try {
+    homeStore.deleteBoard(props.board.id)
+    messageStore.show(t('message.deleteGoalSuccess'), 'info')
+    gtag.event('delete-goal')
+  } catch (e) {
+    messageStore.show(t('message.deleteGoalError'), 'warning')
+  }
 }
 </script>
 

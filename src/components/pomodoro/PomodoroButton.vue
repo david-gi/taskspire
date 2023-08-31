@@ -15,9 +15,10 @@ const pomodoroStore = usePomodoroStore()
 const messageStore = useMessageStore()
 
 function startPomodoro() {
-  if (pomodoroStore.createPomodoro(item.value.id)) {
+  try {
+    pomodoroStore.createPomodoro(item.value.id)
     messageStore.show(t('message.pomodoroStarted'), 'success')
-  } else {
+  } catch {
     messageStore.show(t('message.pomodoroAlreadyStarted'), 'error')
   }
 }

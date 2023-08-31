@@ -27,7 +27,7 @@ function close() {
 <template>
   <div
     v-if="showPrompt"
-    class="fixed right-0 bottom-0 w-fit z-100 bg-gray-dark/90 
+    class="fixed right-0 bottom-0 w-fit z-50 bg-gray-dark/90 
           p-3 border-2 border-blue/90 rounded"
   >
     {{ cookiesAccepted === undefined }}
