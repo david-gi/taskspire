@@ -6,7 +6,7 @@ import SafetyButton from './SafetyButton.vue'
 defineProps({
   text: {
     type: String,
-    required: true,
+    required: false,
   },
   message: {
     type: String,
@@ -27,6 +27,7 @@ function handleContinue() {
 
 <template>
   <default-button
+    v-if="text"
     :text="text"
     theme="x"
     :active="!shown"

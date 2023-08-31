@@ -17,6 +17,19 @@ export const useHomeStore = defineStore('home', () => {
   const boards = ref<Board[]>([])
   const cookiesAccepted = ref<boolean>()
 
+  function localStorageCheck() {
+    try {
+      localStorage.setItem('x', 'x')
+      const x = localStorage.getItem('x')
+      if (x !== 'x') throw 'No local storage'
+      localStorage.removeItem('x')
+      return true
+    } catch (e) {
+      console.log(e)
+      return false
+    }
+  }
+
   function loadBoards() {
     H.wrapAttempt(() => {
       const storedIds = localStorage.getItem(idsKey)
@@ -125,6 +138,7 @@ export const useHomeStore = defineStore('home', () => {
     boards,
     cookiesAccepted,
 
+    localStorageCheck,
     loadBoards,
     saveBoardIds,
     deleteBoard,
