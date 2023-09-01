@@ -34,22 +34,37 @@ export class Board {
     }
 
     setColors() {
-        let maxEstimated = 1
-        this.stages.forEach((stage) => {
-            maxEstimated = stage.items.reduce((b, a) => (b.estimated ?? 0) > (a.estimated ?? 0) ? b : a, new Item()).estimated ?? 0
-        })
-        const colors = Object.keys(Colors)
-        const len = colors.length
-        this.stages.forEach((stage) => {
-            stage.items.forEach(item => {
-                let index = Math.floor((item.estimated ?? 0) / maxEstimated * (len - 1))
-                if (index < 0) index = 0
-                if (index == Infinity) index = 1
-                if (index >= len) index = len - 1
-                item.color = colors[index] as unknown as Colors
+        try {
+            let minEstimated = Number.POSITIVE_INFINITY
+            let maxEstimated = Number.NEGATIVE_INFINITY
+
+            this.stages.forEach(stage => {
+                stage.items.forEach(item => {
+                    minEstimated = Math.min(minEstimated, item.estimated)
+                    maxEstimated = Math.max(maxEstimated, item.estimated)
+                })
             })
-        })
+
+            const range = maxEstimated - minEstimated
+            const interval = range / 4
+
+            this.stages.forEach(stage => {
+                stage.items.forEach(item => {
+                    if (item.estimated <= minEstimated + interval) {
+                        item.color = Colors.blue
+                    } else if (item.estimated <= minEstimated + 2 * interval) {
+                        item.color = Colors.green
+                    } else if (item.estimated <= minEstimated + 3 * interval) {
+                        item.color = Colors.orange
+                    } else {
+                        item.color = Colors.pink
+                    }
+                })
+            })
+        } catch (e) { console.log(e) }
     }
+
+
 }
 
 export class Stage {

@@ -35,7 +35,7 @@ function setHead() {
 <template>
   <the-homepage v-if="showHomepage" />
   <the-board v-else />
-  <cookie-prompt />
   <local-storage-check />
+  <cookie-prompt />
   <message-bar />
 </template>

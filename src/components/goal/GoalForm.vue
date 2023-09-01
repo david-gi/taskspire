@@ -20,8 +20,8 @@ async function toggleLoading() { loading.value = !loading.value }
 
 async function submitGoal() {
   await toggleLoading()
-  if (homeStore.boards.length >= 4) messageStore.show(t('message.reachedMax'), 'warning')
-  if (goalInput.value.length < goalLength.min) messageStore.show(t('message.moreDetail'), 'warning')
+  if (homeStore.boards.length >= 5) messageStore.show(t('message.reachedMax'), 'warning')
+  else if (goalInput.value.length < goalLength.min) messageStore.show(t('message.moreDetail'), 'warning')
   else if (goalInput.value.length > goalLength.max) messageStore.show(t('message.lessCharacters'), 'warning')
   else {
     try {
