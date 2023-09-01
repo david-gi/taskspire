@@ -27,12 +27,10 @@ function close() {
 <template>
   <div
     v-if="showPrompt"
-    class="fixed right-0 bottom-0 w-fit z-50 bg-gray-dark/90 
-          p-3 border-2 border-blue/90 rounded"
+    class="fixed right-0 bottom-0 w-fit z-50 bg-purple/90 p-6 rounded"
   >
-    {{ cookiesAccepted === undefined }}
-    <div class="pb-2 text-right text-blue tracking-tight">
-      <span class="font-bold">Cookies:</span>
+    <div class="pb-2 text-orangec tracking-tight">
+      <div class="font-bold">{{ $t('homepage.cookiePromptHeader') }}</div>
       {{ $t('homepage.cookiePrompt') }}
     </div>
     <default-button
@@ -44,8 +42,8 @@ function close() {
     />
     <default-button
       :text="$t('button.accept')"
-      theme="neutral"
-      class="float-right px-6 bg-blue"
+      theme="good"
+      class="float-right px-6"
       :active="true"
       @click="accept"
     />

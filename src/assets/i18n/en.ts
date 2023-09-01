@@ -1,6 +1,6 @@
 export default {
   'website': {
-    'name': 'Kanbandoro',
+    'name': 'Taskspire',
     'slogan': 'Kanban Pomodoro AI',
     'description': `
           Simple goal management utilizing
@@ -14,7 +14,8 @@ export default {
     'taglineA': 'Goals are good for motivation...',
     'taglineB': 'Systems Get You There',
     'yourGoals': 'Your Action Plans',
-    'cookiePrompt': 'We use google analytics to help us run this free site. That okay?',
+    'cookiePromptHeader': 'Privacy & Cookies:',
+    'cookiePrompt': 'We use google analytics to help us run this free site. That okay with you?',
     'backupReminder': 'Privacy matters! Your Action Plans are stored on your device and your device alone. We highly recommend you make a backup from time to time.',
     'loadingGoal1': 'Analyzing goal...',
     'loadingGoal2': 'Researching...',
