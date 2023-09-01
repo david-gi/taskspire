@@ -5,6 +5,7 @@ import { useMessageStore } from '../../store/message'
 import DefaultButton from '../base/DefaultButton.vue'
 import { useGtag, } from 'vue-gtag-next'
 import { useI18n } from 'vue-i18n'
+import LoadingSplash from '../base/LoadingSplash.vue'
 
 const gtag = useGtag()
 const { t } = useI18n()
@@ -66,5 +67,6 @@ async function submitGoal() {
       @click="submitGoal"
     />
   </div>
+  <loading-splash v-if="loading" />
 </template>
 
