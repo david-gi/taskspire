@@ -29,7 +29,7 @@ function goToHome() {
         {{ $t('website.name') }}
       </span>
       <br />
-      <span class="sm:text-xl text-pink text-base font-semibold whitespace-nowrap">
+      <span class="text-pink text-base font-semibold whitespace-nowrap">
         {{ $t('website.slogan') }}
       </span>
     </div>
