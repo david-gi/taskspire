@@ -28,7 +28,7 @@ export default {
     'labelDescription': 'Description',
     'labelCreated': 'Created',
     'labelUpdated': 'Updated',
-    'labelHighlight': 'Highlight',
+    'labelColorSelector': 'Difficulty',
     'labelPomodoroCompletion': 'Pomodoro Completion'
   },
   'button': {

@@ -6,7 +6,7 @@ import SafetyButton from './SafetyButton.vue'
 defineProps({
   text: {
     type: String,
-    required: false,
+    default: undefined,
   },
   message: {
     type: String,
