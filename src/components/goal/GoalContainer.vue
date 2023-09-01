@@ -52,6 +52,7 @@ watch(currentBoard, () => homeStore.loadBoards())
     </div>
 
     <div class="flex flex-row flex-wrap gap-6 justify-center pt-6">
+      <div class="mx-20 opacity-80">{{ $t('homepage.backupReminder') }}</div>
       <div class="h-auto w-full flex flex-row gap-9 justify-center ">
         <upload-button
           :text="$t('button.restore')"
