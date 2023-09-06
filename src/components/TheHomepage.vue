@@ -3,6 +3,7 @@ import TheHeader from './TheHeader.vue'
 import MobileWarning from './base/MobileWarning.vue'
 import GoalForm from './goal/GoalForm.vue'
 import GoalContainer from './goal/GoalContainer.vue'
+import OfflineWarning from './base/OfflineWarning.vue'
 </script>
 
 <template>
@@ -58,6 +59,9 @@ import GoalContainer from './goal/GoalContainer.vue'
     </div>
 
     <goal-container />
+
+    <offline-warning />
+
 
     <div class="flex flex-row flex-wrap gap-6 justify-center py-4 mt-9 backdrop-contrast-125 opacity-75">
       <span class="text-green whitespace-nowrap">© {{ new Date(Date.now()).getFullYear() }} {{ $t('website.name')
