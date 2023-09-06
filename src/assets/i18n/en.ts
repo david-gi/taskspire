@@ -66,5 +66,6 @@ export default {
     'restoreWarning': 'Warning! Restoring will permanently overwrite your current Action Plans!',
     'restoredSuccess': 'Your Action Plans were restored from backup!',
     'restoredError': 'Error: Unable to restore from backup file',
+    'offline': 'You are not connected to the internet.'
   }
 }
