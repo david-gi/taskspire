@@ -13,7 +13,8 @@ function makeWindow() {
         thickFrame: true,
         webPreferences: {
             nodeIntegration: true,
-            textAreasAreResizable: true
+            textAreasAreResizable: true,
+            spellcheck: true
         }
     })
 
