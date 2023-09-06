@@ -1,4 +1,4 @@
 export default {
-  'serverUrl': 'http://localhost:3000',
-  'gaMeasurementId': 'G-XXXXX'
+  'backendUrl': 'http://localhost:3001',
+  'gaMeasurementId': 'G-XXXX'
 }

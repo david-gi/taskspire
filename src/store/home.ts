@@ -14,6 +14,7 @@ export const useHomeStore = defineStore('home', () => {
   const cookiesStatusKey = baseName + '-cookie-status'
   const boardStore = useBoardStore()
 
+  const lang = ref<string>()
   const boards = ref<Board[]>([])
   const cookiesAccepted = ref<boolean>()
 
@@ -69,7 +70,7 @@ export const useHomeStore = defineStore('home', () => {
   }
 
   async function createNewBoard(goal: string, stageNames: string[]) {
-    const res = await api.buildPlan(goal)
+    const res = await api.buildPlan(goal, lang.value)
 
     const plan: IPlan = res.data
     const board: Board = planToBoard(plan)
@@ -135,6 +136,7 @@ export const useHomeStore = defineStore('home', () => {
   }
 
   return {
+    lang,
     boards,
     cookiesAccepted,
 

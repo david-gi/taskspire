@@ -2,7 +2,7 @@ import axios, { AxiosResponse } from 'axios'
 import config from '../../config.js'
 
 const server = axios.create({
-  baseURL: config.serverUrl,
+  baseURL: config.backendUrl,
   headers: {
     'Content-type': 'application/json',
   },
@@ -17,8 +17,8 @@ const withRetry = async (res: () => Promise<AxiosResponse>, attempt: number = 1)
   return response
 }
 
-const buildPlan = async (goal: string) => {
-  return withRetry(() => server.post('/build-plan', { goal }))
+const buildPlan = async (goal: string, lang?: string) => {
+  return withRetry(() => server.post('/build-plan', { goal, lang }))
 }
 
 export default {
