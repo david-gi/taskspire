@@ -11,7 +11,7 @@ import TheHeader from './TheHeader.vue'
 import StageContainer from './board/StageContainer.vue'
 import ItemForm from './board/ItemForm.vue'
 import PomodoroOverlay from './pomodoro/PomodoroOverlay.vue'
-import ProgressBar from './base/ProgressBar.vue'
+import ProgressBar from './common/ProgressBar.vue'
 
 const gtag = useGtag()
 const { t } = useI18n()

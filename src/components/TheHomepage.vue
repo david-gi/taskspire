@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import TheHeader from './TheHeader.vue'
-import MobileWarning from './base/MobileWarning.vue'
-import GoalForm from './goal/GoalForm.vue'
-import GoalContainer from './goal/GoalContainer.vue'
-import OfflineWarning from './base/OfflineWarning.vue'
+import GoalForm from './homepage/GoalForm.vue'
+import GoalContainer from './homepage/GoalContainer.vue'
+import OfflineWarning from './homepage/OfflineWarning.vue'
+import MobileWarning from './homepage/MobileWarning.vue'
 </script>
 
 <template>
@@ -13,6 +13,8 @@ import OfflineWarning from './base/OfflineWarning.vue'
           overflow-y-scroll overflow-x-hidden text-center select-none"
   >
     <mobile-warning />
+
+    <offline-warning />
 
     <div class="bg-gradient-to-b from-[#111] from-10% to-purple/10">
       <the-header :big="true" />
@@ -60,12 +62,10 @@ import OfflineWarning from './base/OfflineWarning.vue'
 
     <goal-container />
 
-    <offline-warning />
-
-
-    <div class="flex flex-row flex-wrap gap-6 justify-center py-4 mt-9 backdrop-contrast-125 opacity-75">
-      <span class="text-green whitespace-nowrap">© {{ new Date(Date.now()).getFullYear() }} {{ $t('website.name')
-      }}</span>
+    <div class="flex flex-row flex-wrap gap-6 justify-center py-12 backdrop-contrast-125 opacity-75">
+      <span class="text-green whitespace-nowrap">
+        © {{ new Date(Date.now()).getFullYear() }} {{ $t('website.name') }}
+      </span>
       <span class="text-pink break-word">{{ $t('website.footer') }}</span>
     </div>
   </div>

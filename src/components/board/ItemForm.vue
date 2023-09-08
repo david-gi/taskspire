@@ -2,7 +2,7 @@
 import { ref, toRefs, watch } from 'vue'
 import { IItem } from '../../models/interfaces'
 
-import ColorSelector from '../base/ColorSelector.vue'
+import ColorSelector from '../common/ColorSelector.vue'
 import EditableValue from '../base/EditableValue.vue'
 import DefaultButton from '../base/DefaultButton.vue'
 import SafetyButton from '../base/SafetyButton.vue'
