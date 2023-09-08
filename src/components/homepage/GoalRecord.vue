@@ -3,11 +3,11 @@ import { useI18n } from 'vue-i18n'
 import { useGtag, } from 'vue-gtag-next'
 import { useHomeStore } from '../../store/home'
 import { useMessageStore } from '../../store/message'
-import DefaultButton from '../base/DefaultButton.vue'
-import SafetyButton from '../base/SafetyButton.vue'
-import ProgressBar from '../base/ProgressBar.vue'
 import { Board } from '../../models/classes'
 import { IBoard } from '../../models/interfaces'
+import DefaultButton from '../base/DefaultButton.vue'
+import SafetyButton from '../base/SafetyButton.vue'
+import ProgressBar from '../common/ProgressBar.vue'
 
 const props = defineProps<{ board: IBoard }>()
 
