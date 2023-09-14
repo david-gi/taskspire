@@ -28,10 +28,10 @@ async function submitGoal() {
     try {
       const stageNames = [t('stage.a'), t('stage.b'), t('stage.c')]
       await homeStore.createNewBoard(goalInput.value, stageNames)
-      gtag.event('new-goal')
+      gtag.event('new_goal')
     } catch (e) {
       messageStore.show(t('message.submitGoalError'), 'error')
-      gtag.event('new-goal-error')
+      gtag.event('new_goal_error')
     }
   }
   toggleLoading()
