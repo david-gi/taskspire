@@ -13,7 +13,7 @@ defineProps({
 
 <template>
   <div
-    class="w-full h-6 absolute bottom-0 bg-green/25 text-center"
+    class="w-full h-6 fixed bottom-0 bg-green/25 text-center"
     :class="[{ 'rounded-b': !text }]"
   >
     <div
