@@ -25,7 +25,7 @@ boardStore.$subscribe(boardStore.saveCurrent)
 watch(currentBoard, () => {
   if (currentBoard.value?.calculateProgress() == 100) {
     messageStore.show(t('message.goalCompleted'), 'success')
-    gtag.event('goal-completed')
+    gtag.event('goal_completed')
   }
 })
 

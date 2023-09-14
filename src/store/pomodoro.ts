@@ -43,7 +43,7 @@ export const usePomodoroStore = defineStore('pomodoro', () => {
         refreshPomodoroTime()
         if (pomodoroTime.value <= 0) {
           item.completed = (item.completed ?? 0) + 1
-          gtag.event('pomodoro-completion')
+          gtag.event('pomodoro_completion')
           cancelPomodoro()
         }
       }, 1000)
