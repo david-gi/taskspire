@@ -32,8 +32,10 @@
     "uuid": "^9.0.0",
     "vite-tsconfig-paths": "^4.2.0",
     "vue": "^3.3.4",
+    "vue-google-adsense": "^2.0.0",
     "vue-gtag-next": "^1.14.0",
-    "vue-i18n": "^9.2.2"
+    "vue-i18n": "^9.2.2",
+    "vue-scriptx": "^0.2.5"
   },
   "devDependencies": {
     "@types/jest": "^29.5.0",

@@ -17,7 +17,7 @@ function goToHome() {
 <template>
   <div
     v-if="big"
-    class="text-center scale-100 pt-6 pb-4 border-b-4 border-pink"
+    class="text-center scale-100 pt-6 pb-4 border-b-4 border-blue"
   >
     <img
       class="w-20 sm:w-28 mt-0 sm:-mt-14 block sm:inline-block mx-auto rounded-4xl
@@ -25,11 +25,11 @@ function goToHome() {
       src="../assets/images/logo.png"
     />
     <div class="text-center sm:text-left ml-0 sm:ml-4 pt-0 sm:pt-4 inline-block">
-      <span class="text-green contrast-125 text-4xl font-bold">
-        {{ $t('website.name') }}
+      <span class="text-blue saturate-75 contrast-150 text-4xl font-bold uppercase">
+        {{ $t('website.name') }}✧✧✦
       </span>
       <br />
-      <span class="text-pink text-base font-semibold whitespace-nowrap">
+      <span class="text-green text-base font-semibold whitespace-nowrap decoration-wavy">
         {{ $t('website.slogan') }}
       </span>
     </div>
@@ -38,10 +38,10 @@ function goToHome() {
     v-else
     class="absolute w-screen mt-2 line-clamp-1 px-0 sm:px-2 md:px-6 lg:px-9 "
   >
-    <span class="text-xl ml-1 font-bold text-green contrast-125">
-      {{ $t('website.name') }}
+    <span class="text-xl ml-1 font-bold text-blue saturate-75 contrast-150">
+      {{ $t('website.name') }}✧✧✦
     </span>
-    <span class="text-pink sm:text-base text-sm ml-2 font-semibold overflow-clip">
+    <span class="text-green sm:text-base text-sm ml-2 font-semibold overflow-clip">
       {{ $t('website.slogan') }}
     </span>
   </h1>
