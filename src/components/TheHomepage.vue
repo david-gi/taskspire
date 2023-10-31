@@ -4,6 +4,7 @@ import GoalForm from './homepage/GoalForm.vue'
 import GoalContainer from './homepage/GoalContainer.vue'
 import OfflineWarning from './homepage/OfflineWarning.vue'
 import MobileWarning from './homepage/MobileWarning.vue'
+import AdBlock from './base/AdBlock.vue'
 </script>
 
 <template>
@@ -90,6 +91,8 @@ import MobileWarning from './homepage/MobileWarning.vue'
       <pre class="text-blue/90 mt-6 font-sans text-center">
           {{ $t('website.about') }}
         </pre>
+
+      <ad-block />
     </div>
 
     <div class="flex flex-row flex-wrap gap-6 justify-center py-12 backdrop-contrast-150 opacity-75">
