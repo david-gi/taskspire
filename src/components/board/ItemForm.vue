@@ -136,6 +136,14 @@ watch(() => props.modelValue, () => {
             ></textarea>
           </template>
         </editable-value>
+        <div>
+          <label class="font-bold select-none">
+            {{ $t('input.recommendations') }}
+          </label>
+          <div class="whitespace-pre-wrap break-words">
+            {{ }}
+          </div>
+        </div>
       </div>
 
       <div>
