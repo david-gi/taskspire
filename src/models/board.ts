@@ -2,14 +2,20 @@ export class Board {
     id: string
     name: string
     stages: Stage[]
-    constructor(name: string, firstItems: Item[] = []) {
+    constructor() {
         this.id = 'taskspire-' + crypto.randomUUID()
-        this.name = name
+        this.name = ''
         this.stages = [
-            { name: 'To-Do', items: firstItems },
+            { name: 'To-Do', items: [] },
             { name: 'In-Progress', items: [] },
             { name: 'Done', items: [] },
         ]
+    }
+
+    calculateProgress(): number {
+        const totalItems = this.stages.reduce((acc, stage) => acc + stage.items.length, 0)
+        const doneItems = this.stages[this.stages.length - 1].items.length
+        return Math.floor((doneItems / totalItems) * 100)
     }
 }
 

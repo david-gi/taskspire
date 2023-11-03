@@ -16,10 +16,12 @@ export const useMainStore = defineStore('main', () => {
       const storedIds = localStorage.getItem(idsKey)
       if (storedIds == null) return
       const boardIds = <string[]>JSON.parse(storedIds)
+      boards.value = []
       boardIds.forEach((id) => {
         const storedBoard = localStorage.getItem(id)
         if (storedBoard != null) {
-          const board = <Board>JSON.parse(storedBoard)
+
+          const board = Object.assign(new Board(), JSON.parse(storedBoard))
           boards.value.push(board)
         }
       })
@@ -46,7 +48,7 @@ export const useMainStore = defineStore('main', () => {
     return await api.ai
       .post('/make', goal)
       .then((res) => {
-        const newBoard = <Board>JSON.parse(res.data)
+        const newBoard = Object.assign(new Board(), JSON.parse(res.data))
         boards.value.push(newBoard)
         boardStore.currentBoard = newBoard
         saveBoardIds()
@@ -54,7 +56,8 @@ export const useMainStore = defineStore('main', () => {
       .catch((e) => console.error(e))
   }
 
-  async function setBoard(id: string) {
+  async function setBoard(id?: string) {
+    if (id === undefined) boardStore.currentBoard = undefined
     const board = boards.value.find((b) => b.id === id)
     boardStore.currentBoard = board
   }

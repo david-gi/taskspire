@@ -58,7 +58,7 @@ function debounce() {
     </span>
     <div
       class="float-right pr-6 pt-2 scale-75"
-      :class="[{ 'block': debounced, 'hidden': !debounced }]"
+      :class="[{ 'block': debounced, 'hidden': !debounced || theme == 'evil' }]"
     >
       <div class="animate-spin opacity-90 absolute">
         ❍
