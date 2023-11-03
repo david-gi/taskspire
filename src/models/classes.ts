@@ -1,4 +1,5 @@
 import { Colors } from './interfaces'
+import { v4 as uuidv4 } from 'uuid'
 
 export class Board {
     id: string
@@ -6,7 +7,7 @@ export class Board {
     goal: string
     stages: Stage[]
     constructor() {
-        this.id = crypto.randomUUID()
+        this.id = uuidv4()
         this.name = ''
         this.goal = ''
         this.stages = [
@@ -86,7 +87,7 @@ export class Item {
     updated: number
     created: number
     constructor(name: string = '+', desc: string = '...') {
-        this.id = crypto.randomUUID()
+        this.id = uuidv4()
         this.name = name
         this.desc = desc
         this.completed = 0
