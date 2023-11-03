@@ -136,14 +136,17 @@ watch(() => props.modelValue, () => {
             ></textarea>
           </template>
         </editable-value>
-        <div>
-          <label class="font-bold select-none">
-            {{ $t('input.recommendations') }}
-          </label>
-          <div class="whitespace-pre-wrap break-words">
-            {{ }}
-          </div>
+        
+        <div v-if="modelValue.recommendation" class="mt-4">
+          <span class="font-bold select-none mr-4">
+            {{ $t('input.recommendation') }}
+          </span>
+            <a
+              class="font-bold text-green underline saturate-150"
+              :href="modelValue.recommendation.url"
+            >{{ modelValue.recommendation.text }}</a>
         </div>
+
       </div>
 
       <div>
@@ -160,8 +163,6 @@ watch(() => props.modelValue, () => {
         </div>
       </div>
 
-      <ad-block v-if="enableAdBlock" />
-
       <div class="break-normal -mx-6 mb-4 pl-6 opacity-40 text-sm">
         <strong>{{ $t('input.labelCreated') }}:</strong>
         <span class="pl-2">{{ new Date(modelValue.created) }}</span>
@@ -169,6 +170,11 @@ watch(() => props.modelValue, () => {
         <strong>{{ $t('input.labelUpdated') }}:</strong>
         <span class="pl-2">{{ new Date(modelValue.updated) }}</span>
       </div>
+
+      <ad-block
+        v-if="enableAdBlock"
+        class="mb-4"
+      />
     </div>
   </div>
 </template>

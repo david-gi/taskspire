@@ -56,7 +56,7 @@ export default {
     'labelUpdated': 'Updated',
     'labelColorSelector': 'Difficulty',
     'labelPomodoroCompletion': 'Pomodoro Completion',
-    'recommendations': 'Recommendations'
+    'recommendation': 'Recommendation'
   },
   'button': {
     'accept': 'Accept',

@@ -2,6 +2,7 @@ import { ref } from 'vue'
 import { defineStore } from 'pinia'
 import { Board, Item } from '../models/classes'
 import H from './helpers'
+import api from 'src/server/api'
 
 export const useBoardStore = defineStore('board', () => {
   const currentBoard = ref<Board>()
@@ -22,6 +23,14 @@ export const useBoardStore = defineStore('board', () => {
     saveBoard(currentBoard.value)
   }
 
+  async function setRecommendation() {
+    if(selectedItem.value && !selectedItem.value.recommendation){
+      const content = selectedItem.value.name
+      const res = await api.getRecommendation(content.substring(0,300))
+      selectedItem.value.recommendation = res.data
+    }
+  }
+
   function setSelectedItem(id?: string) {
     if (id === undefined) {
       selectedStageIndex.value = -1
@@ -36,6 +45,7 @@ export const useBoardStore = defineStore('board', () => {
           selectedStageIndex.value = stageIndex
           selectedItemIndex.value = itemIndex
           selectedItem.value = item
+          setRecommendation()
         }
       })
     })

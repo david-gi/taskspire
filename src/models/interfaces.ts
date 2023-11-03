@@ -28,34 +28,35 @@ export interface IItem {
   color: Colors
   completed: number
   estimated: number
+  recommendation?: IRecommendation
   updated: number
   created: number
 }
 
 export interface IRecommendation {
-  text: string,
-  url: string,
+  text: string
+  url: string
 }
 export interface IRecommendationLink {
-  Affiliate: string,
-  Name: string,
-  Url: string,
-  Description: string,
-  Enabled: boolean,
+  Affiliate: string
+  Name: string
+  Url: string
+  Description: string
+  Enabled: boolean
 }
 
 export interface ICustomSettings {
-  Model: string,
-  Temperature: number,
-  RecommendationModel: string,
-  RecommendationTemperature: number,
-  MaxTokens: number,
-  Persona: string,
+  Model: string
+  Temperature: number
+  RecommendationModel: string
+  RecommendationTemperature: number
+  MaxTokens: number
+  Persona: string
   UserPlansPerHour: number
 }
 
 export interface IAdminData {
-  Settings: ICustomSettings,
+  Settings: ICustomSettings
   Links: IRecommendationLink[]
 }
 
