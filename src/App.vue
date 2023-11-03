@@ -9,6 +9,7 @@ import { useBoardStore } from './store/board'
 import { useGtag, ScreenView } from 'vue-gtag-next'
 import { useI18n } from 'vue-i18n'
 import CookiePrompt from './components/base/CookiePrompt.vue'
+import LocalStorageCheck from './components/base/LocalStorageCheck.vue'
 
 const gtag = useGtag()
 const { t } = useI18n()
@@ -35,5 +36,6 @@ function setHead() {
   <the-homepage v-if="showHomepage" />
   <the-board v-else />
   <cookie-prompt />
+  <local-storage-check />
   <message-bar />
 </template>
