@@ -7,6 +7,10 @@ export interface IPlan {
     estimated: number
   }[]
 }
+export interface IRecommendation {
+  text: string,
+  url: string,
+}
 export interface IBoard {
   id: string
   name: string
@@ -27,6 +31,34 @@ export interface IItem {
   updated: number
   created: number
 }
+
+export interface IRecommendation {
+  text: string,
+  url: string,
+}
+export interface IRecommendationLink {
+  Affiliate: string,
+  Name: string,
+  Url: string,
+  Description: string,
+  Enabled: boolean,
+}
+
+export interface ICustomSettings {
+  Model: string,
+  Temperature: number,
+  RecommendationModel: string,
+  RecommendationTemperature: number,
+  MaxTokens: number,
+  Persona: string,
+  UserPlansPerHour: number
+}
+
+export interface IAdminData {
+  Settings: ICustomSettings,
+  Links: IRecommendationLink[]
+}
+
 
 export enum Colors {
   blue = 'blue',
