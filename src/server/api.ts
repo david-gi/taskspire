@@ -10,14 +10,14 @@ const getRecommendation = async (content: string) => {
 }
 
 const admin = {
-  getAdminData: async (password: string) => {
-    return base.withRetry(() => base.server.post('/admin', { password }))
+  getAdminData: async (passcode: string) => {
+    return base.withRetry(() => base.server.post('/admin', { passcode }))
   },
-  saveSettings: async (password: string, settings: ICustomSettings) => {
-    return base.withRetry(() => base.server.post('/admin/save-settings', { password, settings }))
+  saveSettings: async (passcode: string, settings: ICustomSettings) => {
+    return base.withRetry(() => base.server.post('/admin/save-settings', { passcode, settings }))
   },
-  saveLinks: async (password: string, links: IRecommendationLink[]) => {
-    return base.withRetry(() => base.server.post('/admin/save-links', { password, links }))
+  saveLinks: async (passcode: string, links: IRecommendationLink[]) => {
+    return base.withRetry(() => base.server.post('/admin/save-links', { passcode, links }))
   },
 }
 

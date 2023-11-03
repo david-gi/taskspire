@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 
+defineProps({ showText: { type: Boolean, default: true } })
+
 const circleClasses = 'absolute rounded-full p-6 motion-safe:animate-pulse blur-sm'
 const index = ref(1)
 
@@ -20,7 +22,10 @@ onMounted(() => delayedCycle())
 <template>
   <div class="absolute w-screen h-screen top-0 left-0 bg-gray-dark/75 z-50">
 
-    <div class="absolute w-full top-1/2 mt-20 font-bold text-green text-2xl text-center">
+    <div
+      v-if="showText"
+      class="absolute w-full top-1/2 mt-20 font-bold text-green text-2xl text-center"
+    >
       <span class="bg-gray-dark/75 py-4 px-12 rounded-full">
         <span class="motion-safe:animate-pulse">
           <span class="text-blue absolute motion-safe:animate-pulse">{{ $t('homepage.loadingGoal' + index) }}</span>
@@ -52,5 +57,4 @@ onMounted(() => delayedCycle())
       >
       </div>
     </div>
-  </div>
-</template>
+</div></template>
