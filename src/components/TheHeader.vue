@@ -31,17 +31,13 @@ function goToHome() {
     </span>
   </h1>
   <h1
-    v-if="!big"
-    class="absolute w-full text-green -mt-3 -mb-10x pl-5 line-clamp-1"
+    v-else
+    class="absolute w-screen text-green mt-2 line-clamp-1 px-0 sm:px-2 md:px-6 lg:px-9 "
   >
-    <span
-      id="
-    header-name"
-      class="text-lg md:text-2xl font-bold"
-    >
+    <span class="text-xl ml-1 font-bold">
       {{ $t('website.name') }}
     </span>
-    <span class="text-md md:text-xl font-semibold opacity-90">
+    <span class="sm:text-base text-sm ml-2 font-semibold opacity-90 overflow-clip">
       {{ $t('website.slogan') }}
     </span>
   </h1>
@@ -50,9 +46,9 @@ function goToHome() {
     class="absolute top-0 right-0"
   >
     <default-button
-      text="⟰"
+      text="↩"
       theme="x"
-      class="w-auto h-min block px-6 pt-2 text-xl"
+      class="w-fit h-8 block px-2 text-2xl leading-4"
       :active="true"
       @click="goToHome()"
     />

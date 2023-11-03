@@ -11,14 +11,14 @@ const { pomodoroStart } = toRefs(pomodoroStore)
 
 const completed = computed(() => {
   let res = ''
-  for (let i = 0; i < props.item.cycles; i++) {
+  for (let i = 0; i < props.item.completed; i++) {
     res += '⌚ '
   }
   return res
 })
 const estimated = computed(() => {
   let res = ''
-  for (let i = 0; i < 10 - props.item.cycles; i++) {
+  for (let i = 0; i < props.item.estimated - props.item.completed; i++) {
     res += '⌚ '
   }
   return res

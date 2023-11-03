@@ -15,10 +15,17 @@ export class Board {
     }
 
     calculateProgress(): number {
-        const totalItems = this.stages.reduce((acc, stage) => acc + stage.items.length, 0)
-        const doneItems = this.stages[this.stages.length - 1].items.length
         try {
-            return Math.floor((doneItems / totalItems) * 100)
+            let totalPomodoros = 0
+            let donePomodoros = 0
+            this.stages.forEach((stage, i) => {
+                stage.items.forEach(item => {
+                    totalPomodoros += item.estimated
+                    if (i < 2) donePomodoros += item.completed
+                    else donePomodoros += item.estimated
+                })
+            })
+            return Math.floor((donePomodoros / totalPomodoros) * 100)
         } catch { return 0 }
     }
 }
@@ -37,7 +44,7 @@ export class Item {
     name: string
     desc: string
     color: string
-    cycles: number
+    completed: number
     estimated: number
     updated: number
     created: number
@@ -45,7 +52,7 @@ export class Item {
         this.id = crypto.randomUUID()
         this.name = name
         this.desc = desc
-        this.cycles = 0
+        this.completed = 0
         this.estimated = 0
         this.color = 'blue'
         this.updated = new Date().getTime()
