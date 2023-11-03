@@ -53,6 +53,7 @@ export const useHomeStore = defineStore('home', () => {
         const board: Board = planToBoard(plan)
         board.goal = goal
         stageNames.forEach((n, i) => board.stages[i].name = n)
+        board.setColors()
 
         boards.value.push(board)
         boardStore.currentBoard = board
@@ -60,6 +61,7 @@ export const useHomeStore = defineStore('home', () => {
         saveBoardIds()
         return true
       } catch (e) {
+        console.error(e)
         throw 'API error: No plan returned'
       }
     } catch (e) {
@@ -77,7 +79,6 @@ export const useHomeStore = defineStore('home', () => {
   function loadCookieStatus() {
     return H.wrapAttempt(() => {
       const cStatus = localStorage.getItem(cookiesStatusKey)
-      console.log(cStatus)
       if (cStatus) cookiesAccepted.value = (cStatus === 'true')
     })
   }
