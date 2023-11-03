@@ -12,8 +12,6 @@ defineEmits<{
 const input = ref<HTMLInputElement>()
 const passcode = ref()
 
-passcode.value = 'Show me the money11' //TODO remove
-
 onMounted(() => { input.value?.focus() })
 </script>
 
