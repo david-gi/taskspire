@@ -6,6 +6,9 @@ import VueGtag from 'vue-gtag-next'
 import { createI18n, type I18nOptions } from 'vue-i18n'
 import en from './assets/i18n/en'
 import config from 'config'
+import ScriptX from 'vue-scriptx'
+import Ads from 'vue-google-adsense'
+
 
 const i18n = createI18n(<I18nOptions>{
     allowComposition: true,
@@ -16,6 +19,8 @@ const i18n = createI18n(<I18nOptions>{
 })
 
 createApp(App)
+    .use(ScriptX)
+    .use(Ads.InArticleAdsense, {})
     .use(VueGtag, { isEnabled: false, property: { id: config.gaMeasurementId } })
     .use(i18n)
     .use(createPinia())

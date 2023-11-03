@@ -6,6 +6,7 @@ import ColorSelector from '../common/ColorSelector.vue'
 import EditableValue from '../base/EditableValue.vue'
 import DefaultButton from '../base/DefaultButton.vue'
 import SafetyButton from '../base/SafetyButton.vue'
+import AdBlock from '../base/AdBlock.vue'
 import PomodoroTracker from '../pomodoro/PomodoroTracker.vue'
 
 const props = defineProps<{ modelValue: IItem, index: number, first: boolean, last: boolean }>()
@@ -20,9 +21,15 @@ defineEmits<{
 }>()
 
 const descHeight = ref<string>()
+const enableAdBlock = ref(true)
 
 function updateDate() {
   modelValue.value.updated = new Date().getTime()
+}
+
+function cleanupAdBlock() {
+  enableAdBlock.value = false
+  setTimeout(() => enableAdBlock.value = true, 100)
 }
 
 function setDescHeight() {
@@ -32,6 +39,7 @@ function setDescHeight() {
 
 watch(() => props.modelValue, () => {
   updateDate()
+  cleanupAdBlock()
 }, { deep: true })
 
 </script>
@@ -143,6 +151,8 @@ watch(() => props.modelValue, () => {
           />
         </div>
       </div>
+
+      <ad-block v-if="enableAdBlock" />
 
       <div class="break-normal -mx-6 mb-4 pl-6 opacity-40 text-sm">
         <strong>{{ $t('input.labelCreated') }}:</strong>
