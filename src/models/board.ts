@@ -1,6 +1,14 @@
-export type Board = {
-    id: string,
-    stages: Stage[],
+export class Board {
+    id: string
+    stages: Stage[]
+    constructor(firstItems: Item[] = []) {
+        this.id = 'taskspire-' + crypto.randomUUID()
+        this.stages = [
+            { name: 'To-Do', items: firstItems },
+            { name: 'In-Progress', items: [] },
+            { name: 'Done', items: [] },
+        ]
+    }
 }
 
 export type Stage = {

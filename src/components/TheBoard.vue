@@ -8,11 +8,9 @@ import StageContainer from './StageContainer.vue'
 import ItemBox from './ItemBox.vue'
 
 const boardStore = useBoardStore()
-const { currentBoardId, currentBoard, ready, selectedItem, selectedItemIndex, selectedStageIndex, draggedItemId } = storeToRefs(boardStore)
+const { currentBoard, ready, selectedItem, selectedItemIndex, selectedStageIndex, draggedItemId } = storeToRefs(boardStore)
 provide('draggedItemId', draggedItemId)
 
-watch(currentBoardId, async () => boardStore.fetch())
-onBeforeMount(async () => boardStore.fetch())
 boardStore.$subscribe(boardStore.save)
 
 const firstStage = computed(() => selectedStageIndex.value == 0)
