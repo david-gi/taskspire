@@ -23,7 +23,7 @@ const baseClasses = [
   'hover:brightness-105',
   'active:brightness-75',
 ]
-const timer = ref<number>()
+const timer = ref<NodeJS.Timeout>()
 
 function toggle() {
   activated.value = !activated.value
@@ -41,7 +41,7 @@ function select(color: string) {
 <template>
   <div>
     <div
-      class="float-left border-2 p-2 mr-1 border-gray-dark font-bold"
+      class="float-left border-2 p-2 mr-1 border-gray-dark font-bold select-none"
       :class="[baseClasses, { 'brightness-75 hover:brightness-75': activated }]"
       :style="{
         'border-color': ('rgb(var(--color-' + modelValue + '))'),

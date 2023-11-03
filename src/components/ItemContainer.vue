@@ -14,7 +14,7 @@ function handleDragStart() {
 <template>
   <div
     class="bg-purple rounded m-2 border-x-4 hover:brightness-105 ring-1 ring-purple
-      snap-always snap-start scroll-my-4 truncate"
+      snap-always snap-start scroll-my-4 truncate touch-manipulation active:opacity-25"
     :style="{
       'border-color': ('rgb(var(--color-' + props.value.color + '))'),
     }"

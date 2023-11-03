@@ -25,7 +25,7 @@ function extend() {
 </script>
 
 <template>
-  <label class="font-bold">{{ label }} </label>
+  <label class="font-bold select-none">{{ label }} </label>
   <div
     @dblclick="toggle(true)"
     @click="toggle(true)"
@@ -36,7 +36,7 @@ function extend() {
       v-if="!activated"
       class="cursor-text transition ease-in rounded hover:bg-purple/25"
     >
-      <span class="float-right font-thin opacity-60 pl-2 pr-1 text-sm align-super">[edit]</span>
+      <span class="float-right font-thin opacity-60 pl-2 pr-1 text-sm align-super select-none">[edit]</span>
       <slot name="display"></slot>
     </div>
     <div :id="'editSlot' + label">

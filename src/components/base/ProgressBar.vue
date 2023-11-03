@@ -27,7 +27,7 @@ watch(() => props.value, () => { })
     </div>
     <span
       v-if="big"
-      class="text-sm absolute -mt-5 font-bold drop-shadow"
+      class="text-sm absolute -mt-5 font-bold drop-shadow select-none"
     >
       {{ value + '%' }}
     </span>
