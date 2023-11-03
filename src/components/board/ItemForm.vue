@@ -144,7 +144,7 @@ watch(() => props.modelValue, () => {
             <a
               class="font-bold text-green underline saturate-150"
               :href="modelValue.recommendation.url"
-            >{{ modelValue.recommendation.text }}</a>
+            >{{ modelValue.recommendation.name }}</a>
         </div>
 
       </div>
