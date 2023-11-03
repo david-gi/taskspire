@@ -1,66 +1,49 @@
 <script setup lang='ts'>
-import { ref, defineEmits, watch, onMounted } from 'vue'
+import { inject, Ref } from 'vue'
 import { Stage } from 'src/models/board'
 
 import ItemContainer from './ItemContainer.vue'
-import EditableValue from './base/EditableValue.vue'
 import AdditionPlaceholder from './base/AdditionPlaceholder.vue'
 
+const draggedItemId = inject<Ref<string>>('draggedItemId')
 const props = defineProps<{ value: Stage, index: number }>()
 const emit = defineEmits<{
-  (eventName: 'add-item') : void,
-  (eventName: 'open-item', stageIndex: number) : void,
-  (eventName: 'move-item', stageIndex: number, itemId: string) : void,
-  (eventName: 'save-name', name: string) : void
+  'add-item': [],
+  'open-item': [id: string],
+  'move-item': [stageIndex: number, itemIndex: number, id: string]
 }>()
 
-const stageName = ref(props.value.name)
-watch(stageName, () => save())
-
-function handleDrop(e: DragEvent) {
-  var itemId = e.dataTransfer?.getData('draggedItemId')
-  if (itemId) emit('move-item', props.index, itemId)
+function handleDrop(e: Event, itemIndex: number) {
+  if (draggedItemId && draggedItemId.value.length > 0)
+    emit('move-item', props.index, itemIndex, draggedItemId.value)
 }
 
-function save() {
-  stageName.value.length > 0 ? stageName.value : props.value.name
-  emit('save-name', stageName.value)
-}
 </script>
 
 <template>
   <div
-    @drop="handleDrop"
-    @dragenter.prevent @dragover.prevent
-    class="grow min-w-min max-w-xs overflow-y-scroll snap-y scroll-mb-6
-          no-scrollbar p-4 pt-0 bg-gradient-to-b from-purple to-blue rounded-lg"
+    class="bg-purple/75 grow min-w-min max-w-xs overflow-y-scroll snap-y scroll-mb-6
+          no-scrollbar p-4 pt-0 rounded shadow-lg"
+    @dragover.prevent
+    @dragenter.prevent
   >
-    <div class="h-full">
-      <h2 class="text-center font-bold sticky top-0 py-4 mb-4 -mx-4
-          bg-purple border-b-2 border-gray-light shadow-md z-20" >
-        <editable-value label="">
-          <template #display>
-            <span>{{stageName}}</span>
-          </template>
-          <template #edit>
-            <input
-              v-model="stageName"
-              class="w-full text-center -mx-2"
-              maxlength="240"
-            />  
-          </template>
-        </editable-value>
-      </h2>
-
-      <div class="grid grid-flow-row gap-1 auto-rows-max">
-        <item-container
-          v-for="item, i in value.items"
-          :key="'item-'+ item.name + item.created" 
-          :value="item"
-          @click="$emit('open-item', i)"
-        />
-        <addition-placeholder @click="$emit('add-item')" />
-      </div>
+    <h2
+      :id="'Stage-' + props.index"
+      class="bg-purple brightness-90 shadow-md text-center sticky top-0 py-3 mb-4 -mx-4 z-20 leading-3"
+    >
+      <strong class="text-green brightness-110 uppercase">
+        {{ props.value.name }}
+      </strong>
+    </h2>
+    <div class="grid grid-flow-row gap-1 auto-rows-max">
+      <item-container
+        v-for="item, i in value.items"
+        :key="'item-' + item.id"
+        :value="item"
+        @click="$emit('open-item', item.id)"
+        @drop="(e: DragEvent) => handleDrop(e, i)"
+      />
+      <addition-placeholder @click="$emit('add-item')" />
     </div>
   </div>
 </template>
