@@ -1,18 +1,20 @@
 export default {
   'website': {
-    'name': 'Taskspire',
-    'slogan': 'Reach Goals! One task at a time...',
+    'name': 'Kanbandoro',
+    'slogan': 'Kanban Pomodoro AI',
     'description': `
           Simple goal management utilizing
           Kanban and the Porodomo technique.
-          Supercharged by advanced AI.
-          `,
-    'keywords': 'ai goal management, ai productivity app, kanban, pomodoro'
+          Supercharged by advanced AI.`,
+    'footer': `Privacy-by-design.
+              Always free.`,
+    'keywords': 'ai goal management, ai productivity tool, ai task management tool, goal setting, kanban, pomodoro'
   },
   'homepage': {
     'taglineA': 'Goals are good for motivation...',
     'taglineB': 'Systems Get You There',
     'yourGoals': 'Your Action Plans',
+    'cookiePrompt': 'We use google analytics to help us run this free site. That okay?'
   },
   'stage': {
     'a': 'To-Do',
@@ -30,6 +32,8 @@ export default {
     'labelPomodoroCompletion': 'Pomodoro Completion'
   },
   'button': {
+    'accept': 'Accept',
+    'reject': 'Reject',
     'submitGoal': 'Generate an Action Plan',
     'openGoal': 'Open',
     'delete': 'Delete',

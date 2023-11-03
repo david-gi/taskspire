@@ -1,4 +1,5 @@
 <script setup lang='ts'>
+import { useGtag, } from 'vue-gtag-next'
 import { useHomeStore } from '../../store/home'
 import DefaultButton from '../base/DefaultButton.vue'
 import SafetyButton from '../base/SafetyButton.vue'
@@ -6,9 +7,15 @@ import ProgressBar from '../base/ProgressBar.vue'
 import { Board } from '../../models/classes'
 import { IBoard } from '../../models/interfaces'
 
-defineProps<{ board: IBoard }>()
+const props = defineProps<{ board: IBoard }>()
 
+const gtag = useGtag()
 const homeStore = useHomeStore()
+
+function deleteGoal() {
+  homeStore.deleteBoard(props.board.id)
+  gtag.event('delete-goal')
+}
 </script>
 
 <template>
@@ -28,7 +35,7 @@ const homeStore = useHomeStore()
     <safety-button
       class="absolute top-0 right-0 saturate-50 brightness-75"
       :text="$t('button.delete')"
-      @fired="homeStore.deleteBoard(board.id)"
+      @fired="deleteGoal"
     />
     <div
       class="line-clamp-2 text-xl text-orange mt-6 mb-2 cursor-pointer select-none hover:contrast-200"

@@ -15,7 +15,7 @@ import GoalContainer from './goal/GoalContainer.vue'
     <the-header :big="true" />
     <div
       id="the-tagline"
-      class="w-100 scroll-my-4 mt-2 pt-6 md:pt-20
+      class="w-100 scroll-my-4 mt-2 pt-6 sm:pt-12 md:pt-20
             bg-gradient-to-b from-blue/30 to-gray-transparent to-80%"
     >
       <div class="sm:scale-100 scale-75">
@@ -35,7 +35,7 @@ import GoalContainer from './goal/GoalContainer.vue'
             {{ $t('homepage.taglineB') }}
           </span>
         </span>
-        <div class="text-yellow text-4xl hidden md:block mt-9 rotate-90">
+        <div class="text-yellow text-4xl hidden sm:block mt-9 -mb-6 rotate-90">
           ➜
         </div>
       </div>
@@ -48,6 +48,9 @@ import GoalContainer from './goal/GoalContainer.vue'
       <pre class="font-sans text-center">
             {{ $t('website.description') }}
         </pre>
+      <pre class="font-sans text-center text-md text-base opacity-80 -mt-4 italic">
+          {{ $t('website.footer') }}
+      </pre>
     </h2>
 
     <goal-form />

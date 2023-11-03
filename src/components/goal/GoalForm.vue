@@ -3,8 +3,10 @@ import { computed, ref } from 'vue'
 import { useHomeStore } from 'src/store/home'
 import { useMessageStore } from '../../store/message'
 import DefaultButton from '../base/DefaultButton.vue'
+import { useGtag, } from 'vue-gtag-next'
 import { useI18n } from 'vue-i18n'
 
+const gtag = useGtag()
 const { t } = useI18n()
 const goalInput = ref('')
 const goalLength = { min: 30, max: 300 }
@@ -21,7 +23,7 @@ function submitGoal() {
     const created = homeStore.createNewBoard(goalInput.value, stageNames)
     if (!created) {
       messageStore.show(t('message.submitError'), 'error')
-    }
+    } else gtag.event('new-goal')
   }
 }
 </script>
