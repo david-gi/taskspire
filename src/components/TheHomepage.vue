@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import TheHeader from './TheHeader.vue'
 import MobileWarning from './base/MobileWarning.vue'
-import GoalInput from './goal/GoalInput.vue'
+import GoalForm from './goal/GoalForm.vue'
 import GoalContainer from './goal/GoalContainer.vue'
-
 </script>
 
 <template>
@@ -24,7 +23,7 @@ import GoalContainer from './goal/GoalContainer.vue'
           style=""
           class="text-yellow text-xl font-semibold -skew-x-6 -skew-y-3 -mt-2 pb-2 drop-shadow"
         >
-          Goals are good for motivation...
+          {{ $t('homepage.taglineA') }}
         </div>
         <span
           style=""
@@ -33,7 +32,7 @@ import GoalContainer from './goal/GoalContainer.vue'
         before:-skew-x-6 before:-skew-y-3 relative inline-block"
         >
           <span class="relative tracking-tight">
-            Systems Get You There
+            {{ $t('homepage.taglineB') }}
           </span>
         </span>
         <div class="text-yellow text-4xl hidden md:block mt-9 rotate-90">
@@ -47,13 +46,11 @@ import GoalContainer from './goal/GoalContainer.vue'
       class="text-yellow brightness-200 contrast-125 sm:text-2xl text-md -ml-8 pt-6 pb-0 md:pb-6"
     >
       <pre class="font-sans text-center">
-          Simple goal management utilizing
-          Kanban and the Porodomo technique.
-          Supercharged by advanced AI.
+            {{ $t('homepage.description') }}
         </pre>
     </h2>
 
-    <goal-input />
+    <goal-form />
 
     <goal-container />
   </div>

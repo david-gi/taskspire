@@ -3,8 +3,9 @@ import { computed, ref } from 'vue'
 import { useHomeStore } from 'src/store/home'
 import { useMessageStore } from '../../store/message'
 import DefaultButton from '../base/DefaultButton.vue'
+import { useI18n } from 'vue-i18n'
 
-
+const { t } = useI18n()
 const goalInput = ref('')
 const goalLength = { min: 30, max: 300 }
 const goalValid = computed(() => (goalInput.value.length >= goalLength.min && goalInput.value.length <= goalLength.max))
@@ -13,10 +14,14 @@ const homeStore = useHomeStore()
 const messageStore = useMessageStore()
 
 function submitGoal() {
-  if (goalInput.value.length < goalLength.min) messageStore.show('Please go in to more detail.', 'warning')
-  else if (goalInput.value.length > goalLength.max) messageStore.show('Please shorten your goal description.', 'warning')
+  if (goalInput.value.length < goalLength.min) messageStore.show(t('message.moreDetail'), 'warning')
+  else if (goalInput.value.length > goalLength.max) messageStore.show(t('message.lessCharacters'), 'warning')
   else {
-    homeStore.createNewBoard(goalInput.value)
+    const stageNames = [t('stage.a'), t('stage.b'), t('stage.c')]
+    const created = homeStore.createNewBoard(goalInput.value, stageNames)
+    if (!created) {
+      messageStore.show(t('message.submitError'), 'error')
+    }
   }
 }
 </script>
@@ -32,7 +37,7 @@ function submitGoal() {
     <textarea
       id="text-input"
       v-model="goalInput"
-      placeholder="Describe a Goal..."
+      :placeholder="$t('input.placeholderGoal')"
       maxlength="300"
       class="w-10/12 h-48 md:w-8/12 text-green
         text-center caret-gray-light/50 sm:text-2xl text-lg 
@@ -42,7 +47,7 @@ function submitGoal() {
         focus:placeholder-gray-light/50 focus:contrast-125 focus:caret-green"
     ></textarea>
     <default-button
-      text="Generate an Action Plan ➜"
+      :text="$t('button.submitGoal') + ' ➜'"
       theme="x"
       :active="true"
       class="w-10/12 md:w-8/12 ring-4 ring-green bg-green text-gray-dark md:text-4xl text-2xl mt-2 focus:contrast-200"

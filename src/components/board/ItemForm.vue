@@ -47,7 +47,7 @@ watch(() => props.modelValue, () => {
   >
     <div class="sticky bg-gray p-2">
       <default-button
-        text="⇽Backtrack"
+        :text="'⇽' + $t('button.regress')"
         theme="neutral"
         class="w-fit mr-2 px-2"
         :active="!first"
@@ -68,7 +68,7 @@ watch(() => props.modelValue, () => {
         @click="$emit('reorder', index + 1)"
       />
       <default-button
-        text="Progress⇾"
+        :text="$t('button.progress') + '⇾'"
         theme="good"
         class="w-fit mx-auto px-2"
         :active="!last"
@@ -92,7 +92,7 @@ watch(() => props.modelValue, () => {
       />
 
       <div>
-        <editable-value :label="'Name'">
+        <editable-value :label="$t('input.labelName')">
           <template #display>
             <span class="break-all">
               {{ modelValue.name }}
@@ -109,7 +109,7 @@ watch(() => props.modelValue, () => {
       </div>
 
       <div>
-        <editable-value :label="'Description'">
+        <editable-value :label="$t('input.labelDescription')">
           <template #display>
             <div
               id="descDisplay"
@@ -134,7 +134,7 @@ watch(() => props.modelValue, () => {
         <div class="text-center">
           <safety-button
             class="float-right inline"
-            text="Delete"
+            :text="$t('button.delete')"
             @fired="$emit('delete')"
           />
           <color-selector
@@ -145,10 +145,10 @@ watch(() => props.modelValue, () => {
       </div>
 
       <div class="break-normal -mx-6 mb-4 pl-6 opacity-40 text-sm">
-        <strong>Created:</strong>
+        <strong>{{ $t('input.labelCreated') }}:</strong>
         <span class="pl-2">{{ new Date(modelValue.created) }}</span>
         <br>
-        <strong>Updated:</strong>
+        <strong>{{ $t('input.labelUpdated') }}:</strong>
         <span class="pl-2">{{ new Date(modelValue.updated) }}</span>
       </div>
     </div>

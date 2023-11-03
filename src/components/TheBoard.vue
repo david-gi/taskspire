@@ -10,7 +10,9 @@ import StageContainer from './board/StageContainer.vue'
 import ItemForm from './board/ItemForm.vue'
 import PomodoroOverlay from './pomodoro/PomodoroOverlay.vue'
 import ProgressBar from './base/ProgressBar.vue'
+import { useI18n } from 'vue-i18n'
 
+const { t } = useI18n()
 const boardStore = useBoardStore()
 const { currentBoard, selectedItem, selectedItemIndex, selectedStageIndex, draggedItemId } = storeToRefs(boardStore)
 const messageStore = useMessageStore()
@@ -20,7 +22,7 @@ provide('draggedItemId', draggedItemId)
 boardStore.$subscribe(boardStore.save)
 watch(currentBoard, () => {
   if (currentBoard.value?.calculateProgress() == 100) {
-    messageStore.show('Goal completed!', 'success')
+    messageStore.show(t('message.goalCompleted'), 'success')
   }
 })
 

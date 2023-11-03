@@ -28,7 +28,7 @@ const estimated = computed(() => {
 
 <template>
   <div class="w-full">
-    <label class="font-bold">Pomodoro Completion</label>
+    <label class="font-bold">{{ $t('input.labelPomodoroCompletion') }}</label>
     <div class="select-none">
       <span class="text-pink saturate-50 contrast-125 text-4xl">{{ completed }}</span>
       <span class="text-gray-light/50 text-4xl">{{ estimated }}</span>

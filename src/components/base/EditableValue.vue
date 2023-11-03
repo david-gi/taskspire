@@ -36,7 +36,9 @@ function extend() {
       v-if="!activated"
       class="cursor-text transition ease-in rounded hover:bg-purple/25 selection:bg-none"
     >
-      <span class="float-right font-thin opacity-60 pl-2 pr-1 text-sm align-super select-none">[edit]</span>
+      <span class="float-right font-thin opacity-60 pl-2 pr-1 text-sm align-super select-none">
+        [{{ $t('input.labelEdit') }}]
+      </span>
       <slot name="display"></slot>
     </div>
     <div

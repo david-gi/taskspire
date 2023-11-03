@@ -23,7 +23,7 @@ function toggle() {
     <default-button
       :text="text"
       theme="evil"
-      class="w-16 ring-pink bg-opacity-60 transition duration-300 ease-in-out transform
+      class="w-20 ring-pink bg-opacity-60 transition duration-300 ease-in-out transform
             disabled:saturate-75 disabled:-translate-x-16"
       :class="{ 'hidden': toggled }"
       :active="true"
@@ -32,7 +32,7 @@ function toggle() {
     <default-button
       :text="text"
       theme="mean"
-      class="w-16 animate-pulse -translate-x-16"
+      class="w-20 animate-pulse -translate-x-16"
       :class="{ 'hidden': !toggled }"
       :active="true"
       @click="$emit('fired')"
