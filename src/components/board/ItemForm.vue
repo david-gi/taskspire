@@ -113,7 +113,7 @@ watch(() => props.modelValue, () => {
           <template #display>
             <div
               id="descDisplay"
-              class="whitespace-pre-wrap break-all"
+              class="w-full"
               @click="setDescHeight"
             >
               {{ modelValue.desc }}

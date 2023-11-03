@@ -14,7 +14,12 @@ export default {
     'taglineA': 'Goals are good for motivation...',
     'taglineB': 'Systems Get You There',
     'yourGoals': 'Your Action Plans',
-    'cookiePrompt': 'We use google analytics to help us run this free site. That okay?'
+    'cookiePrompt': 'We use google analytics to help us run this free site. That okay?',
+    'loadingGoal1': 'Analyzing goal...',
+    'loadingGoal2': 'Researching...',
+    'loadingGoal3': 'Formulating strategy...',
+    'loadingGoal4': 'Building an Action Plan...',
+    'loadingGoal5': 'Loading Kanban Board...',
   },
   'stage': {
     'a': 'To-Do',
@@ -53,7 +58,7 @@ export default {
     'lessCharacters': 'Please shorten your goal description.',
     'pomodoroStarted': 'Pomodoro started!',
     'pomodoroAlreadyStarted': 'Pomodoro already started!',
-    'submitGoalError': 'Error: Review your description or try again later.',
+    'submitGoalError': 'Error: Revise your goal description, or try again later.',
     'deleteGoalSuccess': 'Action Plan deleted!',
     'deleteGoalError': 'Error: Unable to delete Action Plan.',
     'restoreWarning': 'Warning! Restoring will permanently delete your current Action Plans!',
