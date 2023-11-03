@@ -2,14 +2,14 @@
 import { computed, provide, watch } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useBoardStore } from '../store/board'
-import { Item } from '../models/board'
+import { Item } from '../models/classes'
 
 import TheHeader from './TheHeader.vue'
 import StageContainer from './StageContainer.vue'
 import ItemForm from './ItemForm.vue'
 import PomodoroBadge from './base/PomodoroBadge.vue'
 import ProgressBar from './base/ProgressBar.vue'
-import { alert } from 'src/composables/alert'
+import { msg } from 'src/composables/msg'
 
 const boardStore = useBoardStore()
 const { currentBoard, selectedItem, selectedItemIndex, selectedStageIndex, draggedItemId } = storeToRefs(boardStore)
@@ -19,7 +19,7 @@ provide('draggedItemId', draggedItemId)
 boardStore.$subscribe(boardStore.save)
 watch(currentBoard, () => {
   if (currentBoard.value?.calculateProgress() == 100) {
-    alert('Goal completed!', 'success')
+    msg('Goal completed!', 'success')
   }
 })
 

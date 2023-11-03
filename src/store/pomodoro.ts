@@ -1,6 +1,6 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import { Stage, Item } from '../models/board'
+import { Stage, Item } from '../models/classes'
 import { useBoardStore } from './board'
 
 export const usePomodoroStore = defineStore('pomodoro', () => {

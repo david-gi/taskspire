@@ -2,7 +2,9 @@ import { ref } from 'vue'
 import { defineStore } from 'pinia'
 import api from '../http/api'
 import H from './helpers'
-import { Board } from '../models/board'
+import { Board } from '../models/classes'
+import { Plan } from '../models/interfaces'
+import { planToBoard } from '../models/converters'
 import { useBoardStore } from './board'
 
 export const useMainStore = defineStore('main', () => {
@@ -47,10 +49,11 @@ export const useMainStore = defineStore('main', () => {
 
   async function createNewBoard(goal: string) {
     return H.wrapAttempt(async () => {
-      const res = await api.generate(goal)
-      const newBoard = Object.assign(new Board(), JSON.parse(res.data))
-      boards.value.push(newBoard)
-      boardStore.currentBoard = newBoard
+      const res = await api.buildPlan(goal)
+      const plan: Plan = JSON.parse(res.data)
+      const board = planToBoard(plan)
+      boards.value.push(board)
+      boardStore.currentBoard = board
       saveBoardIds()
     })
   }

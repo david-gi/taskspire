@@ -39,7 +39,7 @@ const levelDetails = [
 ]
 
 const details = computed(() => levelDetails.find((d) => d.key === level.value) ?? levelDetails[0])
-const timeoutAlert = () => {
+const timeoutMsg = () => {
   if (modelValue.value && shown.value === false) {
     shown.value = true
     timer.value = setTimeout(() => clear(), details.value.delay)
@@ -51,7 +51,7 @@ const clear = () => {
   clearTimeout(timer.value)
 }
 
-watch(modelValue, timeoutAlert)
+watch(modelValue, timeoutMsg)
 </script>
 
 <template>
