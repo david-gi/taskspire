@@ -1,11 +1,30 @@
 export default {
   'website': {
     'name': 'Taskspire',
-    'slogan': 'Kanban Pomodoro AI',
+    'slogan': 'Transform Ambitions into Achievements',
     'description': `
           Simple goal management utilizing
           Kanban and the Porodomo technique.
-          Supercharged by advanced AI.`,
+          Supercharged by applied AI.`,
+    'aboutHeader': 'About Taskspire',
+    'about':
+      `We build this project out of love and with passion,
+        to use applied AI to further human ambitions.
+      
+        We aspire to enable and inspire,
+        whether you are a go-getter,
+        post-procrastinator or dreamer.
+
+        To achieve this, we created a hybridized concept
+        of proven goal management and task systems.
+        Under the hood, we analyse your goal and gather 
+        feedback from advanced Artificial Intelligence
+        to put together a workable goal action plan.
+
+        We use the system ourselves daily.
+        We know it works.
+        
+        Free to all.`,
     'footer': `Privacy-by-design.
               Always free.`,
     'keywords': 'ai goal management, ai productivity tool, ai task management tool, goal setting, kanban, pomodoro'

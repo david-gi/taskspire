@@ -45,6 +45,18 @@ import MobileWarning from './homepage/MobileWarning.vue'
         </div>
       </div>
 
+      <div class="flex flex-row flex-wrap gap-6 justify-center pt-6 sm:pt-12 md:pt-20">
+        <iframe
+          width="400"
+          height="230"
+          src="https://www.youtube-nocookie.com/embed/rkmO4_VpVOk?si=ye1kApzYH92sY-13"
+          title="Taskspire Intro Video"
+          frameborder="0"
+          allow="autoplay; encrypted-media; gyroscope; picture-in-picture; allowfullscreen"
+          allowfullscreen
+        ></iframe>
+      </div>
+
       <h2
         style=""
         class="text-yellow brightness-200 contrast-125 sm:text-2xl text-md -ml-8 pt-6 pb-0 md:pb-6"
@@ -62,7 +74,25 @@ import MobileWarning from './homepage/MobileWarning.vue'
 
     <goal-container />
 
-    <div class="flex flex-row flex-wrap gap-6 justify-center py-12 backdrop-contrast-125 opacity-75">
+    <div
+      style=""
+      class="backdrop-contrast-125 bg-gradient-to-b from-purple/20 to-gray-transparent to-80%"
+    >
+      <div class="shadow-xl py-6">
+        <img
+          class="w-20 my-6 block mx-auto rounded-4xl"
+          src="../assets/images/logo.png"
+        />
+        <h3 class="text-blue contrast-150 font-bold text-xl">
+          {{ $t('website.aboutHeader') }}
+        </h3>
+      </div>
+      <pre class="text-blue/90 mt-6 font-sans text-center">
+          {{ $t('website.about') }}
+        </pre>
+    </div>
+
+    <div class="flex flex-row flex-wrap gap-6 justify-center py-12 backdrop-contrast-150 opacity-75">
       <span class="text-green whitespace-nowrap">
         © {{ new Date(Date.now()).getFullYear() }} {{ $t('website.name') }}
       </span>
