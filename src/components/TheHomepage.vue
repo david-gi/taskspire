@@ -12,50 +12,58 @@ import GoalContainer from './goal/GoalContainer.vue'
           overflow-y-scroll overflow-x-hidden text-center select-none"
   >
     <mobile-warning />
-    <the-header :big="true" />
-    <div
-      id="the-tagline"
-      class="w-100 scroll-my-4 pt-6 sm:pt-12 md:pt-20
-            bg-gradient-to-b from-blue/30 to-gray-transparent to-80%"
-    >
-      <div class="sm:scale-100 scale-75">
-        <div
-          style=""
-          class="text-yellow text-xl font-semibold -skew-x-6 -skew-y-3 -mt-2 pb-2 drop-shadow"
-        >
-          {{ $t('homepage.taglineA') }}
-        </div>
-        <span
-          style=""
-          class="sm:text-4xl text-2xl p-3 text-gray-dark font-black before:rounded
+
+    <div class="bg-gradient-to-b from-[#111] from-10% to-purple/10">
+      <the-header :big="true" />
+      <div
+        id="the-tagline"
+        class="w-100 scroll-my-4 pt-6 sm:pt-12 md:pt-20"
+      >
+        <div class="sm:scale-100 scale-75">
+          <div
+            style=""
+            class="text-yellow text-xl font-semibold -skew-x-6 -skew-y-3 -mt-2 pb-2 drop-shadow"
+          >
+            {{ $t('homepage.taglineA') }}
+          </div>
+          <span
+            style=""
+            class="sm:text-4xl text-2xl p-3 text-gray-dark font-black before:rounded
         before:bg-yellow before:saturate-150 before:block before:absolute before:-inset-1 
         before:-skew-x-6 before:-skew-y-3 relative inline-block"
-        >
-          <span class="relative tracking-tight">
-            {{ $t('homepage.taglineB') }}
+          >
+            <span class="relative tracking-tight">
+              {{ $t('homepage.taglineB') }}
+            </span>
           </span>
-        </span>
-        <div class="text-yellow text-4xl hidden sm:block mt-9 -mb-6 rotate-90">
-          ➜
+          <div class="text-yellow text-4xl hidden sm:block mt-9 -mb-6 rotate-90">
+            ➜
+          </div>
         </div>
       </div>
-    </div>
 
-    <h2
-      style=""
-      class="text-yellow brightness-200 contrast-125 sm:text-2xl text-md -ml-8 pt-6 pb-0 md:pb-6"
-    >
-      <pre class="font-sans text-center">
+      <h2
+        style=""
+        class="text-yellow brightness-200 contrast-125 sm:text-2xl text-md -ml-8 pt-6 pb-0 md:pb-6"
+      >
+        <pre class="font-sans text-center">
             {{ $t('website.description') }}
         </pre>
-      <pre class="font-sans text-center text-md text-base opacity-80 -mt-4 italic">
+        <pre class="font-sans text-center text-md text-base opacity-80 -mt-4 italic">
           {{ $t('website.footer') }}
       </pre>
-    </h2>
+      </h2>
 
-    <goal-form />
+      <goal-form />
+    </div>
 
     <goal-container />
+
+    <div class="flex flex-row flex-wrap gap-6 justify-center py-4 mt-9 backdrop-contrast-125 opacity-75">
+      <span class="text-green whitespace-nowrap">© {{ new Date(Date.now()).getFullYear() }} {{ $t('website.name')
+      }}</span>
+      <span class="text-pink break-word">{{ $t('website.footer') }}</span>
+    </div>
   </div>
 </template>
 

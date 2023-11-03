@@ -38,7 +38,7 @@ async function submitGoal() {
 </script>
 
 <template>
-  <div class="pb-6 drop-shadow">
+  <div class="pb-12 drop-shadow">
     <span
       class="text-green fixed w-10/12 md:w-8/12 text-right pr-1"
       :class="[{ 'text-orange': !goalValid }]"
