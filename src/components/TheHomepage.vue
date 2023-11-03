@@ -1,0 +1,119 @@
+<script setup lang="ts">
+import { useMainStore } from 'src/store/main'
+import { onMounted, toRefs, ref } from 'vue'
+import TheHeader from './TheHeader.vue'
+import MobileWarning from './base/MobileWarning.vue'
+import DefaultButton from './base/DefaultButton.vue'
+import { alert } from 'src/composables/alert'
+
+const mainStore = useMainStore()
+const { boards } = toRefs(mainStore)
+onMounted(() => mainStore.fetchBoards())
+useMainStore().saveBoardIds()
+
+const goalInput = ref('')
+
+function submitGoal() {
+  if (goalInput.value.length > 60) {
+    mainStore.createNewBoard(goalInput.value)
+    goalInput.value = ''
+  } else {
+    alert('Please go in to more detail.', 'warning')
+  }
+
+}
+</script>
+
+<template>
+  <div
+    style=""
+    class="flex flex-col w-full h-screen subpixel-antialiased
+              overflow-y-scroll text-center no-scrollbar"
+  >
+    <mobile-warning />
+    <the-header
+      class="scroll-my-10 bg-purple/40"
+      :big="true"
+    />
+    <div
+      id="the-tagline"
+      class="w-100 scroll-my-4 mt-2 pt-6 md:pt-20
+            bg-gradient-to-b from-blue/30 to-gray-transparent to-80%"
+    >
+      <div
+        style=""
+        class="text-yellow text-xl font-semibold -skew-x-6 -skew-y-3 -mt-2 pb-2"
+      >
+        Goals are good for motivation...
+      </div>
+      <span
+        style=""
+        class="text-4xl p-2 text-gray-dark font-black before:rounded
+        before:bg-yellow before:saturate-150 before:block before:absolute before:-inset-1 
+        before:-skew-x-6 before:-skew-y-3 relative inline-block"
+      >
+        <span class="relative">
+          Systems Get You There
+        </span>
+      </span>
+      <div class="text-yellow text-4xl hidden md:block mt-9 rotate-90">
+        ➜
+      </div>
+    </div>
+
+    <h2
+      style=""
+      class="text-yellow brightness-200 contrast-125 text-2xl -ml-8 pt-6 pb-0 md:pb-6"
+    >
+      <pre class="font-sans text-center">
+          Simple goal management powered by
+          Kanban boards and the Porodomo technique.
+          Supercharged by advanced AI.
+        </pre>
+    </h2>
+
+    <div class="snap-start snap-always pb-6">
+      <textarea
+        id="text-input"
+        v-model="goalInput"
+        placeholder="Describe a Goal..."
+        class="w-11/12 h-48 md:w-8/12
+          text-center caret-gray-light/50 
+          ring-green ring-4 outline-none rounded resize-y
+          text-green bg-gray/50 p-4 text-4xl no-scrollbar scroll-my-4
+          placeholder-green/75 placeholder:font-boldactive:placeholder-gray-light
+          focus:placeholder-gray-light/50"
+      ></textarea>
+      <default-button
+        text="Generate an Action Plan ➜"
+        theme="x"
+        :active="true"
+        class="w-11/12 md:w-8/12 ring-4 ring-green bg-green text-gray-dark text-4xl mt-2"
+        @click="submitGoal()"
+      />
+    </div>
+
+    <div
+      v-if="boards"
+      class="mt-6 py-6"
+    >
+      <div class="text-4xl font-bold text-gray-dark bg-blue py-4">
+        Saved Goals
+      </div>
+      <div class="flex flex-row flex-wrap justify-center">
+        <div
+          v-for="board in boards"
+          :key="board.id"
+          class="w-1/3 h-48 m-4 p-4 text-center text-2xl text-gray-dark
+            bg-gray/50 rounded ring-4 ring-green hover:italic"
+          @click="mainStore.setBoard(board.id)"
+        >
+          {{ board.name }}
+        </div>
+      </div>
+    </div>
+
+    <br>
+  </div>
+</template>
+
