@@ -1,13 +1,9 @@
 <script setup lang="ts">
-import { useMainStore } from 'src/store/main'
-import { onMounted } from 'vue'
 import TheHeader from './TheHeader.vue'
 import MobileWarning from './base/MobileWarning.vue'
 import GoalInput from './goal/GoalInput.vue'
 import GoalContainer from './goal/GoalContainer.vue'
 
-const mainStore = useMainStore()
-onMounted(() => mainStore.fetchBoards())
 </script>
 
 <template>
@@ -31,11 +27,11 @@ onMounted(() => mainStore.fetchBoards())
       </div>
       <span
         style=""
-        class="text-4xl p-2 text-gray-dark font-black before:rounded
+        class="text-4xl p-3 text-gray-dark font-black before:rounded
         before:bg-yellow before:saturate-150 before:block before:absolute before:-inset-1 
         before:-skew-x-6 before:-skew-y-3 relative inline-block"
       >
-        <span class="relative">
+        <span class="relative tracking-tight">
           Systems Get You There
         </span>
       </span>
