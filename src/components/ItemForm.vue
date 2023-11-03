@@ -43,8 +43,8 @@ function setDescHeight() {
 <template>
   <div
     v-if="props.modelValue"
-    class="bg-gray-dark h-1/2 fixed min-w-full bottom-0 left-0 right-0
-     border-x-4 ring-2 ring-gray-dark rounded shadow-2xl"
+    class="bg-gray-dark h-1/2 fixed bottom-0 left-0 right-0
+     border-x-4 ring-2 ring-gray-dark rounded shadow-xl"
     :style="{
       'border-color': ('rgb(var(--color-' + modelValue.color + '))'),
     }"
@@ -87,11 +87,13 @@ function setDescHeight() {
       />
     </div>
 
-    <div class="flex flex-col gap-4 min-w-full h-full bottom-0 left-0 right-0 px-6 pb-12 overflow-y-auto">
+    <div class="flex flex-col gap-4 h-full bottom-0 left-0 right-0 px-6 pb-12 overflow-y-auto">
       <div>
         <editable-value :label="'Name'">
           <template #display>
-            <span class="">{{ modelValue.name }}</span>
+            <span class="break-all">
+              {{ modelValue.name }}
+            </span>
           </template>
           <template #edit>
             <input
@@ -108,7 +110,7 @@ function setDescHeight() {
           <template #display>
             <div
               id="descDisplay"
-              class="whitespace-pre-wrap"
+              class="whitespace-pre-wrap break-all"
               @click="setDescHeight"
             >
               {{ modelValue.desc }}
@@ -149,12 +151,12 @@ function setDescHeight() {
         </div>
       </div>
 
-      <div class="-mx-6 mb-2 pl-6 opacity-40 text-sm">
+      <div class="break-normal -mx-6 mb-2 pl-6 opacity-40 text-sm">
         <strong>Created:</strong>
-        <span class="pl-2 truncate">{{ new Date(modelValue.created) }}</span>
+        <span class="pl-2">{{ new Date(modelValue.created) }}</span>
         <br>
         <strong>Updated:</strong>
-        <span class="pl-2 truncate">{{ new Date(modelValue.updated) }}</span>
+        <span class="pl-2">{{ new Date(modelValue.updated) }}</span>
       </div>
     </div>
   </div>
