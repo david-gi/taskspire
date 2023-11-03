@@ -12,6 +12,8 @@ import StageContainer from './board/StageContainer.vue'
 import ItemForm from './board/ItemForm.vue'
 import PomodoroOverlay from './pomodoro/PomodoroOverlay.vue'
 import ProgressBar from './common/ProgressBar.vue'
+// @typescript-eslint/ban-ts-comment
+import party from 'party-js'
 
 const gtag = useGtag()
 const { t } = useI18n()
@@ -24,8 +26,11 @@ provide('draggedItemId', draggedItemId)
 boardStore.$subscribe(boardStore.saveCurrent)
 watch(currentBoard, () => {
   if (currentBoard.value?.calculateProgress() == 100) {
-    messageStore.show(t('message.goalCompleted'), 'success')
     gtag.event('goal_completed')
+    messageStore.show(t('message.goalCompleted'), 'success')
+    party.confetti(document.getElementById('stage-container1'), {
+        count: party.variation.range(50, 150),
+    })
   }
 })
 
@@ -91,6 +96,7 @@ function deleteSelectedItem() {
   >
     <stage-container
       v-for="(stage, i) in  currentBoard?.stages "
+      :id="'stage-container' + i"
       :key="'stage-' + i"
       :value="stage"
       :index="i"
