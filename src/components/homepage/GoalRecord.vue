@@ -20,7 +20,7 @@ function deleteGoal() {
   try {
     homeStore.deleteBoard(props.board.id)
     messageStore.show(t('message.deleteGoalSuccess'), 'info')
-    gtag.event('delete-goal')
+    gtag.event('delete_goal')
   } catch (e) {
     messageStore.show(t('message.deleteGoalError'), 'warning')
   }
