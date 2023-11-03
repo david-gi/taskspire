@@ -30,7 +30,7 @@ To change theming, modify _tailwind.config.js_ and _assets/styles/app.css_.
 The API will return in languages other than English based on the language used by the user and by the setting of the property 'language' _(store/home.ts)_ to an ISO language code (ex: en, es, fr, jp...).
 
 ### Distribution
-The PWA is browser installable via the _manifest.json file_ (dependant of SSL hosting). This also makes it submitable to Google Play and Microsoft App Store.
+The PWA is browser installable via the _manifest.json file_ (dependant of SSL). This also makes it submitable to Google Play and Microsoft App Store.
 If this isn't sufficient, it also comes with the boilplate for Electron-based desktop and mobile app distribution using Electron-Builder.
 
 ### Keys
@@ -38,12 +38,18 @@ Google Analytics Measurement ID is managed in config.ts. OpenAI and the Affliate
 
 ### Google Analytics Events
 GTag events are sent on:
--A new Action Plan is created
--A new Action Plan is rejected
--An Action Plan is deleted
--A Pomodoro timer is completed for an Item/task
--An Action Plan goal is completed
+- A new Action Plan is created
+- A new Action Plan is rejected
+- An Action Plan is deleted
+- A Pomodoro timer is completed for an Item/task
+- An Action Plan goal is completed
 
+### Switching monitization
+By default, an Affiliate Referral Program is used (Skillshare via Impact.com). A Freemium member's model could be implemented instead or in addtion to it.
+
+### Switching AIs
+By default, OpenAI is used, however with minimal developer effort an equivalant HuggingSpace model could be used. 
+_**Note:** At the time of development, OpenAI's GPT3.5 Turbo and GPT4 provided the best results however HuggingSpace models are generally less expensive._
 
 **Install**
 ```
