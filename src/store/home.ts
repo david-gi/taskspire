@@ -1,6 +1,6 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import api from '../http/api'
+import api from '../server/api'
 import H from './helpers'
 import { Board } from '../models/classes'
 import { IBoard, IPlan } from '../models/interfaces'
