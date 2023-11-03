@@ -1,9 +1,9 @@
 <script setup lang='ts'>
 import { inject, Ref } from 'vue'
-import { Item } from '../../models/classes'
+import { IItem } from '../../models/interfaces'
 
 const draggedItemId = inject<Ref<string>>('draggedItemId')
-const props = defineProps<{ value: Item }>()
+const props = defineProps<{ value: IItem }>()
 
 function handleDragStart() {
   if (draggedItemId) draggedItemId.value = props.value.id

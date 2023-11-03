@@ -1,13 +1,10 @@
 <script setup lang="ts">
 import { computed, toRefs } from 'vue'
-import { Item } from '../../models/classes'
+import { IItem } from '../../models/interfaces'
 import { usePomodoroStore } from '../../store/pomodoro'
 import PomodoroButton from './PomodoroButton.vue'
 
-const props = defineProps({
-  item: { type: Item, required: true },
-  buttonless: { type: Boolean, default: false }
-})
+const props = defineProps<{ item: IItem, buttonless: boolean }>()
 
 const pomodoroStore = usePomodoroStore()
 const { pomodoroStart } = toRefs(pomodoroStore)
