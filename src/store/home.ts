@@ -8,7 +8,7 @@ import { planToBoard } from '../models/converters'
 import { useBoardStore } from './board'
 
 export const useHomeStore = defineStore('home', () => {
-  const baseName = 'kanbandoro'
+  const baseName = 'taskspire'
   const idsKey = baseName + '-board-ids'
   const goalIdKey = baseName + '-goal-'
   const cookiesStatusKey = baseName + '-cookie-status'
