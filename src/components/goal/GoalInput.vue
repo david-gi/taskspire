@@ -38,7 +38,7 @@ function submitGoal() {
         ring-green ring-4 outline-none rounded resize-y
         bg-gray/50 p-4 no-scrollbar scroll-my-4
         placeholder-green/75 placeholder:font-bold
-        focus:placeholder-gray-light/50 focus:contrast-125"
+        focus:placeholder-gray-light/50 focus:contrast-125 focus:caret-green"
     ></textarea>
     <default-button
       text="Generate an Action Plan ➜"

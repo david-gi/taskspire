@@ -34,12 +34,15 @@ function extend() {
   >
     <div
       v-if="!activated"
-      class="cursor-text transition ease-in rounded hover:bg-purple/25"
+      class="cursor-text transition ease-in rounded hover:bg-purple/25 selection:bg-none"
     >
       <span class="float-right font-thin opacity-60 pl-2 pr-1 text-sm align-super select-none">[edit]</span>
       <slot name="display"></slot>
     </div>
-    <div :id="'editSlot' + label">
+    <div
+      :id="'editSlot' + label"
+      class="selection:bg-purple/50"
+    >
       <slot
         v-if="activated"
         name="edit"

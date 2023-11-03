@@ -35,7 +35,7 @@ const homeStore = useHomeStore()
     >
       {{ board.name }}
     </div>
-    <div class="text-orange/75 text-md mb-9 select-text">
+    <div class="text-orange/75 text-md mb-9 select-all">
       {{ board.goal }}
     </div>
     <ProgressBar

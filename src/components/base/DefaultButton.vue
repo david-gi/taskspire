@@ -17,7 +17,7 @@ switch (props.theme) {
     colorClass.value = 'bg-green/75 saturate-150 shadow-lg shadow-gray-dark'
     break
   case 'neutral':
-    colorClass.value = 'bg-purple shadow-lg shadow-gray-dark'
+    colorClass.value = 'bg-purple shadow-lg shadow-gray-dark saturate-125'
     break
   case 'mean':
     colorClass.value = 'bg-yellow text-pink ring-pink saturate-200 shadow-lg shadow-gray-dark'

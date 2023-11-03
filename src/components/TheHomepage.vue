@@ -9,7 +9,7 @@ import GoalContainer from './goal/GoalContainer.vue'
 <template>
   <div
     style=""
-    class="flex flex-col w-full h-screen subpixel-antialiased
+    class="flex flex-col w-full h-screen subpixel-antialiased selection:bg-purple/50
           overflow-y-scroll text-center no-scrollbar select-none"
   >
     <mobile-warning />

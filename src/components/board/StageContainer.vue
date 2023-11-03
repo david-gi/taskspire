@@ -45,9 +45,9 @@ function handleDrop(e: Event, itemIndex: number) {
       />
       <add-button
         v-if="index == 0"
+        class="mb-6"
         @click="$emit('add-item')"
         @drop="(e: DragEvent) => handleDrop(e, 0)"
-        class="mb-6"
       />
       <div
         v-else
