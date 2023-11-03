@@ -111,7 +111,8 @@ function deleteSelectedItem() {
     />
   </div>
   <progress-bar
-    :value="currentBoard?.calculateProgress() ?? 0"
+    v-if="currentBoard"
+    :value="currentBoard.calculateProgress()"
     :text="currentBoard?.name"
     class="ml-0"
   />
