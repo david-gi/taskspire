@@ -19,7 +19,7 @@
   },
   "plugins": [],
   "rules": {
-    "semi": ["error", "never"],
+    "semi": ["warn", "never"],
     "quotes": ["error", "single"]
   }
 }

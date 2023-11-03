@@ -49,7 +49,7 @@ function select(color: string) {
       }"
       @click="toggle"
     >
-      {{ $t('input.labelHighlight') }}
+      {{ $t('input.labelColorSelector') }}
 
       <div
         v-if="activated"
