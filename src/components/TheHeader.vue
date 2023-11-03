@@ -1,9 +1,16 @@
 <script setup lang="ts">
 import { useMainStore } from 'src/store/main'
+import { useBoardStore } from 'src/store/board'
 import DefaultButton from './base/DefaultButton.vue'
 
 defineProps<{ big: boolean }>()
 const mainStore = useMainStore()
+const boardStore = useBoardStore()
+
+function goToHome() {
+  boardStore.setSelectedItem()
+  mainStore.setBoard()
+}
 </script>
 
 <template>
@@ -46,7 +53,7 @@ const mainStore = useMainStore()
       theme="x"
       class="scale-75 float-right w-auto h-min block px-4 mr-4"
       :active="true"
-      @click="mainStore.setBoard()"
+      @click="goToHome()"
     />
   </div>
 </template >

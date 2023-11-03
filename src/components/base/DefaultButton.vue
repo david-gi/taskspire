@@ -1,26 +1,32 @@
 <script setup lang='ts'>
 import { computed, ref } from 'vue'
 
-const props = defineProps<{ text: string, theme: string, active: boolean }>()
+const props = defineProps({
+  text: { type: String, required: true },
+  theme: { type: String, default: 'none' },
+  active: { type: Boolean, default: true },
+  rounded: { type: Boolean, default: true }
+})
+
 const debounced = ref<boolean>(false)
 const isActive = computed(() => props.active && !debounced.value)
 
 const colorClass = ref<string>('')
 switch (props.theme) {
   case 'good':
-    colorClass.value = 'bg-green/75 saturate-150'
+    colorClass.value = 'bg-green/75 saturate-150 shadow-lg shadow-gray-dark'
     break
   case 'neutral':
-    colorClass.value = 'bg-purple'
+    colorClass.value = 'bg-purple shadow-lg shadow-gray-dark'
     break
   case 'mean':
-    colorClass.value = 'bg-yellow text-pink ring-pink saturate-200'
+    colorClass.value = 'bg-yellow text-pink ring-pink saturate-200 shadow-lg shadow-gray-dark'
     break
   case 'evil':
     colorClass.value = 'bg-pink brightness-90 saturate-200'
     break
   default:
-    colorClass.value = 'bg-gray-light/25'
+    colorClass.value = 'bg-gray-light/25 saturate-200'
     break
 }
 
@@ -41,11 +47,12 @@ function debounce() {
 
 <template>
   <button
-    class="p-2 font-bold rounded-sm active:brightness-75 shadow-gray-dark select-none"
+    class="p-2 font-bold active:brightness-75 select-none"
     :class="[colorClass, {
-      'bg-gray shadow-none': !isActive,
+      'bg-gray shadow-none contrast-75': !isActive,
+      'rounded-sm': rounded,
       'contrast-75 opacity-75': debounced,
-      'shadow-xl active:shadow-inner active:contrast-75 hover:brightness-125 hover:saturation-200': isActive
+      'active:shadow-inner active:contrast-75 hover:brightness-125 hover:saturation-200': isActive
     }]"
     :disabled="!isActive"
     @click="debounce"

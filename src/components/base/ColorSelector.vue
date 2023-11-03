@@ -41,7 +41,7 @@ function select(color: string) {
 <template>
   <div>
     <div
-      class="float-left border-2 p-2 mr-1 border-gray-dark font-bold select-none"
+      class="float-left border-2 px-3 py-2 mr-1 font-bold select-none"
       :class="[baseClasses, { 'brightness-75 hover:brightness-75': activated }]"
       :style="{
         'border-color': ('rgb(var(--color-' + modelValue + '))'),
@@ -50,21 +50,20 @@ function select(color: string) {
       @click="toggle"
     >
       Highlight
-    </div>
 
-    <div
-      v-if="activated"
-      class="w-fit float-left border-t-2 border-gray-dark"
-    >
       <div
-        v-for="color in colors"
-        :key="'color-' + color"
-        :class="baseClasses"
-        :style="{ 'background-color': ('rgb(var(--color-' + color + '))') }"
-        class="p-5 mx-1 float-left ring-1 ring-gray-dark"
-        @click="select(color)"
-      ></div>
-      <br class="clear-both" />
+        v-if="activated"
+        class="absolute float-left ml-16 -mt-8 h-fit w-max rounded ring-2 ring-gray-dark bg-gray-dark opacity-90 z-50"
+      >
+        <div
+          v-for="color in colors"
+          :key="'color-' + color"
+          :class="baseClasses"
+          :style="{ 'background-color': ('rgb(var(--color-' + color + '))') }"
+          class="p-5 float-left static mx-1 ring-1 ring-gray-dark"
+          @click="select(color)"
+        ></div>
+      </div>
     </div>
   </div>
 </template>
