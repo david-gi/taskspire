@@ -3,21 +3,22 @@ import { toRefs, computed } from 'vue'
 import { IItem } from '../../models/interfaces'
 
 import { usePomodoroStore } from '../../store/pomodoro'
-import { msg } from '../../composables/msg'
+import { useMessageStore } from '../../store/message'
 import DefaultButton from '../base/DefaultButton.vue'
 
 const props = defineProps<{ item: IItem }>()
 const { item } = toRefs(props)
 
 const pomodoroStore = usePomodoroStore()
+const messageStore = useMessageStore()
 
 const btnText = computed(() => '⌚ Start a Pomodoro')
 
 function startPomodoro() {
   if (pomodoroStore.createPomodoro(item.value.id)) {
-    msg('Pomodoro started!', 'success')
+    messageStore.show('Pomodoro started!', 'success')
   } else {
-    msg('Pomodoro already started!', 'error')
+    messageStore.show('Pomodoro already started!', 'error')
   }
 }
 </script>

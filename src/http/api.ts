@@ -1,7 +1,8 @@
 import axios, { AxiosResponse } from 'axios'
+import config from '../../config.js'
 
 const server = axios.create({
-  baseURL: 'http://localhost:3000',
+  baseURL: config.serverUrl,
   headers: {
     'Content-type': 'application/json',
   },
@@ -17,8 +18,8 @@ const withRetry = async (res: () => Promise<AxiosResponse>, attempt: number = 1)
 }
 
 const buildPlan = async (goal: string) => {
-  return withRetry(() => server.post('/test', { goal }))
-  //return withRetry(() => server.post('/build-plan', { goal }))
+  //return withRetry(() => server.post('/test', { goal }))
+  return withRetry(() => server.post('/build-plan', { goal }))
 }
 
 export default {
