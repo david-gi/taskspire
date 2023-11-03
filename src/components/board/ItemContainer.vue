@@ -1,6 +1,6 @@
 <script setup lang='ts'>
 import { inject, Ref } from 'vue'
-import { Item } from '../models/classes'
+import { Item } from '../../models/classes'
 
 const draggedItemId = inject<Ref<string>>('draggedItemId')
 const props = defineProps<{ value: Item }>()

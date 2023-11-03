@@ -1,12 +1,12 @@
 <script setup lang='ts'>
 import { ref, toRefs, watch } from 'vue'
-import { Item } from '../models/classes'
+import { Item } from '../../models/classes'
 
-import ColorSelector from './base/ColorSelector.vue'
-import EditableValue from './base/EditableValue.vue'
-import DefaultButton from './base/DefaultButton.vue'
-import SafetyButton from './base/SafetyButton.vue'
-import PomodoroTracker from './base/PomodoroTracker.vue'
+import ColorSelector from '../base/ColorSelector.vue'
+import EditableValue from '../base/EditableValue.vue'
+import DefaultButton from '../base/DefaultButton.vue'
+import SafetyButton from '../base/SafetyButton.vue'
+import PomodoroTracker from '../pomodoro/PomodoroTracker.vue'
 
 const props = defineProps<{ modelValue: Item, index: number, first: boolean, last: boolean }>()
 const { modelValue } = toRefs(props)
@@ -133,7 +133,8 @@ watch(() => props.modelValue, () => {
         <div class="text-center">
           <safety-button
             class="float-right inline"
-            @delete="$emit('delete')"
+            text="Delete"
+            @fired="$emit('delete')"
           />
           <color-selector
             v-model="modelValue.color"
