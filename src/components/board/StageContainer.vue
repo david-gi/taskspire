@@ -42,17 +42,23 @@ function handleDrop(e: Event, itemIndex: number) {
         :value="item"
         @click="$emit('open-item', item.id)"
         @drop="(e: DragEvent) => handleDrop(e, i)"
+        @dragenter.prevent
+        @dragover.prevent
       />
       <add-button
         v-if="index == 0"
         class="mb-6"
         @click="$emit('add-item')"
         @drop="(e: DragEvent) => handleDrop(e, 0)"
+        @dragenter.prevent
+        @dragover.prevent
       />
       <div
         v-else
         class="w-full h-36"
         @drop="(e: DragEvent) => handleDrop(e, 0)"
+        @dragenter.prevent
+        @dragover.prevent
       ></div>
     </div>
   </div>
