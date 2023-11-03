@@ -88,8 +88,3 @@ Run tests:
 npm run test
 
 ```
-Component overview:
-```
-npm run overview
-
-```
