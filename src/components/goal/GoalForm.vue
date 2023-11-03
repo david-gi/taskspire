@@ -8,6 +8,7 @@ import { useI18n } from 'vue-i18n'
 
 const gtag = useGtag()
 const { t } = useI18n()
+const submitting = ref(false)
 const goalInput = ref('')
 const goalLength = { min: 30, max: 300 }
 const goalValid = computed(() => (goalInput.value.length >= goalLength.min && goalInput.value.length <= goalLength.max))
@@ -15,15 +16,18 @@ const goalValid = computed(() => (goalInput.value.length >= goalLength.min && go
 const homeStore = useHomeStore()
 const messageStore = useMessageStore()
 
-function submitGoal() {
+async function submitGoal() {
+  if (homeStore.boards.length >= 4) messageStore.show(t('message.reachedMax'), 'warning')
   if (goalInput.value.length < goalLength.min) messageStore.show(t('message.moreDetail'), 'warning')
   else if (goalInput.value.length > goalLength.max) messageStore.show(t('message.lessCharacters'), 'warning')
   else {
+    submitting.value = true
     const stageNames = [t('stage.a'), t('stage.b'), t('stage.c')]
-    const created = homeStore.createNewBoard(goalInput.value, stageNames)
+    const created = await homeStore.createNewBoard(goalInput.value, stageNames)
     if (!created) {
       messageStore.show(t('message.submitError'), 'error')
     } else gtag.event('new-goal')
+    submitting.value = false
   }
 }
 </script>
@@ -51,7 +55,7 @@ function submitGoal() {
     <default-button
       :text="$t('button.submitGoal') + ' ➜'"
       theme="x"
-      :active="true"
+      :active="!submitting"
       class="w-10/12 md:w-8/12 ring-4 ring-green bg-green text-gray-dark md:text-4xl text-2xl mt-2 focus:contrast-200"
       :class="[{ 'brightness-90': !goalValid }]"
       @click="submitGoal"

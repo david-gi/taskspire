@@ -43,6 +43,7 @@ export default {
   },
   'message': {
     'goalCompleted': 'Goal Completed!',
+    'reachedMax': 'Reached action plan maximum!',
     'moreDetail': 'Please go in to more detail.',
     'lessCharacters': 'Please shorten your goal description.',
     'pomodoroStarted': 'Pomodoro started!',
