@@ -1,16 +1,17 @@
 export default {
   'website': {
     'name': 'Taskspire',
-    'slogan': 'Reach Goals! One task at a time...'
-  },
-  'homepage': {
-    'taglineA': 'Goals are good for motivation...',
-    'taglineB': 'Systems Get You There',
+    'slogan': 'Reach Goals! One task at a time...',
     'description': `
           Simple goal management utilizing
           Kanban and the Porodomo technique.
           Supercharged by advanced AI.
           `,
+    'keywords': 'ai goal management, ai productivity app, kanban, pomodoro'
+  },
+  'homepage': {
+    'taglineA': 'Goals are good for motivation...',
+    'taglineB': 'Systems Get You There',
     'yourGoals': 'Your Action Plans',
   },
   'stage': {

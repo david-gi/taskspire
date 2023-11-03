@@ -12,6 +12,8 @@ const boardStore = useBoardStore()
 const onStartPage = computed(() => boardStore.currentBoard === undefined)
 onBeforeMount(() => {
   document.title = t('website.name') + ' | ' + t('website.slogan')
+  document.querySelector('meta[name="description"]')?.setAttribute('content', t('website.description'))
+  document.querySelector('meta[name="keywords"]')?.setAttribute('content', t('website.keywords'))
 })
 </script>
 
