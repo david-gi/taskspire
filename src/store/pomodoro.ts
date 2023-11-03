@@ -1,6 +1,7 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
 import { useGtag, } from 'vue-gtag-next'
+import H from './helpers'
 import { Stage, Item } from '../models/classes'
 import { useBoardStore } from './board'
 
@@ -18,42 +19,43 @@ export const usePomodoroStore = defineStore('pomodoro', () => {
     pomodoroTime.value = 25 - Math.floor((new Date().getTime() - pomodoroStart.value) / 1000 / 60)
   }
 
-  function initPomodoro(): boolean {
-    if (pomodoroStart.value) return false
+  function initPomodoro() {
     pomodoroStart.value = new Date().getTime()
     pomodoroTime.value = 25
-    return true
   }
 
   function createPomodoro(id: string) {
-    if (!initPomodoro()) return false
+    H.wrapAttempt(() => {
+      initPomodoro()
 
-    let item: Item
-    boardStore.currentBoard?.stages
-      .forEach((stage: Stage) => {
-        stage.items.forEach((_item: Item) => {
-          if (_item.id === id) {
-            item = _item
-            itemName.value = _item.name
-          }
+      let item: Item
+      boardStore.currentBoard?.stages
+        .forEach((stage: Stage) => {
+          stage.items.forEach((_item: Item) => {
+            if (_item.id === id) {
+              item = _item
+              itemName.value = _item.name
+            }
+          })
         })
-      })
 
-    timer.value = setInterval(() => {
-      refreshPomodoroTime()
-      if (pomodoroTime.value <= 0) {
-        item.completed = (item.completed ?? 0) + 1
-        gtag.event('pomodoro-completion')
-        cancelPomodoro()
-      }
-    }, 1000)
-    return true
+      timer.value = setInterval(() => {
+        refreshPomodoroTime()
+        if (pomodoroTime.value <= 0) {
+          item.completed = (item.completed ?? 0) + 1
+          gtag.event('pomodoro-completion')
+          cancelPomodoro()
+        }
+      }, 1000)
+    })
   }
 
   function cancelPomodoro() {
-    pomodoroStart.value = undefined
-    clearInterval(timer.value)
-    timer.value = undefined
+    H.wrapAttempt(() => {
+      pomodoroStart.value = undefined
+      clearInterval(timer.value)
+      timer.value = undefined
+    })
   }
 
   return {

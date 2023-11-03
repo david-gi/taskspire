@@ -9,8 +9,8 @@ export const planToBoard = (plan: IPlan) => {
   })
 
   const board = new Board()
-  board.name = plan.title,
-    board.stages[0].items = items
+  board.name = plan.title
+  board.stages[0].items = items
 
   return board
 }

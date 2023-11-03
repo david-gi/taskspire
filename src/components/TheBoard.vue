@@ -21,7 +21,7 @@ const messageStore = useMessageStore()
 
 provide('draggedItemId', draggedItemId)
 
-boardStore.$subscribe(boardStore.save)
+boardStore.$subscribe(boardStore.saveCurrent)
 watch(currentBoard, () => {
   if (currentBoard.value?.calculateProgress() == 100) {
     messageStore.show(t('message.goalCompleted'), 'success')

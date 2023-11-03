@@ -7,7 +7,7 @@ setTimeout(() => {
 <template>
   <div
     id="mobile-warning"
-    class="sm:hidden landscape:hidden fixed top-0 right-5 z-99
+    class="sm:hidden landscape:hidden fixed top-0 right-5 z-50
      text-gray-light/75 text-xl motion-safe:animate-pulse"
   >
     <div class="rotate-45">

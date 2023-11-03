@@ -34,6 +34,10 @@ export default {
   'button': {
     'accept': 'Accept',
     'reject': 'Reject',
+    'continue': 'Continue',
+    'cancel': 'Cancel',
+    'backup': 'Backup to File',
+    'restore': 'Restore from File',
     'submitGoal': 'Generate an Action Plan',
     'openGoal': 'Open',
     'delete': 'Delete',
@@ -48,6 +52,11 @@ export default {
     'lessCharacters': 'Please shorten your goal description.',
     'pomodoroStarted': 'Pomodoro started!',
     'pomodoroAlreadyStarted': 'Pomodoro already started!',
-    'submitError': 'Error: Review your description or try again later.',
+    'submitGoalError': 'Error: Review your description or try again later.',
+    'deleteGoalSuccess': 'Action Plan deleted!',
+    'deleteGoalError': 'Error: Unable to delete Action Plan.',
+    'restoreWarning': 'Warning! Restoring will permanently delete your current Action Plans!',
+    'restoredSuccess': 'Your Action Plans were restored from backup!',
+    'restoredError': 'Error: Unable to restore from backup file',
   }
 }

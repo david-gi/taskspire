@@ -10,11 +10,16 @@ export const useBoardStore = defineStore('board', () => {
   const selectedItem = ref<Item>()
   const draggedItemId = ref<string>('')
 
-  function save() {
-    if (!currentBoard.value) return
-    return H.wrapAttempt(() => {
-      localStorage.setItem(currentBoard.value?.id ?? '', JSON.stringify(currentBoard.value))
+  function saveBoard(board: Board) {
+    H.wrapAttempt(() => {
+      if (!board) return
+      localStorage.setItem(board.id, JSON.stringify(board))
     })
+  }
+
+  function saveCurrent() {
+    if (!currentBoard.value) return
+    saveBoard(currentBoard.value)
   }
 
   function setSelectedItem(id?: string) {
@@ -44,7 +49,8 @@ export const useBoardStore = defineStore('board', () => {
     selectedItem,
     draggedItemId,
 
-    save,
+    saveCurrent,
+    saveBoard,
     setSelectedItem,
   }
 })
