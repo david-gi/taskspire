@@ -1,4 +1,4 @@
-import { Colors } from './interfaces'
+import { Colors, IRecommendation } from './interfaces'
 import { v4 as uuidv4 } from 'uuid'
 
 export class Board {
@@ -84,6 +84,7 @@ export class Item {
     color: Colors
     completed: number
     estimated: number
+    recommendation?: IRecommendation
     updated: number
     created: number
     constructor(name: string = '+', desc: string = '...') {
@@ -93,6 +94,7 @@ export class Item {
         this.completed = 0
         this.estimated = 0
         this.color = Colors.blue
+        this.recommendation = undefined
         this.updated = new Date().getTime()
         this.created = new Date().getTime()
     }

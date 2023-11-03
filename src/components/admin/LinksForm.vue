@@ -16,7 +16,7 @@ const messageStore = useMessageStore()
 
 const cloneLinks = () => adminData.value ? utils.clone<IRecommendationLink[]>(adminData.value.Links) : []
 const links = ref(cloneLinks())
-const headers = ['Affiliate', 'Name', 'Url', 'Description', 'Enabled [true/false]']
+const headers = ['Affiliate', 'Name', 'Url', 'Description', 'Enabled (true or false)']
 const formModified = ref(false)
 const notReseting = ref(true)
 
@@ -58,6 +58,7 @@ const resetForm = () => {
     <div @change="wasChanged">
       <h1 class="font-bold text-purple/75 uppercase">Links</h1>
       <div class="bg-purple/25 p-4 w-fit">
+      <i class="opacity-50 text-sm">Right-click to add row. All column values required for each row.</i>
         <data-table
           v-if="notReseting"
           v-model="links"
