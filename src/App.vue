@@ -10,17 +10,20 @@ import TheBoard from './components/TheBoard.vue'
 import MessageBar from './components/TheMessageBar.vue'
 import CookiePrompt from './components/common/CookiePrompt.vue'
 import LocalStorageCheck from './components/common/LocalStorageCheck.vue'
+import AdminPage from './components/admin/AdminPage.vue'
 
 const gtag = useGtag()
 const { t } = useI18n()
 const homeStore = useHomeStore()
 const boardStore = useBoardStore()
+const showAdmin = computed(() => window.location.hash == '#admin')
 const showHomepage = computed(() => boardStore.currentBoard === undefined)
 
 onBeforeMount(() => {
   setHead()
   homeStore.loadCookieStatus()
 })
+
 watch(showHomepage, async (val) => {
   gtag.screenview({ screen_name: val ? 'home' : 'board' } as ScreenView)
 })
@@ -33,9 +36,14 @@ function setHead() {
 </script>
 
 <template>
-  <the-homepage v-if="showHomepage" />
-  <the-board v-else />
-  <local-storage-check />
-  <cookie-prompt />
+  <div v-if="!showAdmin">
+    <the-homepage v-if="showHomepage" />
+    <the-board v-else />
+    <local-storage-check />
+    <cookie-prompt />
+  </div>
+  <div v-else>
+    <admin-page />
+  </div>
   <message-bar />
 </template>
