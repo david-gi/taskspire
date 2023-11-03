@@ -30,7 +30,7 @@ function deleteGoal() {
 <template>
   <div
     style=""
-    class="h-auto w-full sm:w-3/4 md:w-2/5 xl:w-3/12 sm:mx-6 mx-0 p-9
+    class="h-auto w-full sm:w-3/4 md:w-2/5 xl:w-3/12 sm:mx-6 mx-2 p-9
            text-center bg-gray-dark contrast-125 saturate-150
            shadow-lg rounded ring-2 ring-gray-dark"
   >
