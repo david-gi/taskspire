@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useState } from 'vue-gtag-next'
 import { useHomeStore } from '../../store/home'
-import DefaultButton from './DefaultButton.vue'
+import DefaultButton from '../base/DefaultButton.vue'
 import { onMounted, ref, toRefs } from 'vue'
 
 const homeStore = useHomeStore()

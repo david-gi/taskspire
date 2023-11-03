@@ -17,8 +17,8 @@ const withRetry = async (res: () => Promise<AxiosResponse>, attempt: number = 1)
   return response
 }
 
-const buildPlan = async (goal: string, lang?: string) => {
-  return withRetry(() => server.post('/build-plan', { goal, lang }))
+const buildPlan = async (goal: string, language?: string) => {
+  return withRetry(() => server.post('/build-plan', { goal, language }))
 }
 
 export default {

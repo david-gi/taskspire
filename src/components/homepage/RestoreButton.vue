@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import WarningModal from './WarningModal.vue'
+import WarningModal from '../base/WarningModal.vue'
 
 defineProps({
   text: {

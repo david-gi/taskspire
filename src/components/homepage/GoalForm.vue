@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import { useHomeStore } from 'src/store/home'
+import { useHomeStore } from '../../store/home'
 import { useMessageStore } from '../../store/message'
 import DefaultButton from '../base/DefaultButton.vue'
 import { useGtag, } from 'vue-gtag-next'
 import { useI18n } from 'vue-i18n'
-import LoadingSplash from '../base/LoadingSplash.vue'
+import LoadingSplash from '../homepage/LoadingSplash.vue'
 
 const gtag = useGtag()
 const { t } = useI18n()
