@@ -25,9 +25,10 @@ export const useBoardStore = defineStore('board', () => {
 
   async function setRecommendation() {
     if(selectedItem.value && !selectedItem.value.recommendation){
-      const content = selectedItem.value.name
+      const content = selectedItem.value.name + selectedItem.value.desc
       const res = await api.getRecommendation(content.substring(0,300))
       selectedItem.value.recommendation = res.data
+      saveCurrent()
     }
   }
 
