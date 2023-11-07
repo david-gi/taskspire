@@ -12,25 +12,13 @@ export default {
     
     **The Pomodoro Technique: 
     A time management method that breaks work into 25-minute intervals called 'Pomodoros,' separated by short breaks to boost productivity and maintain focus.`,
-    'aboutHeader': 'About Taskspire',
+    'aboutHeader': 'What is Taskspire?',
     'about':
-      `We build this project out of love and with passion,
-        to use applied AI to further human ambitions.
+      `Taskspire is a cutting-edge platform designed to elevate personal and professional ambitions to tangible achievements through the power of AI-driven goal management. It offers a refreshingly straightforward approach by marrying the simplicity of Kanban board* organization with the focused intervals of the Pomodoro Technique**, all while being supercharged by advanced artificial intelligence.
+
+      It stands out by not just setting goals but also creating adaptable, AI-informed action plans to realize them. This is a tool born from a genuine passion for harnessing technology to empower individuals, whether they are relentless achievers, recovering procrastinators, or visionary dreamers.
       
-        We aspire to enable and inspire,
-        whether you are a go-getter,
-        post-procrastinator or dreamer.
-
-        To achieve this, we created a hybridized concept
-        of proven goal management and task systems.
-        Under the hood, we analyse your goal and gather 
-        feedback from advanced Artificial Intelligence
-        to put together a workable goal action plan.
-
-        We use the system ourselves daily.
-        We know it works.
-        
-        Free to all.`,
+      With a promise of accessibility and effectiveness, Taskspire.xyz is not just a product but a daily companion in the quest for productivity. This platform is not just another productivity tool; it's a testament to the belief in applied AI's role in amplifying human potential.`,
     'footer': `Privacy-by-design.
               Always free.`,
     'keywords': 'ai goal management, ai productivity tool, ai task management tool, goal setting, kanban, pomodoro'
