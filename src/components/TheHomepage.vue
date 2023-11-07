@@ -95,7 +95,7 @@ import MobileWarning from './homepage/MobileWarning.vue'
         </h3>
       </div>
       <div class="flex flex-row flex-wrap justify-center mt-6">
-        <p class="text-blue/90 sm:text-lg text-normal font-sans text-center whitespace-pre-wrap">
+        <p class="w-4/5 sm:w-1/2 text-blue/90 sm:text-lg text-normal font-sans text-center whitespace-pre-wrap">
           {{ $t('website.about') }}
         </p>
       </div>
