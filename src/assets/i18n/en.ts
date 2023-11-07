@@ -4,8 +4,14 @@ export default {
     'slogan': 'Transform Ambitions into Achievements',
     'description': `
           Simple goal management utilizing
-          Kanban and the Porodomo technique.
+          Kanban* and the Porodomo technique**.
           Supercharged by applied AI.`,
+    'explaination':
+      `*Kanban Boards: 
+      Visual project management tools that use columns and cards to track tasks and workflows, providing a clear overview of progress and process from start to finish.
+    
+    **The Pomodoro Technique: 
+    A time management method that breaks work into 25-minute intervals called 'Pomodoros,' separated by short breaks to boost productivity and maintain focus.`,
     'aboutHeader': 'About Taskspire',
     'about':
       `We build this project out of love and with passion,
