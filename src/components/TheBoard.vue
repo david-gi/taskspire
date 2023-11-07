@@ -28,9 +28,11 @@ watch(currentBoard, () => {
   if (currentBoard.value?.calculateProgress() == 100) {
     gtag.event('goal_completed')
     messageStore.show(t('message.goalCompleted'), 'success')
-    party.confetti(document.getElementById('stage-container1'), {
+    try {
+      party.confetti(document.getElementById('stage-container1'), {
         count: party.variation.range(50, 150),
-    })
+      })
+    } catch { }
   }
 })
 
