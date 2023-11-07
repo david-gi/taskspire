@@ -79,14 +79,10 @@ const resetForm = () => {
       </editable-value>
       <editable-value label="OpenAI Model">
         <template #display>
-          <div class="-mt-4 text-sm opacity-50 leading-tight float-left w-3/4">[values: gpt-3.5-turbo,
-            gpt-3.5-turbo-16k,
-            gpt-4,
-            gpt-4-32k,
-            gpt-4-1106-preview (soon gpt-4-turbo)] <a
+          <div class="-mt-4 text-sm opacity-50 leading-tight float-left w-3/4">Examples: 'gpt-3.5-turbo', 'gpt-4' <a
               class="underline"
-              href="https://platform.openai.com/docs/guides/gpt/which-model-should-i-use"
-            >Read more</a>
+              href="https://openai.com/pricing"
+            >View possible models and prices here</a>
           </div>
           <span class="float-right">
             {{ settings.Model }}
