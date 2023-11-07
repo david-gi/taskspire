@@ -82,7 +82,8 @@ const resetForm = () => {
           <div class="-mt-4 text-sm opacity-50 leading-tight float-left w-3/4">[values: gpt-3.5-turbo,
             gpt-3.5-turbo-16k,
             gpt-4,
-            gpt-4-32k] <a
+            gpt-4-32k,
+            gpt-4-1106-preview (soon gpt-4-turbo)] <a
               class="underline"
               href="https://platform.openai.com/docs/guides/gpt/which-model-should-i-use"
             >Read more</a>
