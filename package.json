@@ -20,7 +20,10 @@
     "build-electron": "vite build --config vite.config.ts && electron-builder -wml",
     "preview": "vite preview",
     "lint": "eslint --ext .ts,vue --ignore-path .gitignore .",
-    "test": "jest"
+    "test": "jest",
+    "start:chr": "npx playwright test --headed --browser=chromium",
+    "start:ff": "npx playwright test --headed --browser=firefox",
+    "start:saf": "npx playwright test --headed --browser=webkit"
   },
   "dependencies": {
     "@handsontable/vue3": "^13.1.0",
@@ -40,6 +43,7 @@
     "vue-scriptx": "^0.2.5"
   },
   "devDependencies": {
+    "@playwright/test": "^1.39.0",
     "@types/jest": "^29.5.0",
     "@types/node": "^20.4.0",
     "@types/uuid": "^9.0.3",
