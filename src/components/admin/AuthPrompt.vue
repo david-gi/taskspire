@@ -20,7 +20,8 @@ onMounted(() => { input.value?.focus() })
     class="absolute bg-gray-dark dark top-0 bottom-0 right-0 left-0"
     :class="{ 'opacity-50': !locked }"
   ></div>
-  <div class="p-12 top-1/4 left-1/4 w-1/2 fixed bg-pink/75 brightness-75 rounded">
+  <div class="p-12 top-1/4 md:left-1/4 lg:left-1/3 w-full md:w-1/2 lg:w-1/3 
+              fixed bg-pink/75 brightness-75 rounded">
     <form>
       <input
         ref="input"

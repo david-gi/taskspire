@@ -17,7 +17,7 @@ const initiateSaving = () => showAuthPrompt.value = true
 
 <template>
   <div class="h-full w-full">
-    <div class="p-4">
+    <div class="p-4 pb-12">
       <slot>
 
       </slot>

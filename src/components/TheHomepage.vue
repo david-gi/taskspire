@@ -99,6 +99,16 @@ import MobileWarning from './homepage/MobileWarning.vue'
           {{ $t('website.about') }}
         </p>
       </div>
+      <a
+        class="flex flex-row flex-wrap justify-center mt-9 px-4"
+        href="https://ko-fi.com/recursifist"
+      >
+        <img
+          class="rounded-lg w-full md:w-1/3 object-scale-down"
+          src="ko-fi.jpg"
+          alt="Support us on Ko-Fi"
+        />
+      </a>
     </div>
 
     <div class="flex flex-row flex-wrap gap-6 justify-center py-12 backdrop-contrast-150 opacity-75">
