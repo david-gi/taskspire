@@ -21,9 +21,9 @@
     "preview": "vite preview",
     "lint": "eslint --ext .ts,vue --ignore-path .gitignore .",
     "test": "jest",
-    "start:chr": "npx playwright test --headed --browser=chromium",
-    "start:ff": "npx playwright test --headed --browser=firefox",
-    "start:saf": "npx playwright test --headed --browser=webkit"
+    "start:chromium": "npx playwright test --browser=chromium",
+    "start:firefox": "npx playwright test --browser=firefox",
+    "start:safari": "npx playwright test --browser=webkit"
   },
   "dependencies": {
     "@handsontable/vue3": "^13.1.0",
@@ -55,7 +55,6 @@
     "@vue/eslint-config-typescript": "^11.0.0",
     "@vue/test-utils": "^2.0.0-rc.17",
     "@vue/vue3-jest": "^29.2.0",
-    "@vuensight/cli": "^0.1.5",
     "electron": "^25.3.0",
     "electron-builder": "^24.6.4",
     "eslint": "^8.6.0",
