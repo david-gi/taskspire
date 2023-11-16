@@ -1,0 +1,9 @@
+FROM taskspire-base AS stage
+
+WORKDIR "/home/bjorn/Projects/Web/[a] Work/taskspire/"
+COPY . .
+
+RUN npm install
+RUN npx playwright install 
+RUN npx playwright install-deps
+
