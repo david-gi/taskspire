@@ -36,7 +36,10 @@ function getBackupFilename() {
     + ').xml'
 }
 
-onMounted(() => homeStore.loadBoards())
+onMounted(() => {
+  homeStore.loadBoards()
+  if (window.location.hash == '#demo') homeStore.loadDemo()
+})
 watch(currentBoard, () => homeStore.loadBoards())
 </script>
 
