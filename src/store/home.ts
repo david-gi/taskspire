@@ -93,9 +93,14 @@ export const useHomeStore = defineStore('home', () => {
     })
   }
 
-  async function restoreFromFile(file: File) {
+  async function loadDemo() {
+    const res = await fetch('/demo.xml')
+    await restoreFromFile(await res.text())
+  }
+
+  async function restoreFromFile(file: File | string) {
     H.wrapAttempt(async () => {
-      const text = await file.text()
+      const text = typeof file == 'string' ? file : await file.text()
       const restoredBoards = <IBoard[]>JSON.parse(text)
       const tempBoards = boards.value
 
@@ -146,6 +151,7 @@ export const useHomeStore = defineStore('home', () => {
     deleteBoard,
     createNewBoard,
     setBoard,
+    loadDemo,
     restoreFromFile,
     getBackupLink,
     loadCookieStatus,
