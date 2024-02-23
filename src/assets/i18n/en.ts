@@ -4,17 +4,17 @@ export default {
     'slogan': 'Transform Ambitions into Achievements',
     'description': `
           Simple goal management utilizing
-          Kanban* and the Porodomo technique**.
+          Kanban¹ and the Porodomo technique².
           Supercharged by applied AI.`,
-    'explaination':
-      `*Kanban Boards: 
+    'definitions':
+      `Kanban Boards: 
       Visual project management tools that use columns and cards to track tasks and workflows, providing a clear overview of progress and process from start to finish.
     
-    **The Pomodoro Technique: 
-    A time management method that breaks work into 25-minute intervals called 'Pomodoros,' separated by short breaks to boost productivity and maintain focus.`,
+      The Pomodoro Technique: 
+      A time management method that breaks work into 25-minute intervals called 'Pomodoros,' separated by short breaks to boost productivity and maintain focus.`,
     'aboutHeader': 'What is Taskspire?',
     'about':
-      `Taskspire is a cutting-edge platform designed to elevate personal and professional ambitions to tangible achievements through the power of AI-driven goal management. It offers a refreshingly straightforward approach by marrying the simplicity of Kanban board* organization with the focused intervals of the Pomodoro Technique**, all while being supercharged by advanced artificial intelligence.
+      `Taskspire is a cutting-edge platform designed to elevate personal and professional ambitions to tangible achievements through the power of AI-driven goal management. It offers a refreshingly straightforward approach by marrying the simplicity of Kanban board organization with the focused intervals of the Pomodoro Technique, all while being supercharged by advanced artificial intelligence.
 
       It stands out by not just setting goals but also creating adaptable, AI-informed action plans to realize them. This is a tool born from a genuine passion for harnessing technology to empower individuals, whether they are relentless achievers, recovering procrastinators, or visionary dreamers.
       

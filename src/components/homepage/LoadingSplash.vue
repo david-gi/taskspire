@@ -8,7 +8,7 @@ const index = ref(1)
 
 function delayedCycle() {
   if (index.value > 4) return
-  const delay = 5000 + (4000 * Math.random())
+  const delay = 5000 + (7000 * Math.random())
   setTimeout(() => {
     index.value += 1
     delayedCycle()
@@ -57,4 +57,5 @@ onMounted(() => delayedCycle())
       >
       </div>
     </div>
-</div></template>
+  </div>
+</template>

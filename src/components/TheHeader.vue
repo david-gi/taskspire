@@ -17,19 +17,19 @@ function goToHome() {
 <template>
   <div
     v-if="big"
-    class="text-center scale-100 pt-6 pb-4 border-b-4 border-blue"
+    class="text-center scale-100 pt-6 pb-2 shadow-xl backdrop-brightness-50"
   >
     <img
-      class="w-20 sm:w-28 mt-0 sm:-mt-14 block sm:inline-block mx-auto rounded-4xl
-             contrast-75 drop-shadow-[-2px_8px_6px_#000]"
+      class="w-16 sm:w-28 -mt-4 sm:-mt-14 mb-2 sm:mb-0 block sm:inline-block mx-auto 
+      rounded-full contrast-75 drop-shadow-[-2px_3px_6px_#000]"
       src="../assets/images/logo.png"
     />
     <div class="text-center sm:text-left ml-0 sm:ml-4 pt-0 sm:pt-4 inline-block">
-      <span class="text-blue saturate-75 contrast-150 text-4xl font-bold uppercase">
+      <span class="text-blue saturate-75 contrast-150 text-2xl sm:text-4xl font-bold uppercase">
         {{ $t('website.name') }}✧✧✦
       </span>
       <br />
-      <span class="text-green text-base font-semibold whitespace-nowrap decoration-wavy">
+      <span class="opacity-80 text-sm sm:text-base font-semibold whitespace-nowrap decoration-wavy">
         {{ $t('website.slogan') }}
       </span>
     </div>
@@ -41,7 +41,8 @@ function goToHome() {
     <span class="text-xl ml-1 font-bold text-blue saturate-75 contrast-150">
       {{ $t('website.name') }}✧✧✦
     </span>
-    <span class="text-green sm:text-base text-sm ml-2 font-semibold overflow-clip">
+    <span class="opacity-75 text-sm sm:text-base ml-2 font-semibold overflow-clip
+      align-text-top sm:align-top">
       {{ $t('website.slogan') }}
     </span>
   </h1>

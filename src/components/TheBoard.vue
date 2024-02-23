@@ -28,9 +28,12 @@ watch(currentBoard, () => {
   if (currentBoard.value?.calculateProgress() == 100) {
     gtag.event('goal_completed')
     messageStore.show(t('message.goalCompleted'), 'success')
-    party.confetti(document.getElementById('stage-container1'), {
-      count: party.variation.range(50, 150),
-    })
+    const stageElm = document.getElementById('stage-container1')
+    if (stageElm) {
+      party.confetti(stageElm, {
+        count: party.variation.range(50, 150),
+      })
+    }
   }
 })
 
@@ -90,7 +93,7 @@ function deleteSelectedItem() {
   <pomodoro-overlay />
   <div
     id="stages-container"
-    class="flex w-screen h-screen flex-row gap-1 sm:gap-2 md:gap-6 lg:gap-9
+    class="flex w-screen xl:w-1/2 h-screen xl:h-auto flex-row gap-1 sm:gap-2 md:gap-6 lg:gap-9
           pt-4 px-0 sm:px-2 md:px-6 lg:px-9 
           subpixel-antialiased overflow-visible"
   >

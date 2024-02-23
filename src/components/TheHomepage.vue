@@ -4,6 +4,7 @@ import GoalForm from './homepage/GoalForm.vue'
 import GoalContainer from './homepage/GoalContainer.vue'
 import OfflineWarning from './homepage/OfflineWarning.vue'
 import MobileWarning from './homepage/MobileWarning.vue'
+import Tooltip from './common/TooltipWrap.vue'
 </script>
 
 <template>
@@ -25,30 +26,30 @@ import MobileWarning from './homepage/MobileWarning.vue'
         <div class="sm:scale-100 scale-75">
           <div
             style=""
-            class="text-yellow text-xl font-semibold -skew-x-6 -skew-y-3 -mt-2 pb-2 drop-shadow"
+            class="text-orange text-xl font-semibold -skew-x-6 -skew-y-3 -mt-2 pb-2 drop-shadow"
           >
             {{ $t('homepage.taglineA') }}
           </div>
           <span
             style=""
             class="sm:text-4xl text-2xl p-3 text-gray-dark font-black before:rounded
-        before:bg-yellow before:saturate-150 before:block before:absolute before:-inset-1 
+        before:bg-orange before:saturate-150 before:block before:absolute before:-inset-1 
         before:-skew-x-6 before:-skew-y-3 relative inline-block"
           >
             <span class="relative tracking-tight">
               {{ $t('homepage.taglineB') }}
             </span>
           </span>
-          <div class="text-yellow text-4xl hidden sm:block mt-9 -mb-6 rotate-90">
+          <div class="text-orange text-4xl hidden sm:block mt-2 -mb-6 rotate-90">
             ➜
           </div>
         </div>
       </div>
 
-      <div class="flex flex-row flex-wrap gap-6 justify-center pt-6 sm:pt-12 md:pt-20">
+      <div class="flex flex-row flex-wrap justify-center pt-6 sm:pt-12 md:pt-20">
         <iframe
-          width="400"
-          height="230"
+          class="w-3/4 xl:w-1/2 aspect-video"
+          height="100%"
           src="https://www.youtube-nocookie.com/embed/rkmO4_VpVOk?si=ye1kApzYH92sY-13"
           title="Taskspire Intro Video"
           frameborder="0"
@@ -61,22 +62,17 @@ import MobileWarning from './homepage/MobileWarning.vue'
         style=""
         class="text-yellow brightness-200 contrast-125 sm:text-2xl text-md -ml-8 pt-6 pb-0 md:pb-6"
       >
-        <pre class="font-sans text-center">
-            {{ $t('website.description') }}
-        </pre>
+        <tooltip :tip="$t('website.definitions')">
+          <pre class="font-sans text-center">
+              {{ $t('website.description') }}
+          </pre>
+        </tooltip>
         <pre class="font-sans text-center text-md text-base opacity-80 -mt-4 italic">
           {{ $t('website.footer') }}
       </pre>
       </h2>
 
       <goal-form />
-
-      <div class="flex flex-row flex-wrap justify-center mb-9">
-        <p
-          class="w-4/5 sm:w-1/2 sm:text-lg text-normal text-yellow saturate-50 font-sans text-center whitespace-pre-wrap">
-          {{ $t('website.explaination') }}
-        </p>
-      </div>
     </div>
 
     <goal-container />
@@ -94,28 +90,25 @@ import MobileWarning from './homepage/MobileWarning.vue'
           {{ $t('website.aboutHeader') }}
         </h3>
       </div>
-      <div class="flex flex-row flex-wrap justify-center mt-6">
+      <div class="flex flex-row flex-wrap justify-center my-6">
         <p class="w-4/5 sm:w-1/2 text-blue/90 sm:text-lg text-normal font-sans text-center whitespace-pre-wrap">
           {{ $t('website.about') }}
         </p>
       </div>
-      <a
-        class="flex flex-row flex-wrap justify-center mt-9 px-4"
-        href="https://ko-fi.com/recursifist"
-      >
+    </div>
+
+    <div class="flex flex-row flex-wrap gap-6 justify-center py-12 backdrop-contrast-150 opacity-75">
+      <span class="p-1 text-green whitespace-nowrap">
+        © {{ new Date(Date.now()).getFullYear() }} {{ $t('website.name') }}
+      </span>
+      <span class="p-1 text-orange break-word">{{ $t('website.footer') }}</span>
+      <a href="https://ko-fi.com/recursifist">
         <img
-          class="rounded-lg w-full md:w-1/3 object-scale-down"
+          class="rounded-lg w-36 -mt-3 object-scale-down"
           src="ko-fi.jpg"
           alt="Support us on Ko-Fi"
         />
       </a>
-    </div>
-
-    <div class="flex flex-row flex-wrap gap-6 justify-center py-12 backdrop-contrast-150 opacity-75">
-      <span class="text-green whitespace-nowrap">
-        © {{ new Date(Date.now()).getFullYear() }} {{ $t('website.name') }}
-      </span>
-      <span class="text-pink break-word">{{ $t('website.footer') }}</span>
     </div>
   </div>
 </template>

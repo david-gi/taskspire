@@ -47,8 +47,8 @@ watch(() => props.modelValue, () => {
 <template>
   <div
     v-if="props.modelValue"
-    class="bg-gray-dark h-1/2 fixed bottom-0 pb-6 left-0 right-0
-     border-x-4 ring-2 ring-gray-dark rounded shadow"
+    class="bg-gray-dark h-1/2 xl:h-screen fixed bottom-0 xl:top-0 pb-6 left-0 xl:left-1/2 right-0
+      border-x-4 ring-2 ring-gray-dark rounded shadow"
     :style="{
       'border-color': ('rgb(var(--color-' + modelValue.color + '))'),
     }"
@@ -136,15 +136,18 @@ watch(() => props.modelValue, () => {
             ></textarea>
           </template>
         </editable-value>
-        
-        <div v-if="modelValue.recommendation" class="mt-4">
+
+        <div
+          v-if="modelValue.recommendation"
+          class="mt-4"
+        >
           <span class="font-bold select-none mr-4">
             {{ $t('input.recommendation') }}
           </span>
-            <a
-              class="font-bold text-green underline saturate-150"
-              :href="modelValue.recommendation.url"
-            >{{ modelValue.recommendation.name }}</a>
+          <a
+            class="font-bold text-green underline saturate-150"
+            :href="modelValue.recommendation.url"
+          >{{ modelValue.recommendation.name }}</a>
         </div>
 
       </div>
