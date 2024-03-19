@@ -111,7 +111,7 @@ import TheBanner from './homepage/TheBanner.vue'
       <a href="https://ko-fi.com/recursifist">
         <img
           class="rounded-lg w-36 -mt-3 object-scale-down"
-          src="ko-fi.jpg"
+          src="../assets/images/ko-fi.jpg"
           alt="Support us on Ko-Fi"
         />
       </a>
