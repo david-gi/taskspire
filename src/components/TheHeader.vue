@@ -1,4 +1,7 @@
-<script setup lang="ts">
+<script
+  setup
+  lang="ts"
+>
 import { useHomeStore } from '../store/home'
 import { useBoardStore } from '../store/board'
 import DefaultButton from './base/DefaultButton.vue'
@@ -19,11 +22,6 @@ function goToHome() {
     v-if="big"
     class="text-center scale-100 pt-6 pb-2 shadow-xl backdrop-brightness-50"
   >
-    <img
-      class="w-16 sm:w-28 -mt-4 sm:-mt-14 mb-2 sm:mb-0 block sm:inline-block mx-auto 
-      rounded-full contrast-75 drop-shadow-[-2px_3px_6px_#000]"
-      src="../assets/images/logo.png"
-    />
     <div class="text-center sm:text-left ml-0 sm:ml-4 pt-0 sm:pt-4 inline-block">
       <span class="text-blue saturate-75 contrast-150 text-2xl sm:text-4xl font-bold uppercase">
         {{ $t('website.name') }}✧✧✦
@@ -58,5 +56,4 @@ function goToHome() {
       @click="goToHome()"
     />
   </div>
-</template >
-    
+</template>

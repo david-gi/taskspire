@@ -1,10 +1,14 @@
-<script setup lang="ts">
+<script
+  setup
+  lang="ts"
+>
 import TheHeader from './TheHeader.vue'
 import GoalForm from './homepage/GoalForm.vue'
 import GoalContainer from './homepage/GoalContainer.vue'
 import OfflineWarning from './homepage/OfflineWarning.vue'
 import MobileWarning from './homepage/MobileWarning.vue'
 import Tooltip from './common/TooltipWrap.vue'
+import TheBanner from './homepage/TheBanner.vue'
 </script>
 
 <template>
@@ -18,6 +22,8 @@ import Tooltip from './common/TooltipWrap.vue'
     <offline-warning />
 
     <div class="bg-gradient-to-b from-[#111] from-10% to-purple/10">
+
+      <the-banner />
       <the-header :big="true" />
       <div
         id="the-tagline"
@@ -112,4 +118,3 @@ import Tooltip from './common/TooltipWrap.vue'
     </div>
   </div>
 </template>
-
