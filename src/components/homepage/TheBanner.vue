@@ -12,7 +12,7 @@ let animationId: number
 
 const initScene = () => {
   const scene = new THREE.Scene()
-  const renderer = new THREE.WebGLRenderer()
+  const renderer = new THREE.WebGLRenderer({ antialias: true })
   const coverage = 0.8
 
   renderer.setSize(window.innerWidth, window.innerHeight * coverage)
@@ -183,7 +183,7 @@ const createArrow = () => {
 
 const createParticles = () => {
   const particles: THREE.Mesh[] = []
-  const particleCount = 200
+  const particleCount = 260
   const material = new THREE.MeshPhongMaterial({
     color: THREE.Color.NAMES.indigo,
     specular: THREE.Color.NAMES.whitesmoke,
