@@ -1,10 +1,10 @@
 export default {
   'website': {
     'name': 'Taskspire',
-    'slogan': 'Transform Ambitions into Achievements',
+    'slogan': 'Transform Ambitions to Achievements',
     'description': `
           Simple goal management utilizing
-          Kanban¹ and the Porodomo technique².
+          Kanban and the Porodomo technique.
           Supercharged by applied AI.`,
     'definitions':
       `Kanban Boards: 
@@ -42,7 +42,7 @@ export default {
     'c': 'Done',
   },
   'input': {
-    'placeholderGoal': 'Describe a Goal...',
+    'placeholderGoal': 'Describe what you want to achieve...',
     'labelEdit': 'edit',
     'labelName': 'Name',
     'labelDescription': 'Description',

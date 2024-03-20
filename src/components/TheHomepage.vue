@@ -7,8 +7,9 @@ import GoalForm from './homepage/GoalForm.vue'
 import GoalContainer from './homepage/GoalContainer.vue'
 import OfflineWarning from './homepage/OfflineWarning.vue'
 import MobileWarning from './homepage/MobileWarning.vue'
-import Tooltip from './common/TooltipWrap.vue'
 import TheBanner from './homepage/TheBanner.vue'
+import TheTagline from './homepage/TheTagline.vue'
+import DefinitionsContainer from './homepage/DefinitionsContainer.vue'
 </script>
 
 <template>
@@ -21,38 +22,37 @@ import TheBanner from './homepage/TheBanner.vue'
 
     <offline-warning />
 
-    <div class="bg-gradient-to-b from-[#111] from-10% to-purple/10">
 
-      <the-banner />
+    <the-banner />
+    <div class="backdrop-brightness-50 border-y border-purple py-12">
       <the-header :big="true" />
-      <div
-        id="the-tagline"
-        class="w-100 scroll-my-4 pt-6 sm:pt-12 md:pt-20"
-      >
-        <div class="sm:scale-100 scale-75">
-          <div
-            style=""
-            class="text-orange text-xl font-semibold -skew-x-6 -skew-y-3 -mt-2 pb-2 drop-shadow"
-          >
-            {{ $t('homepage.taglineA') }}
-          </div>
-          <span
-            style=""
-            class="sm:text-4xl text-2xl p-3 text-gray-dark font-black before:rounded
-        before:bg-orange before:saturate-150 before:block before:absolute before:-inset-1 
-        before:-skew-x-6 before:-skew-y-3 relative inline-block"
-          >
-            <span class="relative tracking-tight">
-              {{ $t('homepage.taglineB') }}
-            </span>
-          </span>
-          <div class="text-orange text-4xl hidden sm:block mt-2 -mb-6 rotate-90">
-            ➜
-          </div>
-        </div>
+      <br>
+      <br>
+      <goal-form />
+    </div>
+
+    <div class="bg-gradient-to-b to-purple/10 to-75% from-[#111] pt-6">
+      <the-tagline />
+      <definitions-container />
+    </div>
+
+    <goal-container />
+
+    <div
+      style=""
+      class="backdrop-contrast-125 bg-gradient-to-b from-purple/20 to-gray-transparent to-80%"
+    >
+      <div class="shadow-xl py-6">
+        <img
+          class="w-20 md:w-40 mb-6 block mx-auto rounded-full"
+          src="../assets/images/logo.png"
+        />
+        <h3 class="text-green font-bold text-2xl md:text-4xl">
+          {{ $t('website.aboutHeader') }}
+        </h3>
       </div>
 
-      <div class="flex flex-row flex-wrap justify-center pt-6 sm:pt-12 md:pt-20">
+      <div class="flex flex-row flex-wrap justify-center">
         <iframe
           class="w-3/4 xl:w-1/2 aspect-video"
           height="100%"
@@ -64,40 +64,8 @@ import TheBanner from './homepage/TheBanner.vue'
         ></iframe>
       </div>
 
-      <h2
-        style=""
-        class="text-yellow brightness-200 contrast-125 sm:text-2xl text-md -ml-8 pt-6 pb-0 md:pb-6"
-      >
-        <tooltip :tip="$t('website.definitions')">
-          <pre class="font-sans text-center">
-              {{ $t('website.description') }}
-          </pre>
-        </tooltip>
-        <pre class="font-sans text-center text-md text-base opacity-80 -mt-4 italic">
-          {{ $t('website.footer') }}
-      </pre>
-      </h2>
-
-      <goal-form />
-    </div>
-
-    <goal-container />
-
-    <div
-      style=""
-      class="backdrop-contrast-125 bg-gradient-to-b from-purple/20 to-gray-transparent to-80%"
-    >
-      <div class="shadow-xl py-6">
-        <img
-          class="w-20 my-6 block mx-auto rounded-4xl"
-          src="../assets/images/logo.png"
-        />
-        <h3 class="text-blue contrast-150 font-bold text-xl">
-          {{ $t('website.aboutHeader') }}
-        </h3>
-      </div>
       <div class="flex flex-row flex-wrap justify-center my-6">
-        <p class="w-4/5 sm:w-1/2 text-blue/90 sm:text-lg text-normal font-sans text-center whitespace-pre-wrap">
+        <p class="w-4/5 sm:w-1/2 text-green/90 sm:text-lg text-normal font-sans text-center whitespace-pre-wrap">
           {{ $t('website.about') }}
         </p>
       </div>

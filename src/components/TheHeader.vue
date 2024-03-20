@@ -20,14 +20,14 @@ function goToHome() {
 <template>
   <div
     v-if="big"
-    class="text-center scale-100 pt-6 pb-2 shadow-xl backdrop-brightness-50"
+    class="text-center scale-100"
   >
-    <div class="text-center sm:text-left ml-0 sm:ml-4 pt-0 sm:pt-4 inline-block">
-      <span class="text-blue saturate-75 contrast-150 text-2xl sm:text-4xl font-bold uppercase">
+    <div class="text-center sm:text-left ml-0 sm:ml-4 inline-block">
+      <span class="text-purple saturate-75 brightness-125 text-2xl sm:text-4xl font-bold uppercase">
         {{ $t('website.name') }}✧✧✦
       </span>
       <br />
-      <span class="opacity-80 text-sm sm:text-base font-semibold whitespace-nowrap decoration-wavy">
+      <span class="text-green opacity-90 text-sm sm:text-base font-semibold whitespace-nowrap decoration-wavy">
         {{ $t('website.slogan') }}
       </span>
     </div>

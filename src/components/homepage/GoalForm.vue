@@ -1,4 +1,7 @@
-<script setup lang="ts">
+<script
+  setup
+  lang="ts"
+>
 import { computed, ref } from 'vue'
 import { useHomeStore } from '../../store/home'
 import { useMessageStore } from '../../store/message'
@@ -39,7 +42,7 @@ async function submitGoal() {
 </script>
 
 <template>
-  <div class="pb-12 drop-shadow">
+  <div class="drop-shadow">
     <span
       class="text-green fixed w-10/12 md:w-8/12 text-right pr-1"
       :class="[{ 'text-orange': !goalValid }]"
@@ -69,4 +72,3 @@ async function submitGoal() {
   </div>
   <loading-splash v-if="loading" />
 </template>
-
